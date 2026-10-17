@@ -1,0 +1,12 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Spreadsheet temporary files
+~$*.xlsx
+.~lock.*#
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
