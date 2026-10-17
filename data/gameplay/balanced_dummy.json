@@ -1,0 +1,16 @@
+{
+  "scenario": "Two identical Balanced Dummies, normal attacks only",
+  "source": "data/excel/Thiết kế game.xlsx — Balanced dummy and Combat demo",
+  "base_hp": 20000.0,
+  "base_attack": 2000.0,
+  "base_defense": 1000.0,
+  "base_ap_recovery": 100.0,
+  "stat_effectiveness": 1.0,
+  "power_constant": 1000.0,
+  "starting_ap_a": 0.0,
+  "starting_ap_b": 0.0,
+  "attack_ap_cost": 100.0,
+  "slot_ap_requirement": 100.0,
+  "max_global_turns": 100,
+  "notes": "Starting AP = 0 and a manually selected initiative tie winner match the approved Excel test. Hits always land; no criticals, extra hits, skills, defending, swaps or triggers in this first scenario."
+}

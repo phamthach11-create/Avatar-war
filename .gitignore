@@ -10,3 +10,11 @@
 # Operating system metadata
 .DS_Store
 Thumbs.db
+
+# Godot generated imports and local editor state
+.godot/
+export.cfg
+export_credentials.cfg
+
+# Exported builds
+build/
