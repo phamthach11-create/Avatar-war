@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "robin3_bluetooth_normals",
+  "engine": "mixed_duel",
+  "action_mode": "normal_actions",
+  "rules": "data/rules.json",
+  "combatants": {
+    "3": {
+      "character": "data/characters/robin_hood.json",
+      "builds": "data/builds/robin_hood.json",
+      "nodes": "data/robin_nodes.json",
+      "build": "3"
+    },
+    "4": {
+      "character": "data/characters/bluetooth.json",
+      "builds": "data/builds/bluetooth.json",
+      "nodes": "data/bluetooth_nodes.json",
+      "build": "1"
+    }
+  },
+  "labels": {
+    "3": "Robin Hood — build 3",
+    "4": "Harald Bluetooth — S1.1.1–S1.1.4 + S1.2.1"
+  },
+  "pairs": [
+    [
+      3,
+      4
+    ]
+  ],
+  "runs_per_pair": 1000,
+  "seed_base": 202610240000,
+  "invisible": false,
+  "turn_limit": 400
+}

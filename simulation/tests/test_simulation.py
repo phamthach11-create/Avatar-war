@@ -136,5 +136,38 @@ class CombatTests(unittest.TestCase):
         result=module.Battle(d,old['seed'],0 if old['first']==1 else 1).run()
         self.assertEqual(result,old)
 
+    def test_mixed_characters_keep_independent_stats(self):
+        scenario,d=load_scenario('robin3_bluetooth_normals')
+        b=Battle(d,(3,4),0,12);b.t=1
+        robin,bluetooth=b.f
+        self.assertEqual((robin.hp,bluetooth.hp),(36250,51750))
+        self.assertAlmostEqual(bluetooth.apr,108)
+        self.assertAlmostEqual(bluetooth.atk,5357.14285714286*1.25)
+        self.assertAlmostEqual(robin.eva,.3)
+        self.assertAlmostEqual(b.expected_normal(0),3676.1833333333)
+        self.assertAlmostEqual(b.expected_normal(1),3008.0213903743)
+
+    def test_normal_action_mode_keeps_passives_and_no_active_casts(self):
+        scenario,d=load_scenario('robin3_bluetooth_normals')
+        b=Battle(d,(3,4),0,12)
+        b.t=3;b.f[0].cd={key:0 for key in b.f[0].cd}
+        before=b.f[1].hp
+        b.start(0)
+        self.assertEqual(b.f[0].metrics['mark_casts'],1)
+        self.assertLess(b.f[1].hp,before)
+        self.assertEqual(b.choose(0),'normal')
+        b=Battle(d,(3,4),0,12);result=b.run()
+        for side in ('a','b'):
+            m=result['metrics_'+side]
+            self.assertEqual(m.get('golden_active_casts',0)+m.get('hood_casts',0),0)
+            self.assertEqual(m.get('mp_spent',0),0)
+        self.assertGreater(result['metrics_a']['mark_casts'],0)
+
+    def test_effectiveness_is_separate_from_increased_attack(self):
+        _,d=load_scenario('robin3_bluetooth_normals')
+        actor=d['combatants']['4']
+        actor['build_profiles']['4']['stat_modifiers']['Attack']=.2
+        self.assertAlmostEqual(Fighter(4,actor).atk,actor['Attack']*1.2*1.25)
+
 
 if __name__=='__main__':unittest.main()

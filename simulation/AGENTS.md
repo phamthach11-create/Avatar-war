@@ -11,8 +11,11 @@
 - Use `python -m simulation run robin_duels` for the current Robin 1vs1 experiment.
   Use `--invisible on/off` for that explicit experimental override. Do not infer
   that the current off setting permanently removes Invisible from the game.
-- Never silently map an unsupported skill to another skill. This backend is
-  Robin-compatible 1vs1, not yet a general mixed-character 9vs9 engine.
+- Use `robin3_bluetooth_normals` for mixed-character 1vs1: normal voluntary
+  actions with implemented passive auto-casts still enabled. "Only normal
+  attacks" does not disable Thief's Mark unless the user explicitly asks.
+- Never silently map an unsupported skill to another skill. The backend supports
+  Robin skills and mixed-character normal-action duels, not general 9vs9.
 - Historical Bluetooth 9vs9 code and its reviewed snapshot are under `legacy/`.
   Reuse it when extending team combat, but do not present its frozen rules as the
   latest design. `Connection duration=2` there is historical, not a global rule.

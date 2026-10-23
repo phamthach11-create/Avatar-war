@@ -13,7 +13,9 @@ class Fighter:
         self.profile = d['build_profiles'][str(build)]
         p = self.profile
         def stat(name):
-            return (d[name] + p.get('base_bonuses', {}).get(name, 0)) * (1 + p.get('stat_modifiers', {}).get(name, 0))
+            return ((d[name] + p.get('base_bonuses', {}).get(name, 0))
+                    * (1 + p.get('stat_modifiers', {}).get(name, 0))
+                    * (1 + p.get('stat_effectiveness', {}).get(name, 0)))
         self.hp, self.mp, self.ap = stat('HP'), stat('MP'), d['rules']['starting_ap']
         self.max_hp, self.max_mp = self.hp, self.mp
         self.atk, self.mhr, self.acc, self.eva = [stat(k) for k in ('Attack', 'Multi-Hit Rate', 'Accuracy', 'Evasion')]
@@ -22,9 +24,9 @@ class Fighter:
         self.skills = {key: dict(d['skills'][key]) for key in p['skills']}
         for key, spec in self.skills.items():
             spec['stat'] *= p['skill_levels'][key] / d['reference_skill_level']
-        self.golden_satk = self.skills['golden']['stat'] * (1 + p.get('golden_satk_modifier', 0))
-        self.mark_satk = d['mark_satk'] * p['skill_levels'].get('mark', 0) / d['reference_skill_level']
-        self.hood_cd = d['skills']['hood']['cd'] + p.get('hood_cd_delta', 0)
+        self.golden_satk = self.skills.get('golden', {}).get('stat', 0) * (1 + p.get('golden_satk_modifier', 0))
+        self.mark_satk = d.get('mark_satk', 0) * p['skill_levels'].get('mark', 0) / d['reference_skill_level']
+        self.hood_cd = d['skills'].get('hood', {}).get('cd', 0) + p.get('hood_cd_delta', 0)
         if 'hood' in self.skills:
             self.skills['hood']['cd'] = self.hood_cd
         if 'mark' in self.skills:
@@ -45,7 +47,7 @@ class Battle:
     def __init__(self, d, builds, first, seed, detailed=False, invisible=False):
         self.d, self.builds, self.first, self.seed = d, builds, first, seed
         self.rng = random.Random(seed)
-        self.f = [Fighter(b, d) for b in builds]
+        self.f = [Fighter(b, d['combatants'][str(b)] if 'combatants' in d else d) for b in builds]
         self.t = 0
         self.events = []
         self.turns = []
@@ -224,6 +226,8 @@ class Battle:
 
     def choose(self, side):
         u = self.f[side]
+        if self.d.get('action_mode') == 'normal_actions':
+            return 'normal' if self.targetable(side) else 'defend'
         # Use available defensive/self buff without overwriting its duration.
         # This explicit AI policy is not a claim of globally optimal play.
         if self.d['rules']['cast_hood_when_ready'] and 'hood' in u.skills and not self.active(u.hood_until) and self.ready(side, 'hood'):

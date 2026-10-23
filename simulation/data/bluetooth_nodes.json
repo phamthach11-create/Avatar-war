@@ -1,0 +1,56 @@
+{
+  "S1": {
+    "requires": [],
+    "effects": {
+      "skills": []
+    },
+    "note": "Deadly Strike unlock; active skills disabled in this experiment."
+  },
+  "S1.1.1": {
+    "requires": [
+      "S1"
+    ],
+    "effects": {
+      "base_bonuses": {
+        "AP Recovery": 10
+      }
+    }
+  },
+  "S1.1.2": {
+    "requires": [
+      "S1.1.1"
+    ],
+    "effects": {},
+    "note": "Remove Deadly Strike HP condition; no effect when active skills disabled."
+  },
+  "S1.1.3": {
+    "requires": [
+      "S1.1.2"
+    ],
+    "effects": {
+      "stat_effectiveness": {
+        "Attack": 0.25
+      }
+    }
+  },
+  "S1.1.4": {
+    "requires": [
+      "S1.1.3"
+    ],
+    "effects": {
+      "stat_modifiers": {
+        "AP Recovery": 0.2
+      }
+    }
+  },
+  "S1.2.1": {
+    "requires": [
+      "S1"
+    ],
+    "effects": {
+      "base_bonuses": {
+        "AP Recovery": 10
+      }
+    }
+  }
+}

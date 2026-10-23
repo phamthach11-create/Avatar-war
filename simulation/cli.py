@@ -56,6 +56,8 @@ def main():
         if args.invisible is not None:scenario['invisible']=args.invisible=='on'
         if args.pair:scenario['pairs']=[args.pair]
         if args.workbook:
+            if scenario['engine'] != 'robin_duel':
+                raise ValueError('Mixed duel: update the per-character snapshots; --workbook currently maps Robin only')
             d=dict(import_excel(args.workbook),build_profiles=d['build_profiles'],rules=d['rules'])
         validate_design(d,scenario)
         # A run directory is never overwritten, even when two runs start together.
@@ -72,8 +74,9 @@ def main():
         manifest=dict(scenario=scenario,character=d['id'],source_excel_sha256=d['source_sha256'],
                       python=platform.python_version(),git_revision=revision,python_source_sha256=code_hash.hexdigest(),
                       simulation_seconds=elapsed,actual_battles=len(results),
-                      policy='Ready Hood first; otherwise highest immediate expected damage, including proc/preserved-slot effects; not globally optimal.',
-                      limitations='robin_duel backend: Robin-compatible 1vs1 only. 9vs9 Bluetooth retained separately as historical legacy. No arbitrary prose-to-skill inference.',
+                      policy=('Normal voluntary attacks only; implemented passive auto-casts/procs remain enabled.' if d.get('action_mode') == 'normal_actions' else 'Ready Hood first; otherwise highest immediate expected damage, including proc/preserved-slot effects; not globally optimal.'),
+                      limitations='1vs1 only; mixed-character mode supports normal voluntary actions and implemented passive handlers. 9vs9 Bluetooth retained separately as historical legacy. No arbitrary prose-to-skill inference.',
+                      labels=scenario.get('labels',{}),
                       rules=d['rules'],builds=d['build_profiles'])
         write_json(out/'input_snapshot.json',d)
         export(out,results,summaries,samples,manifest,excel=not args.no_excel)

@@ -60,8 +60,25 @@ def load_scenario(name='robin_duels'):
     if not path.exists():
         path = ROOT / 'scenarios' / (str(name) + '.json')
     scenario = read_json(path)
-    if scenario.get('schema_version') != 1 or scenario.get('engine') != 'robin_duel':
+    if scenario.get('schema_version') != 1 or scenario.get('engine') not in ('robin_duel','mixed_duel'):
         raise ValueError('Unsupported scenario schema/engine; no silent fallback.')
+    if scenario['engine'] == 'mixed_duel':
+        if scenario.get('action_mode') != 'normal_actions':
+            raise ValueError('Mixed duels currently support normal voluntary actions plus implemented passives only')
+        actors = {}
+        rules = read_json(ROOT / scenario['rules'])
+        for key, spec in scenario['combatants'].items():
+            actor = read_json(ROOT / spec['character'])
+            selection = read_json(ROOT / spec['builds'])[spec['build']]
+            actor['build_profiles'] = assemble_builds({key: selection}, read_json(ROOT / spec['nodes']))
+            actor['rules'] = rules
+            actors[key] = actor
+        d = dict(id=scenario['id'], combatants=actors, rules=rules,
+                 action_mode=scenario['action_mode'],
+                 source_sha256={k:v['source_sha256'] for k,v in actors.items()},
+                 build_profiles={k:v['build_profiles'][k] for k,v in actors.items()})
+        validate_design(d, scenario)
+        return scenario, d
     d = read_json(ROOT / scenario['character'])
     d['build_profiles'] = assemble_builds(read_json(ROOT / scenario['builds']), read_json(ROOT / scenario['nodes']))
     d['rules'] = read_json(ROOT / scenario['rules'])
@@ -69,7 +86,14 @@ def load_scenario(name='robin_duels'):
     return scenario, d
 
 
-def validate_design(d, scenario):
+def validate_design(d, scenario, skip_pair_membership=False):
+    if 'combatants' in d:
+        if d.get('action_mode') != 'normal_actions': raise ValueError('Unsupported mixed action mode')
+        for pair in scenario['pairs']:
+            if any(str(k) not in d['combatants'] for k in pair): raise ValueError('Unknown combatant ID')
+        for actor in d['combatants'].values():
+            validate_design(actor, scenario, skip_pair_membership=True)
+        return
     if d.get('schema_version') != 1:
         raise ValueError('Unsupported character snapshot version')
     for name in STAT_NAMES:
@@ -106,10 +130,11 @@ def validate_design(d, scenario):
         raise ValueError('Specify at least one pair of distinct build IDs')
     if len({tuple(sorted(p)) for p in scenario['pairs']}) != len(scenario['pairs']):
         raise ValueError('Duplicate matchup')
-    for pair in scenario['pairs']:
-        for b in pair:
-            if str(b) not in d['build_profiles']: raise ValueError(f'Unknown build {b}')
-    allowed = {'nodes','stat_modifiers','base_bonuses','skills','skill_levels','hood_cd_delta',
+    if not skip_pair_membership:
+        for pair in scenario['pairs']:
+            for b in pair:
+                if str(b) not in d['build_profiles']: raise ValueError(f'Unknown build {b}')
+    allowed = {'nodes','stat_modifiers','stat_effectiveness','base_bonuses','skills','skill_levels','hood_cd_delta',
                'hood_ap_refund','on_hit_golden_chance','golden_satk_modifier','golden_crit',
                'golden_stun_count','golden_keep_slot_chance','mark_stat_effectiveness','mark_mana_cost','mark_damage'}
     supported_stats = set(STAT_NAMES) - {'Skill Points','Attack stun count','Healing Amplification'}
@@ -119,7 +144,7 @@ def validate_design(d, scenario):
         nodes = p['nodes']
         if len(nodes) != len(set(nodes)) or len(nodes) > rules['passive_points']:
             raise ValueError(f'Build {key}: duplicate nodes or passive budget exceeded')
-        if not p['skills'] or 'golden' not in p['skills'] or set(p['skills'])-{'golden','hood','mark'}:
+        if ((not p['skills'] or 'golden' not in p['skills']) and scenario.get('action_mode') != 'normal_actions') or set(p['skills'])-{'golden','hood','mark'}:
             raise ValueError(f'Build {key}: unsupported skill kit')
         if len(set(p['skills'])) != len(p['skills']) or {'hood','mark'} <= set(p['skills']):
             raise ValueError('A build must select only one specialization skill')
@@ -128,12 +153,12 @@ def validate_design(d, scenario):
         for level in p['skill_levels'].values():
             if type(level) is not int or not 1 <= level <= rules['max_base_skill_level']:
                 raise ValueError('Skill level outside allocation limit')
-        for stat_group in ('stat_modifiers','base_bonuses'):
+        for stat_group in ('stat_modifiers','stat_effectiveness','base_bonuses'):
             for name, value in p.get(stat_group,{}).items():
                 if name not in supported_stats: raise ValueError(f'Unsupported build stat {name}')
                 numeric(value, name, -1e9)
         for name in supported_stats:
-            final = (d[name]+p.get('base_bonuses',{}).get(name,0))*(1+p.get('stat_modifiers',{}).get(name,0))
+            final = (d[name]+p.get('base_bonuses',{}).get(name,0))*(1+p.get('stat_modifiers',{}).get(name,0))*(1+p.get('stat_effectiveness',{}).get(name,0))
             numeric(final, f'Build{key}.{name}', 1 if name in ('HP','Stun Threshold') else 0)
             if name in ('Critical Hit Chance','Penetration chance') and final > 1:
                 raise ValueError(f'Build{key}.{name} exceeds 100%')
@@ -144,7 +169,7 @@ def validate_design(d, scenario):
         if p.get('golden_stun_count',0) not in (0,1):
             raise ValueError('Current rule permits at most one Stun Count per target per global turn')
         numeric(p.get('golden_satk_modifier',0),'golden_satk_modifier',-1)
-        if d['skills']['hood']['cd']+p.get('hood_cd_delta',0) < 1: raise ValueError('Hood cooldown must remain >=1')
+        if 'hood' in p['skills'] and d['skills']['hood']['cd']+p.get('hood_cd_delta',0) < 1: raise ValueError('Hood cooldown must remain >=1')
 
 
 def import_excel(path, template=None):

@@ -20,6 +20,18 @@ python -m simulation run robin_duels --pair 1 3 --invisible on
 python -m simulation run robin_duels --runs 100 --no-excel
 ```
 
+Robin build 3 đấu Bluetooth S1.1.1–S1.1.4 + S1.2.1, chỉ chọn đánh thường
+nhưng vẫn cho passive Thief’s Mark auto-cast:
+
+```sh
+python -m simulation run robin3_bluetooth_normals
+```
+
+Trong scenario này, ID3 = Robin build3; ID4 = Bluetooth theo build được chọn
+(ID4 chỉ là nhãn combatant, không phải Bluetooth build4 trong thí nghiệm cũ).
+Bluetooth APR=(70+10+10)×1,2=108; Attack Effectiveness +25% là lớp nhân riêng.
+Mỗi nhân vật vẫn chỉ nhận một initial slot mỗi team turn dù dư AP.
+
 Mỗi lần chạy tạo thư mục mới trong `simulation/results/`, có:
 
 - `report.xlsx`: tỷ lệ thắng, phân tách bên đi trước, chỉ số và log mẫu.
@@ -83,8 +95,11 @@ Hood/Invisible; Thief’s Mark tự cast; Stun; Defend. Có thể chỉnh số l
 chọn lại các node đã đăng ký mà không sửa engine.
 
 Các node Outlaw’s Mark, Silence và thêm mục tiêu chưa nằm trong backend này;
-chọn node chưa hỗ trợ sẽ báo lỗi. Engine chưa mô phỏng đội hình Robin 9vs9 hoặc
-trộn nhiều nhân vật. Không lấy số liệu của một skill mới rồi giả vờ nó có hành vi
+chọn node chưa hỗ trợ sẽ báo lỗi. Engine hỗ trợ **1vs1 giữa hai nhân vật khác nhau**
+ở chế độ `normal_actions`: chỉ normal attack chủ động, giữ passive đã có handler.
+Mỗi bên đọc snapshot/build/node catalog riêng qua `combatants` của scenario;
+cùng dùng lại vòng lặp combat và báo cáo. Chưa hỗ trợ Robin 9vs9 hay active skill
+mới của Bluetooth trong backend này. Không lấy số liệu của một skill mới rồi giả vờ nó có hành vi
 Golden Arrow. Khi thêm nhân vật/cơ chế mới, mở rộng ở đây và dùng lại runner/report.
 
 Mã Bluetooth 9vs9 đã từng sử dụng được giữ trong `legacy/bluetooth_9v9/`, có
