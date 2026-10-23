@@ -1,0 +1,243 @@
+[
+  {
+    "pair": [
+      1,
+      2
+    ],
+    "wins": {
+      "1": 628,
+      "2": 372
+    },
+    "a_win_rate": 0.628,
+    "a_win_rate_wilson95": [
+      0.5976058983153016,
+      0.6574144156465824
+    ],
+    "mean_turns": 8.01,
+    "median_turns": 8.0,
+    "first_wins": 672,
+    "by_first": {
+      "1": {
+        "games": 500,
+        "wins": {
+          "1": 400,
+          "2": 100
+        }
+      },
+      "2": {
+        "games": 500,
+        "wins": {
+          "1": 228,
+          "2": 272
+        }
+      }
+    },
+    "mean_metrics": {
+      "1": {
+        "ap_ineligible_turns": 0.004,
+        "ap_restored": 11.55,
+        "ap_spent": 421.525,
+        "effective_damage": 33623.88607783536,
+        "extra_slots_granted": 0.231,
+        "final_damage": 34682.31554323849,
+        "golden_trigger_checks": 4.31,
+        "golden_triggered_casts": 2.137,
+        "golden_triggered_damage": 7876.277132129467,
+        "hit_attempts": 8.14,
+        "hood_casts": 0.231,
+        "initial_slots": 4.042,
+        "landed_hits": 8.14,
+        "mp_spent": 7612.2,
+        "normal_attacks": 4.042,
+        "normal_crits": 4.895,
+        "normal_damage": 25747.6089457059,
+        "raw_damage": 64937.772619047464,
+        "stunned_team_turns": 0.023,
+        "team_turns": 4.069,
+        "voluntary_actions": 4.273
+      },
+      "2": {
+        "ap_ineligible_turns": 0.313,
+        "ap_restored": 0,
+        "ap_spent": 408.975,
+        "effective_damage": 30793.035563935424,
+        "extra_slots_granted": 0.025,
+        "final_damage": 32309.94047754496,
+        "golden_active_casts": 2.628,
+        "golden_active_damage": 23674.447418038788,
+        "golden_crits": 1.61,
+        "hit_attempts": 2.712,
+        "hood_casts": 0.025,
+        "initial_slots": 3.628,
+        "landed_hits": 2.43,
+        "misses": 0.282,
+        "mp_spent": 8014,
+        "normal_attacks": 1.443,
+        "normal_crits": 1.466,
+        "normal_damage": 7118.588145896635,
+        "raw_damage": 60670.66571428567,
+        "slots_preserved": 0.443,
+        "stun_stacks_applied": 2.316,
+        "stuns": 0.024,
+        "team_turns": 3.941,
+        "voluntary_actions": 4.096
+      }
+    }
+  },
+  {
+    "pair": [
+      1,
+      3
+    ],
+    "wins": {
+      "1": 388,
+      "3": 612
+    },
+    "a_win_rate": 0.388,
+    "a_win_rate_wilson95": [
+      0.3582805821997621,
+      0.41857664308358944
+    ],
+    "mean_turns": 8.11,
+    "median_turns": 8.0,
+    "first_wins": 688,
+    "by_first": {
+      "1": {
+        "games": 500,
+        "wins": {
+          "1": 288,
+          "3": 212
+        }
+      },
+      "3": {
+        "games": 500,
+        "wins": {
+          "3": 400,
+          "1": 100
+        }
+      }
+    },
+    "mean_metrics": {
+      "1": {
+        "ap_ineligible_turns": 0.003,
+        "ap_restored": 10.7,
+        "ap_spent": 415.65,
+        "effective_damage": 31302.6411287919,
+        "extra_slots_granted": 0.214,
+        "final_damage": 31911.016419333613,
+        "golden_trigger_checks": 4.132,
+        "golden_triggered_casts": 2.014,
+        "golden_triggered_damage": 7507.595834078326,
+        "hit_attempts": 8.183,
+        "hood_casts": 0.214,
+        "initial_slots": 3.996,
+        "landed_hits": 7.399,
+        "misses": 0.784,
+        "mp_spent": 7154.8,
+        "normal_attacks": 3.996,
+        "normal_crits": 4.493,
+        "normal_damage": 23795.045294713575,
+        "raw_damage": 59750.73261904748,
+        "team_turns": 3.999,
+        "voluntary_actions": 4.21
+      },
+      "3": {
+        "ap_spent": 396.8,
+        "effective_damage": 33691.54213156053,
+        "final_damage": 34992.622623083975,
+        "hit_attempts": 7.335,
+        "initial_slots": 3.968,
+        "landed_hits": 6.657,
+        "mark_casts": 3.111,
+        "mark_damage": 11517.143982521453,
+        "misses": 0.678,
+        "normal_attacks": 3.968,
+        "normal_crits": 3.999,
+        "normal_damage": 22174.39814903908,
+        "raw_damage": 54740.83857142845,
+        "team_turns": 4.111,
+        "voluntary_actions": 3.968
+      }
+    }
+  },
+  {
+    "pair": [
+      2,
+      3
+    ],
+    "wins": {
+      "3": 660,
+      "2": 340
+    },
+    "a_win_rate": 0.34,
+    "a_win_rate_wilson95": [
+      0.31130136795291313,
+      0.369923239594732
+    ],
+    "mean_turns": 8.322,
+    "median_turns": 8.0,
+    "first_wins": 668,
+    "by_first": {
+      "2": {
+        "games": 500,
+        "wins": {
+          "3": 246,
+          "2": 254
+        }
+      },
+      "3": {
+        "games": 500,
+        "wins": {
+          "3": 414,
+          "2": 86
+        }
+      }
+    },
+    "mean_metrics": {
+      "2": {
+        "ap_ineligible_turns": 0.363,
+        "ap_restored": 0,
+        "ap_spent": 422.875,
+        "effective_damage": 29877.44125503198,
+        "extra_slots_granted": 0.021,
+        "final_damage": 31313.22394334908,
+        "golden_active_casts": 2.718,
+        "golden_active_damage": 24104.987572398404,
+        "golden_crits": 1.598,
+        "hit_attempts": 2.823,
+        "hood_casts": 0.021,
+        "initial_slots": 3.718,
+        "landed_hits": 1.976,
+        "misses": 0.847,
+        "mp_spent": 8263.2,
+        "normal_attacks": 1.495,
+        "normal_crits": 1.188,
+        "normal_damage": 5772.453682633578,
+        "raw_damage": 58810.39047619044,
+        "slots_preserved": 0.495,
+        "stun_stacks_applied": 2.423,
+        "stuns": 0.041,
+        "team_turns": 4.081,
+        "voluntary_actions": 4.234
+      },
+      "3": {
+        "ap_spent": 403.9,
+        "effective_damage": 34031.02435902018,
+        "final_damage": 35442.16897485486,
+        "hit_attempts": 7.44,
+        "initial_slots": 4.039,
+        "landed_hits": 6.675,
+        "mark_casts": 3.241,
+        "mark_damage": 11921.571461296331,
+        "misses": 0.765,
+        "normal_attacks": 4.039,
+        "normal_crits": 3.952,
+        "normal_damage": 22109.45289772385,
+        "raw_damage": 55336.888571428455,
+        "stunned_team_turns": 0.014,
+        "team_turns": 4.241,
+        "voluntary_actions": 4.039
+      }
+    }
+  }
+]

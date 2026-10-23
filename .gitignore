@@ -18,3 +18,9 @@ export_credentials.cfg
 
 # Exported builds
 build/
+
+# Python simulation outputs and caches
+__pycache__/
+*.py[cod]
+.venv/
+simulation/results/

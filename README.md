@@ -2,6 +2,20 @@
 
 Game chiến thuật theo lượt với đội hình 3×3, gồm một main và tám avatar.
 
+## Mô phỏng thiết kế bằng Python
+
+Bộ mô phỏng dùng lại nằm trong [simulation/](simulation/README.md): dữ liệu nhân vật,
+node passive, build và cấu hình trận tách khỏi code. Chạy ba cặp Robin 1vs1:
+
+```sh
+python -m pip install -r simulation/requirements.txt
+python -m simulation run robin_duels
+```
+
+Mặc định 1.000 trận/cặp, chia đều bên đi trước; xuất Excel và log có seed.
+Đọc hướng dẫn trong thư mục này trước các lần mô phỏng tiếp theo. Mã Bluetooth 9vs9
+cũ được giữ riêng với snapshot lịch sử; engine Godot chưa đồng bộ tự động với Python.
+
 ## Demo Godot đầu tiên
 
 Repository hiện có bản demo **2D hai Balanced Dummy**, kiểm tra cùng kịch bản

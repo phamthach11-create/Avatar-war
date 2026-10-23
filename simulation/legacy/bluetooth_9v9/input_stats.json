@@ -1,0 +1,44 @@
+{
+  "HP": 51750,
+  "MP": 19450,
+  "Attack": 5357.14285714286,
+  "Defense": 1857.14285714286,
+  "Skill Defense": 1086.20689655172,
+  "Multi-Hit Rate": 1.2,
+  "Penetration chance": 0,
+  "Critical Hit Chance": 0,
+  "Critical Damage Bonus": 0,
+  "AP Recovery": 70,
+  "Stun Threshold": 4,
+  "Attack stun count": 0,
+  "Skill Points": 10,
+  "Accuracy": 1,
+  "Evasion": 0,
+  "Healing Amplification": 0,
+  "skills": {
+    "frozen": {
+      "ap": 150,
+      "mp": 3000,
+      "cd": 6,
+      "duration": 3,
+      "value": 480
+    },
+    "deadly": {
+      "ap": 300,
+      "mp": 6000,
+      "cd": 4,
+      "duration": null,
+      "value": 16800
+    },
+    "connection": {
+      "ap": "Passive, Auto-cast",
+      "mp": 800,
+      "cd": 2,
+      "duration": 2,
+      "value": 0.5
+    }
+  },
+  "dot": 480,
+  "fortify": 0.15,
+  "resistance": 0.15
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "engine": "robin_duel",
+  "character": "data/characters/robin_hood.json",
+  "builds": "data/builds/robin_hood.json",
+  "rules": "data/rules.json",
+  "pairs": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      3
+    ]
+  ],
+  "runs_per_pair": 1000,
+  "seed_base": 202610230000,
+  "invisible": false,
+  "turn_limit": 400,
+  "nodes": "data/robin_nodes.json"
+}

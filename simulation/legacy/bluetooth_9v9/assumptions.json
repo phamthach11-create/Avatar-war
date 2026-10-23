@@ -1,0 +1,73 @@
+{
+  "source": {
+    "file": "Historical workbook (not required for replay; see input_stats.json)",
+    "sha256": "83c3e727723c65ef59584179e9bf9ee530627b670f54e78ed6767c2420975e7d",
+    "authority": "Latest user upload, not older GitHub workbook"
+  },
+  "explicit_user_clarifications": [
+    "Fortify at SL5 = 15% from 3%*SL; use formula rather than stale K33=30%.",
+    "Frozen is Immobilized; it does not disable passive skills or AP recovery.",
+    "Each target holds only one Connection; first cast wins.",
+    "Transferred damage stops at first protector, never relayed.",
+    "6 passive points including skill unlock; 1000 total battles, 500 per starting order.",
+    "Do not overlap Frozen Axe: reject rows containing any living character currently Frozen. Prefer another legal Front row; otherwise another legal action."
+  ],
+  "build1_nodes": [
+    "S1",
+    "S1.1.1",
+    "S1.1.2",
+    "S1.1.3",
+    "S1.1.4",
+    "S1.2.1"
+  ],
+  "build4_nodes": [
+    "S2",
+    "S2.2.1",
+    "S2.2.2",
+    "S2.2.3",
+    "S2.2.4",
+    "S2.1.1"
+  ],
+  "current_file_rules": [
+    "Base stats HP51750 MP19450 ATK5357.142857 DEF1857.142857 SDEF1086.206897 MHR120% APR70; no crit, penetration or evasion.",
+    "Frozen Axe SL5 initial SATK480 and DOT SATK480, AP150 MP3000 CD6 duration3. DOT ticks END of every global turn; different caster sources stack.",
+    "Deadly Strike SL5 SATK16800, AP300 MP6000 CD4, only below50%HP.",
+    "Connection SL5 auto-cast at own team-turn start, MP800 CD2 duration2. Share50% AFTER mitigation, Fortify15%, Resistance15%.",
+    "Initial cooldown initialized full; first default recovery at end of first own turn, thereafter every global turn end. Cast sets cooldown before effects; cast turn gets default end-turn recovery.",
+    "Effects applied at T expire at END of T+D-1. Frozen duration3 cast at T ticks DOT at END T,T+1,T+2.",
+    "Build4 second branch grants HA20%, Exposure-20% from Frozen Axe, 20% chance to heal0.5%HP When Being Attacked, and heal2.5%MaxHP each own team turn.",
+    "Attack/Hit/Offensive Cast are distinct; no normal-attack trigger from DOT or transferred damage."
+  ],
+  "battle_setup": [
+    "Nine identical Bluetooth per side. Main at back-center position8. All HP/MP full, AP0 initially.",
+    "10 skill points: Frozen Axe5 plus specialization skill5. No reallocation.",
+    "Build1 final ATK6696.428571, APR108, secondary damage factor75%. Build4 DEF2557.142857, HA20%, APR70, secondary factor50%.",
+    "Initial slots2,2,4,4,5 thereafter; prioritize higher AP, random ties; eligible AP>=100 and not Frozen. AP may be negative after cast.",
+    "No swaps, Defend or slot transfers selected by AI.",
+    "Front means frontmost living in each column. Primary priority: exposed main, else lowest current HP, random equal-HP ties.",
+    "Cast normally: Deadly when ready/funded/below50%HP, else Frozen when ready/funded, else normal. Auto-casts respect MP and cooldown. Frozen Axe is only selected for a row with no living Frozen targets. If none is available, use normal attack (or eligible Deadly Strike)."
+  ],
+  "event_and_effect_conventions": [
+    "At team-turn start, in position order: each living build4 character regenerates then attempts Connection. Then recover acting-team AP and allocate action slots. Auto-casts do not consume slots.",
+    "End turn: DOT ticks in recipient team0/team1, position order, then source order; immediately stop on main death. Then recover cooldowns and expire effects.",
+    "Damage is mitigated by original target DEF/SDEF, then secondary final-damage penalty, then final damage split50/50. Protector does not mitigate again; shared portion cannot trigger another transfer or When Being Attacked.",
+    "Fortify/Resistance snapshot caster current DEF/SDEF at cast; bonuses added as flat increases. Exposure reduces Total Base SDEF20%, not DEF; flat Resistance bonus is added afterwards.",
+    "A dead protector cannot receive further damage transfers. Existing buff duration persists; no overkill spillback.",
+    "Connection targets exclude caster, choose2 lowest absolute current HP; equal HP ties by position. Existing link cannot be overwritten; do not retarget to another ally. Affordable valid casts spend MP even if links already occupied.",
+    "Same-caster DOT refreshes; different casters stack. No more than one concurrent stack per caster on a target. DOT persists after caster death.",
+    "Frozen and Exposure are nonstacking refresh effects applied after initial damage; expire end of final turn.",
+    "When Being Attacked: one probability check per normal Attack per directly struck surviving recipient, after all hits finish. No heal check for offensive casts, DOT or shared damage.",
+    "Heal capped at missing HP; HA20% gives regen1552.5 and triggered heal310.5. Effective-healing metrics exclude overheal.",
+    "No per-hit rounding. 600 global turn cap reported as unresolved."
+  ],
+  "limitations": [
+    "Result is conditional on this skill-first AI and target priority, not optimal-play balance.",
+    "Several rules changed together from previous experiments; outcome change cannot be attributed to one nerf alone.",
+    "Latest workbook is read only; no design/GitHub updates made."
+  ],
+  "validation": [
+    "Duration last-turn activity and end-turn expiration; initial/end-turn cooldown; three end-turn DOT ticks; two caster DOT source stacking; auto-cast MP/cooldown; Fortify15%; Exposure SDEF scope; no double mitigation and no relay; healing values.",
+    "Every turn checks HP conservation, HP/MP bounds; every action checks legal Front targeting. Exactly1000 battles including sample log.",
+    "Assert zero Frozen overlap applications in every final-batch battle; focused check selects another legal unfrozen row."
+  ]
+}

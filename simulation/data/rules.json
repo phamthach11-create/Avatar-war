@@ -1,0 +1,15 @@
+{
+  "power_constant": 1000,
+  "starting_ap": 0,
+  "slot_ap_requirement": 100,
+  "normal_attack_ap": 100,
+  "defend_ap": 50,
+  "defend_multiplier": 1.5,
+  "stun_duration": 3,
+  "stun_count_duration": 3,
+  "passive_points": 6,
+  "max_base_skill_level": 5,
+  "triggered_golden_ap": 0,
+  "cast_hood_when_ready": true,
+  "mark_amplifies_own_damage": true
+}

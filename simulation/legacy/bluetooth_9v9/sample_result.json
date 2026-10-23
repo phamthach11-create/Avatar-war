@@ -1,0 +1,67 @@
+{
+  "seed": 0,
+  "first": 1,
+  "winner": 4,
+  "turns": 56,
+  "alive": [
+    3,
+    5
+  ],
+  "hp": [
+    86371.06355402392,
+    231851.19234707722
+  ],
+  "main_hp": [
+    0.0,
+    51750
+  ],
+  "metrics": [
+    {
+      "actions": 115,
+      "normal": 86,
+      "landed_hits": 175,
+      "raw_damage": 1394115.000000001,
+      "after_mitigation_before_penalty": 407671.7239291374,
+      "final_damage_before_overkill": 376040.35915680946,
+      "damage": 375023.83356932626,
+      "damage_normal": 275189.7617072228,
+      "frozen": 21,
+      "mp_used": 111000,
+      "damage_frozen": 10321.958102485769,
+      "max_dot_sources_on_target": 1,
+      "frozen_overlap_avoided": 45,
+      "damage_dot": 29654.280202114354,
+      "dot_ticks": 136,
+      "frozen_character_turns": 29,
+      "deadly": 8,
+      "damage_deadly": 59857.83355750346,
+      "kills": 4
+    },
+    {
+      "heal_procs": 33,
+      "healing": 141125.02591640432,
+      "overheal": 188936.47408359568,
+      "connection_on_cooldown": 9,
+      "connections": 135,
+      "mp_used": 144000,
+      "actions": 111,
+      "normal": 99,
+      "landed_hits": 256,
+      "raw_damage": 1427108.5714285765,
+      "after_mitigation_before_penalty": 508962.8202860539,
+      "final_damage_before_overkill": 385212.82028605376,
+      "damage": 379378.93644597556,
+      "damage_normal": 350416.1161599218,
+      "shared_received": 121443.31591027777,
+      "frozen_character_turns": 46,
+      "frozen": 12,
+      "damage_frozen": 7132.561983471093,
+      "max_dot_sources_on_target": 1,
+      "frozen_overlap_avoided": 37,
+      "damage_dot": 21830.258302583057,
+      "dot_ticks": 85,
+      "kills": 6,
+      "connection_no_mp": 62
+    }
+  ]
+}

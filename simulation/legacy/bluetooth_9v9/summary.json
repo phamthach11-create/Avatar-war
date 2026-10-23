@@ -1,0 +1,200 @@
+[
+  {
+    "first": 1,
+    "n": 500,
+    "build1_wins": 28,
+    "build4_wins": 472,
+    "unresolved": 0,
+    "build4_wilson95": [
+      0.9202547013596158,
+      0.9609746373849419
+    ],
+    "mean_turns": 58.68,
+    "median_turns": 58.0,
+    "mean_alive": [
+      3.422,
+      4.506
+    ],
+    "mean_metrics": [
+      {
+        "actions": 128.476,
+        "after_mitigation_before_penalty": 465201.8518257926,
+        "damage": 422760.1559841798,
+        "damage_deadly": 64915.07194514109,
+        "damage_dot": 32225.394198250415,
+        "damage_frozen": 11434.748632669976,
+        "damage_normal": 314184.9412081182,
+        "deadly": 8.984,
+        "dot_ticks": 146.084,
+        "final_damage_before_overkill": 427280.26155751524,
+        "frozen": 22.478,
+        "frozen_character_turns": 29.444,
+        "frozen_overlap_avoided": 51.932,
+        "kills": 4.494,
+        "landed_hits": 200.51,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 121338,
+        "normal": 97.014,
+        "raw_damage": 1588594.3328571452
+      },
+      {
+        "actions": 110.044,
+        "after_mitigation_before_penalty": 511471.9329181785,
+        "connection_no_mp": 59.944,
+        "connection_on_cooldown": 9,
+        "connections": 135.24,
+        "damage": 374832.10260025575,
+        "damage_dot": 22175.499641974962,
+        "damage_frozen": 7124.776758866781,
+        "damage_normal": 345531.8261994144,
+        "dot_ticks": 86.388,
+        "final_damage_before_overkill": 379635.05791817844,
+        "frozen": 12.29,
+        "frozen_character_turns": 50.06,
+        "frozen_overlap_avoided": 37.604,
+        "heal_procs": 32.742,
+        "healing": 132538.58643886202,
+        "kills": 5.578,
+        "landed_hits": 257.152,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 145062,
+        "normal": 97.754,
+        "overheal": 194623.46456113804,
+        "raw_damage": 1433930.8800000052,
+        "shared_received": 128546.78961594177
+      }
+    ]
+  },
+  {
+    "first": 4,
+    "n": 500,
+    "build1_wins": 2,
+    "build4_wins": 498,
+    "unresolved": 0,
+    "build4_wilson95": [
+      0.9855339859585811,
+      0.9989023924587627
+    ],
+    "mean_turns": 55.268,
+    "median_turns": 55.0,
+    "mean_alive": [
+      3.334,
+      5.198
+    ],
+    "mean_metrics": [
+      {
+        "actions": 116.42,
+        "after_mitigation_before_penalty": 397461.8408596579,
+        "damage": 364762.5023480347,
+        "damage_deadly": 61515.470824510325,
+        "damage_dot": 29498.998957302218,
+        "damage_frozen": 10503.648150921475,
+        "damage_normal": 263244.3844153011,
+        "deadly": 8.514,
+        "dot_ticks": 134.156,
+        "final_damage_before_overkill": 369052.25382342906,
+        "frozen": 21.042,
+        "frozen_character_turns": 30.324,
+        "frozen_overlap_avoided": 45.572,
+        "kills": 3.802,
+        "landed_hits": 168.078,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 114210,
+        "normal": 86.864,
+        "raw_damage": 1355843.6014285719
+      },
+      {
+        "actions": 110.874,
+        "after_mitigation_before_penalty": 513025.94402213994,
+        "connection_no_mp": 56.318,
+        "connection_on_cooldown": 9,
+        "connections": 140.452,
+        "damage": 376643.6339333959,
+        "damage_dot": 22824.675387911346,
+        "damage_frozen": 7294.080000000019,
+        "damage_normal": 346524.8785454849,
+        "dot_ticks": 88.934,
+        "final_damage_before_overkill": 381607.1940221399,
+        "frozen": 12.53,
+        "frozen_character_turns": 46.14,
+        "frozen_overlap_avoided": 40.702,
+        "heal_procs": 27.124,
+        "healing": 119516.53329140593,
+        "kills": 5.666,
+        "landed_hits": 257.542,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 149951.6,
+        "normal": 98.344,
+        "overheal": 208363.3937085941,
+        "raw_damage": 1437594.565714291,
+        "shared_received": 125520.57182713044
+      }
+    ]
+  },
+  {
+    "first": "both",
+    "n": 1000,
+    "build1_wins": 30,
+    "build4_wins": 970,
+    "unresolved": 0,
+    "build4_wilson95": [
+      0.95749631851849,
+      0.978906396810303
+    ],
+    "mean_turns": 56.974,
+    "median_turns": 57.0,
+    "mean_alive": [
+      3.378,
+      4.852
+    ],
+    "mean_metrics": [
+      {
+        "actions": 122.448,
+        "after_mitigation_before_penalty": 431331.8463427253,
+        "damage": 393761.3291661073,
+        "damage_deadly": 63215.271384825704,
+        "damage_dot": 30862.196577776318,
+        "damage_frozen": 10969.198391795726,
+        "damage_normal": 288714.6628117096,
+        "deadly": 8.749,
+        "dot_ticks": 140.12,
+        "final_damage_before_overkill": 398166.2576904722,
+        "frozen": 21.76,
+        "frozen_character_turns": 29.884,
+        "frozen_overlap_avoided": 48.752,
+        "kills": 4.148,
+        "landed_hits": 184.294,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 117774,
+        "normal": 91.939,
+        "raw_damage": 1472218.9671428585
+      },
+      {
+        "actions": 110.459,
+        "after_mitigation_before_penalty": 512248.93847015925,
+        "connection_no_mp": 58.131,
+        "connection_on_cooldown": 9,
+        "connections": 137.846,
+        "damage": 375737.86826682586,
+        "damage_dot": 22500.087514943152,
+        "damage_frozen": 7209.428379433401,
+        "damage_normal": 346028.35237244965,
+        "dot_ticks": 87.661,
+        "final_damage_before_overkill": 380621.12597015913,
+        "frozen": 12.41,
+        "frozen_character_turns": 48.1,
+        "frozen_overlap_avoided": 39.153,
+        "heal_procs": 29.933,
+        "healing": 126027.55986513397,
+        "kills": 5.622,
+        "landed_hits": 257.347,
+        "max_dot_sources_on_target": 1,
+        "mp_used": 147506.8,
+        "normal": 98.049,
+        "overheal": 201493.42913486608,
+        "raw_damage": 1435762.7228571482,
+        "shared_received": 127033.6807215361
+      }
+    ]
+  }
+]

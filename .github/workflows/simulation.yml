@@ -1,0 +1,26 @@
+name: Combat simulation checks
+on:
+  push:
+    paths:
+      - 'simulation/**'
+      - 'data/excel/**'
+      - '.github/workflows/simulation.yml'
+  pull_request:
+    paths:
+      - 'simulation/**'
+      - 'data/excel/**'
+      - '.github/workflows/simulation.yml'
+permissions:
+  contents: read
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: simulation/requirements.txt
+      - run: python -m pip install -r simulation/requirements.txt
+      - run: python -m unittest discover -s simulation/tests -v

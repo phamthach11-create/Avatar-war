@@ -1,0 +1,128 @@
+{
+  "S1": {
+    "requires": [],
+    "effects": {
+      "skills": [
+        "golden",
+        "hood"
+      ]
+    }
+  },
+  "S1.1.1": {
+    "requires": [
+      "S1"
+    ],
+    "effects": {
+      "stat_modifiers": {
+        "Attack": 0.1
+      },
+      "base_bonuses": {
+        "Multi-Hit Rate": 0.1
+      }
+    }
+  },
+  "S1.1.2": {
+    "requires": [
+      "S1.1.1"
+    ],
+    "effects": {
+      "base_bonuses": {
+        "Accuracy": 0.2,
+        "Multi-Hit Rate": 0.1
+      }
+    }
+  },
+  "S1.1.3": {
+    "requires": [
+      "S1.1.2"
+    ],
+    "effects": {
+      "hood_cd_delta": -2,
+      "hood_ap_refund": 50
+    }
+  },
+  "S1.1.4": {
+    "requires": [
+      "S1.1.3"
+    ],
+    "effects": {
+      "on_hit_golden_chance": 0.5
+    }
+  },
+  "S1.2.1": {
+    "requires": [
+      "S1"
+    ],
+    "effects": {
+      "golden_satk_modifier": 0.2
+    }
+  },
+  "S1.2.2": {
+    "requires": [
+      "S1.2.1"
+    ],
+    "effects": {
+      "golden_keep_slot_chance": 0.2
+    }
+  },
+  "S1.2.3": {
+    "requires": [
+      "S1.2.2"
+    ],
+    "effects": {
+      "golden_satk_modifier": 0.1,
+      "golden_stun_count": 1
+    }
+  },
+  "S1.2.4": {
+    "requires": [
+      "S1.2.3"
+    ],
+    "effects": {
+      "golden_crit": true
+    }
+  },
+  "S2": {
+    "requires": [],
+    "effects": {
+      "skills": [
+        "golden",
+        "mark"
+      ]
+    }
+  },
+  "S2.1.1": {
+    "requires": [
+      "S2"
+    ],
+    "effects": {
+      "mark_stat_effectiveness": 1.2
+    }
+  },
+  "S2.1.2": {
+    "requires": [
+      "S2.1.1"
+    ],
+    "effects": {
+      "mark_mana_cost": 0
+    }
+  },
+  "S2.3.1": {
+    "requires": [
+      "S2"
+    ],
+    "effects": {
+      "base_bonuses": {
+        "Evasion": 0.2
+      }
+    }
+  },
+  "S2.3.2": {
+    "requires": [
+      "S2.3.1"
+    ],
+    "effects": {
+      "mark_damage": true
+    }
+  }
+}
