@@ -15,7 +15,12 @@
   actions with implemented passive auto-casts still enabled. "Only normal
   attacks" does not disable Thief's Mark unless the user explicitly asks.
 - Never silently map an unsupported skill to another skill. The backend supports
-  Robin skills and mixed-character normal-action duels, not general 9vs9.
+  Robin skills and mixed-character normal-action duels. `robin3_bluetooth_9v9`
+  uses `team_battle` for the selected Robin3 and Bluetooth Striker kits, full
+  skills, main at back-center, source-specific Marks and no Frozen overlap.
+  Use `robin3_bluetooth_9v9_elimination` when removing main: the whole enemy team
+  must die, no position gets main priority, and reported HP is the team total.
+  Other 9vs9 kits still require explicit handlers/tests; no unsupported fallback.
 - Historical Bluetooth 9vs9 code and its reviewed snapshot are under `legacy/`.
   Reuse it when extending team combat, but do not present its frozen rules as the
   latest design. `Connection duration=2` there is historical, not a global rule.

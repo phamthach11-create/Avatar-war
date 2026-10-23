@@ -20,10 +20,29 @@
   "name": "Harald Bluetooth",
   "reference_skill_level": 5,
   "mark_satk": 0,
-  "skills": {},
+  "skills": {
+    "frozen": {
+      "ap": 150,
+      "mp": 3000,
+      "cd": 6,
+      "duration": 3,
+      "stat": 480,
+      "target": "Front",
+      "area": "Full Row"
+    },
+    "deadly": {
+      "ap": 300,
+      "mp": 6000,
+      "cd": 4,
+      "duration": null,
+      "stat": 16800,
+      "target": "Front",
+      "area": "Single"
+    }
+  },
   "source_sha256": "0a40da85208026563a37a3f6feb277de5d2b2aadc8fa960ab72d0ce854c9b936",
   "source_sheet": "Destroyer class",
-  "scope": "Base stats for normal voluntary actions. Active skills intentionally unimplemented/disabled for this experiment.",
+  "scope": "Normal attacks, Frozen Axe and Deadly Strike; Connection is not unlocked by this build.",
   "nodes_text": {
     "D36": "S1\nUnlock skill Deadly strike",
     "E36": "S1.1.1 \nBase AP recovery +10",
@@ -31,5 +50,11 @@
     "G36": "S1.1.3 \nAttack effectiveness + 25%",
     "H36": "S1.1.4 Increased AP recovery +20%",
     "E37": "S1.2.1 \nBase AP recovery +10"
+  },
+  "frozen_dot": 480,
+  "weapon": {
+    "target": "Front",
+    "area": "Row Adjacent",
+    "secondary_multiplier": 0.5
   }
 }

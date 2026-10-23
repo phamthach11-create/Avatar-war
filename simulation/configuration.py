@@ -60,10 +60,10 @@ def load_scenario(name='robin_duels'):
     if not path.exists():
         path = ROOT / 'scenarios' / (str(name) + '.json')
     scenario = read_json(path)
-    if scenario.get('schema_version') != 1 or scenario.get('engine') not in ('robin_duel','mixed_duel'):
+    if scenario.get('schema_version') != 1 or scenario.get('engine') not in ('robin_duel','mixed_duel','team_battle'):
         raise ValueError('Unsupported scenario schema/engine; no silent fallback.')
-    if scenario['engine'] == 'mixed_duel':
-        if scenario.get('action_mode') != 'normal_actions':
+    if scenario['engine'] in ('mixed_duel','team_battle'):
+        if scenario['engine']=='mixed_duel' and scenario.get('action_mode') != 'normal_actions':
             raise ValueError('Mixed duels currently support normal voluntary actions plus implemented passives only')
         actors = {}
         rules = read_json(ROOT / scenario['rules'])
@@ -77,6 +77,10 @@ def load_scenario(name='robin_duels'):
                  action_mode=scenario['action_mode'],
                  source_sha256={k:v['source_sha256'] for k,v in actors.items()},
                  build_profiles={k:v['build_profiles'][k] for k,v in actors.items()})
+        if scenario['engine']=='team_battle':
+            d['team_size']=scenario['team_size'];d['main_position']=scenario['main_position']
+            d['control_policy']=scenario['control_policy']
+            d['victory_condition']=scenario.get('victory_condition','main')
         validate_design(d, scenario)
         return scenario, d
     d = read_json(ROOT / scenario['character'])
@@ -88,7 +92,12 @@ def load_scenario(name='robin_duels'):
 
 def validate_design(d, scenario, skip_pair_membership=False):
     if 'combatants' in d:
-        if d.get('action_mode') != 'normal_actions': raise ValueError('Unsupported mixed action mode')
+        if scenario['engine']=='team_battle':
+            if d.get('action_mode')!='full_skills' or d['team_size']!=9 or d['main_position']!=7 or d['control_policy']!='fresh_row':
+                raise ValueError('Team backend currently supports 3x3, main at back center, full skills, fresh-row control policy')
+            if d['victory_condition'] not in ('main','elimination'):raise ValueError('Unknown victory condition')
+            if scenario['invisible']:raise ValueError('Team Invisible is not implemented for these selected builds')
+        elif d.get('action_mode') != 'normal_actions': raise ValueError('Unsupported mixed action mode')
         for pair in scenario['pairs']:
             if any(str(k) not in d['combatants'] for k in pair): raise ValueError('Unknown combatant ID')
         for actor in d['combatants'].values():
@@ -108,7 +117,7 @@ def validate_design(d, scenario, skip_pair_membership=False):
         for field in ('mp', 'cd', 'stat'):
             numeric(s[field], f'{key}.{field}')
         if key != 'mark': numeric(s['ap'], f'{key}.ap')
-        if key != 'golden': numeric(s['duration'], f'{key}.duration', 1)
+        if key not in ('golden','deadly'): numeric(s['duration'], f'{key}.duration', 1)
         if s['cd'] != int(s['cd']) or (s['duration'] is not None and s['duration'] != int(s['duration'])):
             raise ValueError('Cooldown/duration must be integer global turns')
     rules = d['rules']
@@ -136,7 +145,7 @@ def validate_design(d, scenario, skip_pair_membership=False):
                 if str(b) not in d['build_profiles']: raise ValueError(f'Unknown build {b}')
     allowed = {'nodes','stat_modifiers','stat_effectiveness','base_bonuses','skills','skill_levels','hood_cd_delta',
                'hood_ap_refund','on_hit_golden_chance','golden_satk_modifier','golden_crit',
-               'golden_stun_count','golden_keep_slot_chance','mark_stat_effectiveness','mark_mana_cost','mark_damage'}
+               'golden_stun_count','golden_keep_slot_chance','mark_stat_effectiveness','mark_mana_cost','mark_damage','deadly_ignore_condition'}
     supported_stats = set(STAT_NAMES) - {'Skill Points','Attack stun count','Healing Amplification'}
     for key, p in d['build_profiles'].items():
         unknown = set(p)-allowed
@@ -144,8 +153,15 @@ def validate_design(d, scenario, skip_pair_membership=False):
         nodes = p['nodes']
         if len(nodes) != len(set(nodes)) or len(nodes) > rules['passive_points']:
             raise ValueError(f'Build {key}: duplicate nodes or passive budget exceeded')
-        if ((not p['skills'] or 'golden' not in p['skills']) and scenario.get('action_mode') != 'normal_actions') or set(p['skills'])-{'golden','hood','mark'}:
+        team=scenario['engine']=='team_battle'
+        supported_skills={'golden','mark','frozen','deadly'} if team else {'golden','hood','mark'}
+        if ((not p['skills'] or 'golden' not in p['skills']) and scenario.get('action_mode') != 'normal_actions' and not team) or set(p['skills'])-supported_skills:
             raise ValueError(f'Build {key}: unsupported skill kit')
+        if team:
+            unsupported={'on_hit_golden_chance','golden_crit','golden_stun_count','golden_keep_slot_chance'}
+            if any(p.get(k,0) for k in unsupported):raise ValueError('Team backend supports Robin build3 / Bluetooth Striker; additional passive handlers require review')
+            if 'weapon' not in d or d['weapon']['target'] not in ('Front','Any') or d['weapon']['area'] not in ('Single','Row Adjacent'):
+                raise ValueError('Unsupported team weapon targeting')
         if len(set(p['skills'])) != len(p['skills']) or {'hood','mark'} <= set(p['skills']):
             raise ValueError('A build must select only one specialization skill')
         if set(p['skill_levels']) != set(p['skills']): raise ValueError('Allocate levels to exactly the unlocked skills')

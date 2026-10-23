@@ -27,6 +27,39 @@ nhưng vẫn cho passive Thief’s Mark auto-cast:
 python -m simulation run robin3_bluetooth_normals
 ```
 
+Đấu **9 Robin build3 vs 9 Bluetooth cùng build trên**, cho dùng skill:
+
+```sh
+python -m simulation run robin3_bluetooth_9v9
+```
+
+Main ở ô8 (giữa hàng sau); Front là đầu từng cột, Any được nhắm main được che chắn.
+Robin dùng Golden5 + Mark5; Bluetooth dùng Frozen5 + Deadly5. Node S1.1.2 bỏ điều
+kiện HP của Deadly. AI ưu tiên kết liễu main; nếu chưa thể, dùng Frozen vào hàng
+hợp lệ chưa có Frozen để khống chế; còn lại so normal attack với direct skill theo
+sát thương kỳ vọng. Không chọn swap hoặc Defend để chuyển slot. Đây là chiến thuật
+đã ghi rõ, chưa phải tìm nước đi tối ưu toàn trận.
+
+Mark chọn kẻ địch còn sống gây nhiều **HP damage thực tế** nhất; hòa thì ưu tiên main,
+rồi HP thấp, rồi ngẫu nhiên. Mỗi dấu chỉ khuếch đại sát thương của chính người đặt,
+không cộng chồng amplification của chín Robin. Mark áp trước damage của chính nó;
+auto-cast vẫn hoạt động khi Frozen. Main chết dừng toàn bộ hit/DOT/cast còn lại.
+DOT tick cuối global turn gồm lượt áp dụng; tồn tại sau khi người đặt chết.
+Các cột HP trong log trận đội là HP main; MP/AP là tổng toàn đội.
+
+Thử nghiệm **bỏ hoàn toàn main, đánh đến khi cả chín đối thủ chết**:
+
+```sh
+python -m simulation run robin3_bluetooth_9v9_elimination
+```
+
+Scenario này giữ nguyên build và luật Front/Any nhưng không ưu tiên vị trí main.
+Đòn chủ động chọn mục tiêu hợp lệ có HP hiện tại thấp nhất; hòa thì ngẫu nhiên.
+Ưu tiên đòn trực tiếp dự kiến kết liễu mục tiêu, rồi Frozen không chồng hiệu ứng,
+rồi sát thương trực tiếp kỳ vọng cao hơn. Mark vẫn chọn đối thủ gây nhiều sát
+thương nhất; hòa thì HP thấp nhất, rồi ngẫu nhiên. HP/MP/AP trong log đều là tổng
+toàn đội. Đây là điều kiện thắng riêng của thí nghiệm, không sửa luật game gốc.
+
 Trong scenario này, ID3 = Robin build3; ID4 = Bluetooth theo build được chọn
 (ID4 chỉ là nhãn combatant, không phải Bluetooth build4 trong thí nghiệm cũ).
 Bluetooth APR=(70+10+10)×1,2=108; Attack Effectiveness +25% là lớp nhân riêng.
@@ -52,6 +85,7 @@ Mỗi lần chạy tạo thư mục mới trong `simulation/results/`, có:
 | Các node được chọn, phân bổ Skill Points | `data/builds/robin_hood.json` |
 | Giá trị số của hiệu ứng passive đã hỗ trợ | `data/robin_nodes.json` |
 | Cặp đấu, số trận, seed, Invisible, giới hạn turn | `scenarios/robin_duels.json` hoặc CLI |
+| Điều kiện thắng 9vs9 | `victory_condition`: `main` hoặc `elimination` trong scenario đội |
 | K, duration stun, chi phí AP, chính sách dùng Hood | `data/rules.json` |
 | Hành vi skill hoàn toàn mới | Bổ sung handler trong `engines/`, kèm test |
 | Định dạng báo cáo | `reporting.py` |
@@ -98,8 +132,10 @@ Các node Outlaw’s Mark, Silence và thêm mục tiêu chưa nằm trong backe
 chọn node chưa hỗ trợ sẽ báo lỗi. Engine hỗ trợ **1vs1 giữa hai nhân vật khác nhau**
 ở chế độ `normal_actions`: chỉ normal attack chủ động, giữ passive đã có handler.
 Mỗi bên đọc snapshot/build/node catalog riêng qua `combatants` của scenario;
-cùng dùng lại vòng lặp combat và báo cáo. Chưa hỗ trợ Robin 9vs9 hay active skill
-mới của Bluetooth trong backend này. Không lấy số liệu của một skill mới rồi giả vờ nó có hành vi
+cùng dùng lại vòng lặp combat và báo cáo. `team_battle` mở rộng Fighter và công thức
+đó cho đúng hai đội hình 9vs9 nói trên, với target/slot/DOT kế thừa luật của bộ
+Bluetooth cũ. Backend đội hiện hỗ trợ Golden, Mark, Frozen, Deadly và các passive
+của hai build đã chọn; các kit khác cần thêm handler và test. Không lấy số liệu của một skill mới rồi giả vờ nó có hành vi
 Golden Arrow. Khi thêm nhân vật/cơ chế mới, mở rộng ở đây và dùng lại runner/report.
 
 Mã Bluetooth 9vs9 đã từng sử dụng được giữ trong `legacy/bluetooth_9v9/`, có

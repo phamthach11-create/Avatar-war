@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "robin3_bluetooth_9v9",
+  "engine": "team_battle",
+  "action_mode": "full_skills",
+  "rules": "data/rules.json",
+  "combatants": {
+    "3": {
+      "character": "data/characters/robin_hood.json",
+      "builds": "data/builds/robin_hood.json",
+      "nodes": "data/robin_nodes.json",
+      "build": "3"
+    },
+    "4": {
+      "character": "data/characters/bluetooth.json",
+      "builds": "data/builds/bluetooth_combat.json",
+      "nodes": "data/bluetooth_combat_nodes.json",
+      "build": "1"
+    }
+  },
+  "labels": {
+    "3": "Robin Hood — build 3",
+    "4": "Harald Bluetooth — S1.1.1–S1.1.4 + S1.2.1"
+  },
+  "pairs": [
+    [
+      3,
+      4
+    ]
+  ],
+  "runs_per_pair": 1000,
+  "seed_base": 202610240100,
+  "invisible": false,
+  "turn_limit": 400,
+  "team_size": 9,
+  "main_position": 7,
+  "control_policy": "fresh_row",
+  "victory_condition": "main"
+}

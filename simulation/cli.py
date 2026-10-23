@@ -11,24 +11,26 @@ from pathlib import Path
 
 from .configuration import ROOT, import_excel, load_scenario, validate_design, write_json
 from .engines.robin_duel import Battle
+from .engines.team_battle import TeamBattle
 from .reporting import export, summarize
 
 
 def execute(scenario, design):
+    engine = TeamBattle if scenario['engine']=='team_battle' else Battle
     results,summaries,samples=[],[],[]
     for pair in scenario['pairs']:
         rows=[]
         for i in range(scenario['runs_per_pair']):
             first=i%2
             seed=scenario['seed_base']+pair[0]*1000000+pair[1]*10000+i
-            r=Battle(design,pair,first,seed,invisible=scenario['invisible']).run(scenario['turn_limit'])
+            r=engine(design,pair,first,seed,invisible=scenario['invisible']).run(scenario['turn_limit'])
             rows.append(r)
         results.extend(rows);summaries.append(summarize(pair,rows))
         for first in (0,1):
             subset=[r for r in rows if r['first_build']==pair[first]]
             med=statistics.median(r['turns'] for r in subset)
             chosen=min(subset,key=lambda r:abs(r['turns']-med))
-            b=Battle(design,pair,first,chosen['seed'],detailed=True,invisible=scenario['invisible'])
+            b=engine(design,pair,first,chosen['seed'],detailed=True,invisible=scenario['invisible'])
             if b.run(scenario['turn_limit']) != chosen:raise RuntimeError('Replay mismatch')
             samples.append((f'{pair[0]}v{pair[1]}_first{pair[first]}',b))
     return results,summaries,samples
@@ -78,6 +80,14 @@ def main():
                       limitations='1vs1 only; mixed-character mode supports normal voluntary actions and implemented passive handlers. 9vs9 Bluetooth retained separately as historical legacy. No arbitrary prose-to-skill inference.',
                       labels=scenario.get('labels',{}),
                       rules=d['rules'],builds=d['build_profiles'])
+        if scenario['engine']=='team_battle':
+            manifest.update(policy='Main lethal first; Frozen Axe on a legal fresh row for control without overlap; otherwise main-first target and higher immediate expected damage (normal vs direct skill). No swaps/Defend transfers. Not optimal play.',
+                limitations='Homogeneous 9vs9 Robin3 vs Bluetooth Striker. Skills SL5 each. Main back-center. Front per column; Any can target protected main. No Connection/Hood unlocked.',
+                team_rules='Initial slots2,2,4,4,5; highestAP then random ties. Auto Mark precedes AP/slots, including while Frozen. Highest total effective damage dealer; ties main-first then lowestHP then random. Source-specific Mark +24% does not multiply across Robin casters. Mark applies before own skill damage. Frozen duration3 and DOT3 end-turn ticks; no Frozen overlap; DOT persists after source death. Main death immediately stops combat. Per-actor HP/MP conservation. HP columns show main HP; MP/AP columns show team totals.')
+            if d['victory_condition']=='elimination':
+                manifest.update(policy='No main. Lowest-current-HP legal primary target, random HP ties. Prioritize likely lethal direct attack; otherwise Frozen on a legal fresh row, otherwise higher immediate damage (normal/direct skill). No swaps/Defend transfers.',
+                    limitations='Homogeneous 9vs9 Robin3 vs Bluetooth Striker; full skills at SL5 each. Experiment removes main mechanics entirely. Not optimal play or a general mixed-roster class test.',
+                    team_rules='Victory only when all9 opponents die. No position has main priority. Front/Any unchanged. Slots2,2,4,4,5; AP priority then random ties. Auto Mark remains usable while Frozen; highest total effective damage target, ties lowestHP then random. Mark is caster-specific +24% and precedes own damage. No overlapping Frozen; DOT ticks at turn end including application turn and persists after source death. HP/MP/AP columns are team totals.')
         write_json(out/'input_snapshot.json',d)
         export(out,results,summaries,samples,manifest,excel=not args.no_excel)
         for s in summaries:

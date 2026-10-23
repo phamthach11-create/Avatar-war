@@ -1,0 +1,95 @@
+{
+  "scenario": "robin3_bluetooth_9v9",
+  "runs": 1000,
+  "seed_base": 202610240100,
+  "source_excel_sha256": {
+    "3": "0a40da85208026563a37a3f6feb277de5d2b2aadc8fa960ab72d0ce854c9b936",
+    "4": "0a40da85208026563a37a3f6feb277de5d2b2aadc8fa960ab72d0ce854c9b936"
+  },
+  "summary": [
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "wins": {
+        "3": 1000
+      },
+      "a_win_rate": 1.0,
+      "a_win_rate_wilson95": [
+        0.9961731014136095,
+        1.0
+      ],
+      "mean_turns": 6.916,
+      "median_turns": 7.0,
+      "first_wins": 500,
+      "by_first": {
+        "3": {
+          "games": 500,
+          "wins": {
+            "3": 500
+          }
+        },
+        "4": {
+          "games": 500,
+          "wins": {
+            "3": 500
+          }
+        }
+      },
+      "mean_metrics": {
+        "3": {
+          "ap_spent": 1181.7,
+          "effective_damage": 115334.83585785133,
+          "final_damage": 118048.03063746552,
+          "frozen_team_turns": 1.511,
+          "hit_attempts": 22.027,
+          "initial_slots": 13.137,
+          "kills": 1.505,
+          "landed_hits": 22.027,
+          "main_damage": 51750.000000000015,
+          "mark_casts": 21.844,
+          "mark_damage": 73065.00277024803,
+          "mp_spent": 0,
+          "normal_attacks": 11.817,
+          "normal_crits": 13.238,
+          "normal_damage": 42269.833087603285,
+          "raw_damage": 247683.93523809485,
+          "survivors": 7.611,
+          "team_hp_remaining": 254671.1236529428,
+          "team_turns": 31.191,
+          "voluntary_actions": 11.817
+        },
+        "4": {
+          "ap_ineligible_turns": 0.616,
+          "ap_spent": 2286.65,
+          "deadly_casts": 5.174,
+          "deadly_damage": 39709.482652829014,
+          "dot_ticks": 2.75,
+          "effective_damage": 71578.8763470572,
+          "final_damage": 78142.63947222992,
+          "frozen_casts": 0.799,
+          "frozen_dot_damage": 702.0681980722657,
+          "frozen_initial_damage": 492.51063829787233,
+          "frozen_overlap_avoided": 1.574,
+          "frozen_targets": 1.929,
+          "hit_attempts": 17.081,
+          "initial_slots": 12.119,
+          "kills": 1.389,
+          "landed_hits": 11.979,
+          "main_damage": 147.09637859012076,
+          "misses": 5.102,
+          "mp_spent": 33441,
+          "normal_attacks": 6.146,
+          "normal_crits": 0,
+          "normal_damage": 30674.81485785805,
+          "raw_damage": 169385.6378571429,
+          "survivors": 7.495,
+          "team_hp_remaining": 350415.1641421487,
+          "team_turns": 28.439,
+          "voluntary_actions": 12.119
+        }
+      }
+    }
+  ]
+}

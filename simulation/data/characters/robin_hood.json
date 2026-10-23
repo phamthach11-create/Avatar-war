@@ -69,5 +69,10 @@
   "schema_version": 1,
   "id": "robin_hood",
   "name": "Robin Hood",
-  "reference_skill_level": 5
+  "reference_skill_level": 5,
+  "weapon": {
+    "target": "Any",
+    "area": "Single",
+    "secondary_multiplier": 0
+  }
 }
