@@ -72,6 +72,16 @@ SL5 từ 4800 thành 1200; node Effectiveness +20% vẫn áp dụng, amplificati
 trong bảng nhân vật, `mark_satk` hoặc `frozen_dot`, không cần viết lại engine hay
 sao chép toàn bộ dữ liệu nhân vật. Snapshot Excel gốc được giữ nguyên.
 
+Đổi cùng thử nghiệm SATK còn 1/4 sang 1vs1, vẫn dùng đầy đủ skill:
+
+```sh
+python -m simulation run robin3_bluetooth_1v1_mark_quarter
+```
+
+Engine đội cũng nhận `team_size: 1`, `main_position: 0`: chỉ một nhân vật mỗi
+bên, tối đa một initial action slot mỗi lượt đủ điều kiện, không có mục tiêu phụ.
+Các handler skill, chiến thuật và báo cáo dùng chung với 9vs9.
+
 Trong scenario này, ID3 = Robin build3; ID4 = Bluetooth theo build được chọn
 (ID4 chỉ là nhãn combatant, không phải Bluetooth build4 trong thí nghiệm cũ).
 Bluetooth APR=(70+10+10)×1,2=108; Attack Effectiveness +25% là lớp nhân riêng.

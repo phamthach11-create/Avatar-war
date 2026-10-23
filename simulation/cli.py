@@ -88,6 +88,9 @@ def main():
                 manifest.update(policy='No main. Lowest-current-HP legal primary target, random HP ties. Prioritize likely lethal direct attack; otherwise Frozen on a legal fresh row, otherwise higher immediate damage (normal/direct skill). No swaps/Defend transfers.',
                     limitations='Homogeneous 9vs9 Robin3 vs Bluetooth Striker; full skills at SL5 each. Experiment removes main mechanics entirely. Not optimal play or a general mixed-roster class test.',
                     team_rules='Victory only when all9 opponents die. No position has main priority. Front/Any unchanged. Slots2,2,4,4,5; AP priority then random ties. Auto Mark remains usable while Frozen; highest total effective damage target, ties lowestHP then random. Mark is caster-specific +24% and precedes own damage. No overlapping Frozen; DOT ticks at turn end including application turn and persists after source death. HP/MP/AP columns are team totals.')
+        if scenario['engine']=='team_battle' and d['team_size']==1:
+            manifest['limitations']='1vs1 Robin3 vs Bluetooth Striker; full skills at SL5 each, same team engine and action policy. No secondary targets.'
+            manifest['team_rules']=manifest['team_rules'].replace('all9 opponents','the opponent').replace('Slots2,2,4,4,5; AP priority then random ties.','One initial slot per eligible character per own team turn.')
         write_json(out/'input_snapshot.json',d)
         export(out,results,summaries,samples,manifest,excel=not args.no_excel)
         for s in summaries:

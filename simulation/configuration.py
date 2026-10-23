@@ -98,8 +98,8 @@ def load_scenario(name='robin_duels'):
 def validate_design(d, scenario, skip_pair_membership=False):
     if 'combatants' in d:
         if scenario['engine']=='team_battle':
-            if d.get('action_mode')!='full_skills' or d['team_size']!=9 or d['main_position']!=7 or d['control_policy']!='fresh_row':
-                raise ValueError('Team backend currently supports 3x3, main at back center, full skills, fresh-row control policy')
+            if d.get('action_mode')!='full_skills' or (d['team_size'],d['main_position']) not in ((9,7),(1,0)) or d['control_policy']!='fresh_row':
+                raise ValueError('Team backend supports 9vs9 (position7) or 1vs1 (position0), full skills, fresh-row control policy')
             if d['victory_condition'] not in ('main','elimination'):raise ValueError('Unknown victory condition')
             if scenario['invisible']:raise ValueError('Team Invisible is not implemented for these selected builds')
         elif d.get('action_mode') != 'normal_actions': raise ValueError('Unsupported mixed action mode')

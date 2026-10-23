@@ -23,6 +23,8 @@
   For numeric balance experiments, set per-combatant `character_overrides` in a
   scenario and reuse the runner. `robin3_bluetooth_9v9_mark_quarter` demonstrates
   SATK-only nerf testing without changing the engine or the source workbook.
+  `robin3_bluetooth_1v1_mark_quarter` reuses the same full-skill team backend with
+  `team_size: 1`, `main_position: 0`; do not create a separate duel skill engine.
   Other 9vs9 kits still require explicit handlers/tests; no unsupported fallback.
 - Historical Bluetooth 9vs9 code and its reviewed snapshot are under `legacy/`.
   Reuse it when extending team combat, but do not present its frozen rules as the

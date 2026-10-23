@@ -15,7 +15,8 @@ class TeamBattle(Battle):
         super().__init__(d,builds,first,seed,detailed,invisible)
         self.main=d['main_position']
         self.elimination=d.get('victory_condition','main')=='elimination'
-        self.teams=[[Fighter(b,d['combatants'][str(b)]) for _ in range(9)] for b in builds]
+        self.size=d['team_size']
+        self.teams=[[Fighter(b,d['combatants'][str(b)]) for _ in range(self.size)] for b in builds]
         for side,team in enumerate(self.teams):
             actor=d['combatants'][str(builds[side])]
             for u in team:
@@ -80,7 +81,7 @@ class TeamBattle(Battle):
     def normal_area(self,u,target):
         if u.weapon['area']=='Single':return [(target,1.)]
         row,col=divmod(target,3)
-        return [(target,1.)]+[(row*3+c,u.weapon['secondary_multiplier']) for c in (col-1,col+1) if 0<=c<3]
+        return [(target,1.)]+[(row*3+c,u.weapon['secondary_multiplier']) for c in (col-1,col+1) if 0<=c<3 and row*3+c<self.size]
 
     def normal(self,side):
         pos,target=self.positions[side],self.positions[1-side]
@@ -131,7 +132,7 @@ class TeamBattle(Battle):
         assert target in self.legal_targets(1-side,'Front')
         assert self.fresh_row(1-side,target), 'Frozen Axe overlap is forbidden by this experiment'
         self.pay(side,'frozen');s=u.skills['frozen'];expiry=self.t+s['duration']-1
-        for j in range(target//3*3,target//3*3+3):
+        for j in range(target//3*3,min(target//3*3+3,self.size)):
             if not self.alive():return
             v=self.teams[1-side][j]
             if v.hp<=0:continue
@@ -187,7 +188,7 @@ class TeamBattle(Battle):
             fresh=[j for j in self.legal_targets(enemy,'Front') if self.fresh_row(enemy,j)]
             if fresh:
                 def row_score(j):
-                    cells=range(j//3*3,j//3*3+3)
+                    cells=range(j//3*3,min(j//3*3+3,self.size))
                     return (not self.elimination and self.main in cells,sum(self.teams[enemy][k].hp>0 for k in cells))
                 best=max(row_score(j) for j in fresh)
                 target=self.choose_target(enemy,[j for j in fresh if row_score(j)==best])
