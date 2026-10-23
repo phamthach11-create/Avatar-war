@@ -20,6 +20,9 @@
   skills, main at back-center, source-specific Marks and no Frozen overlap.
   Use `robin3_bluetooth_9v9_elimination` when removing main: the whole enemy team
   must die, no position gets main priority, and reported HP is the team total.
+  For numeric balance experiments, set per-combatant `character_overrides` in a
+  scenario and reuse the runner. `robin3_bluetooth_9v9_mark_quarter` demonstrates
+  SATK-only nerf testing without changing the engine or the source workbook.
   Other 9vs9 kits still require explicit handlers/tests; no unsupported fallback.
 - Historical Bluetooth 9vs9 code and its reviewed snapshot are under `legacy/`.
   Reuse it when extending team combat, but do not present its frozen rules as the

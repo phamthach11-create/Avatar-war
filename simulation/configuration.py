@@ -69,6 +69,11 @@ def load_scenario(name='robin_duels'):
         rules = read_json(ROOT / scenario['rules'])
         for key, spec in scenario['combatants'].items():
             actor = read_json(ROOT / spec['character'])
+            # Experiment-only numeric overrides keep the reviewed source intact.
+            for field,value in spec.get('character_overrides',{}).items():
+                if field not in STAT_NAMES + ['mark_satk','frozen_dot']:
+                    raise ValueError(f'Unsupported character override: {field}')
+                actor[field] = numeric(value, field)
             selection = read_json(ROOT / spec['builds'])[spec['build']]
             actor['build_profiles'] = assemble_builds({key: selection}, read_json(ROOT / spec['nodes']))
             actor['rules'] = rules

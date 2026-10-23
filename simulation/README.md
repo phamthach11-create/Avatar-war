@@ -60,6 +60,18 @@ rồi sát thương trực tiếp kỳ vọng cao hơn. Mark vẫn chọn đối
 thương nhất; hòa thì HP thấp nhất, rồi ngẫu nhiên. HP/MP/AP trong log đều là tổng
 toàn đội. Đây là điều kiện thắng riêng của thí nghiệm, không sửa luật game gốc.
 
+Thử SATK Thief’s Mark còn 1/4, cùng đội hình và seed:
+
+```sh
+python -m simulation run robin3_bluetooth_9v9_mark_quarter
+```
+
+Trong scenario, `combatants.3.character_overrides.mark_satk = 1200` thay SATK
+SL5 từ 4800 thành 1200; node Effectiveness +20% vẫn áp dụng, amplification vẫn
+24%. Các thử nghiệm chỉ đổi số có thể dùng `character_overrides` cho tên chỉ số
+trong bảng nhân vật, `mark_satk` hoặc `frozen_dot`, không cần viết lại engine hay
+sao chép toàn bộ dữ liệu nhân vật. Snapshot Excel gốc được giữ nguyên.
+
 Trong scenario này, ID3 = Robin build3; ID4 = Bluetooth theo build được chọn
 (ID4 chỉ là nhãn combatant, không phải Bluetooth build4 trong thí nghiệm cũ).
 Bluetooth APR=(70+10+10)×1,2=108; Attack Effectiveness +25% là lớp nhân riêng.

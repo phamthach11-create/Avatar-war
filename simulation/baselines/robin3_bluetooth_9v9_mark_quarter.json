@@ -1,0 +1,132 @@
+{
+  "scenario": {
+    "schema_version": 1,
+    "id": "robin3_bluetooth_9v9_mark_quarter",
+    "engine": "team_battle",
+    "action_mode": "full_skills",
+    "rules": "data/rules.json",
+    "combatants": {
+      "3": {
+        "character": "data/characters/robin_hood.json",
+        "builds": "data/builds/robin_hood.json",
+        "nodes": "data/robin_nodes.json",
+        "build": "3",
+        "character_overrides": {
+          "mark_satk": 1200
+        }
+      },
+      "4": {
+        "character": "data/characters/bluetooth.json",
+        "builds": "data/builds/bluetooth_combat.json",
+        "nodes": "data/bluetooth_combat_nodes.json",
+        "build": "1"
+      }
+    },
+    "labels": {
+      "3": "Robin Hood — build 3",
+      "4": "Harald Bluetooth — S1.1.1–S1.1.4 + S1.2.1"
+    },
+    "pairs": [
+      [
+        3,
+        4
+      ]
+    ],
+    "runs_per_pair": 1000,
+    "seed_base": 202610240100,
+    "invisible": false,
+    "turn_limit": 400,
+    "team_size": 9,
+    "main_position": 7,
+    "control_policy": "fresh_row",
+    "victory_condition": "elimination"
+  },
+  "source_excel_sha256": {
+    "3": "0a40da85208026563a37a3f6feb277de5d2b2aadc8fa960ab72d0ce854c9b936",
+    "4": "0a40da85208026563a37a3f6feb277de5d2b2aadc8fa960ab72d0ce854c9b936"
+  },
+  "summary": [
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "wins": {
+        "4": 1000
+      },
+      "a_win_rate": 0.0,
+      "a_win_rate_wilson95": [
+        0.0,
+        0.003826898586390522
+      ],
+      "mean_turns": 32.153,
+      "median_turns": 32.0,
+      "first_wins": 500,
+      "by_first": {
+        "3": {
+          "games": 500,
+          "wins": {
+            "4": 500
+          }
+        },
+        "4": {
+          "games": 500,
+          "wins": {
+            "4": 500
+          }
+        }
+      },
+      "mean_metrics": {
+        "3": {
+          "ap_spent": 4041.4,
+          "effective_damage": 212401.4531382919,
+          "final_damage": 216289.5335115697,
+          "frozen_team_turns": 19.496,
+          "hit_attempts": 75.3,
+          "initial_slots": 40.414,
+          "kills": 3.367,
+          "landed_hits": 75.3,
+          "mark_casts": 68.38,
+          "mark_damage": 58395.96110798912,
+          "mp_spent": 0,
+          "normal_attacks": 40.414,
+          "normal_crits": 45.161,
+          "normal_damage": 154005.49203030276,
+          "raw_damage": 514649.84999999864,
+          "survivors": 0,
+          "team_hp_remaining": 0.0,
+          "team_turns": 77.38,
+          "voluntary_actions": 40.414
+        },
+        "4": {
+          "ap_ineligible_turns": 19.026,
+          "ap_spent": 11067.55,
+          "deadly_casts": 18.433,
+          "deadly_damage": 146851.96595175785,
+          "dot_ticks": 55.294,
+          "effective_damage": 326249.99999999994,
+          "final_damage": 351432.2216000521,
+          "frozen_casts": 9.197,
+          "frozen_dot_damage": 14111.762820408627,
+          "frozen_initial_damage": 5337.446808510638,
+          "frozen_overlap_avoided": 12.969,
+          "frozen_targets": 20.905,
+          "hit_attempts": 84.218,
+          "initial_slots": 71.189,
+          "kills": 9,
+          "landed_hits": 58.944,
+          "misses": 25.274,
+          "mp_spent": 138189,
+          "normal_attacks": 41.581,
+          "normal_crits": 0,
+          "normal_damage": 159948.82441932283,
+          "raw_damage": 740964.205714286,
+          "survivors": 5.633,
+          "team_hp_remaining": 253348.546861708,
+          "team_turns": 116.179,
+          "voluntary_actions": 69.211
+        }
+      }
+    }
+  ]
+}

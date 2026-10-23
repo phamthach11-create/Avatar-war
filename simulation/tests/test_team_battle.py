@@ -5,6 +5,17 @@ from simulation.engines.team_battle import TeamBattle
 
 
 class TeamBattleTests(unittest.TestCase):
+    def test_quarter_mark_changes_only_damage_not_amplification(self):
+        _,d=load_scenario('robin3_bluetooth_9v9_mark_quarter')
+        nerfed=TeamBattle(d,(3,4),0,91);nerfed.t=1
+        _,base=load_scenario('robin3_bluetooth_9v9_elimination')
+        original=TeamBattle(base,(3,4),0,91);original.t=1
+        for b in (nerfed,original):
+            b.focus(0,0,0);b.f[0].cd['mark']=0;b.mark(0)
+        self.assertAlmostEqual(nerfed.f[0].metrics['mark_damage']*4,original.f[0].metrics['mark_damage'])
+        self.assertAlmostEqual(nerfed.amp(0),1.24)
+        self.assertEqual(base['combatants']['3']['mark_satk'],4800)
+
     def setUp(self):
         self.scenario,self.d=load_scenario('robin3_bluetooth_9v9')
         self.b=TeamBattle(self.d,(3,4),0,91)
