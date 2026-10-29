@@ -25,5 +25,11 @@
 - Lưu ý nguồn: Soldier Accuracy B25=0 được giữ nguyên, không tự nâng lên 100%; Mona Lisa dùng cached SL5 heal4135 vì chuỗi công thức có 50%%.
 - Bàn giao local chi tiết: docs/design/mixed-9v9-current.md. Cần nhập mã/asset/tests và cập nhật thiết kế đã chốt vào PR riêng trước khi máy khác có thể tái tạo demo chỉ từ repo. Python vẫn độc lập.
 
+## 2026-10-29 — Local: sửa cửa sổ Build và Accuracy Leonidas
+- Người dùng chốt Accuracy100%, Evasion0% cho Leonidas. Demo local đã áp dụng cho cả hai build và cả hai đội; đây là sửa thiết kế được chốt sau workbook, thay cho B25=0. Workbook chưa được sửa trong lần này.
+- Build dialog đã chuyển sang nội dung cuộn giới hạn theo viewport, kiểm tra hiển thị đủ mục9. Log phân biệt MISS với sát thương0.
+- Kiểm tra sau sửa Accuracy: 8.196 checks qua; đánh thường gây HP damage ở cả bốn Leonidas; 6 trận seeded kết thúc Turn72–79.
+- Mã/asset demo vẫn chỉ local, chưa upload qua PR; nhật ký trên main thông báo thay đổi cho Cloud. Cần phản ánh Accuracy100/Evasion0 vào lần sửa workbook tiếp theo.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
