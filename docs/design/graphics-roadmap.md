@@ -12,7 +12,7 @@ MU Online, Lost Ark và Path of Exile là tham chiếu về không khí, ánh s�
 
 ## Trạng thái hiện tại
 - Kế hoạch: ĐÃ DUYỆT.
-- Giai đoạn hiện tại: 1 — đã chọn Napoleon mẫu1 anime cel-shaded; kết hợp hướng environment A thành đá sáng, chuẩn bị kiểm chứng tổng thể.
+- Giai đoạn hiện tại: 1 — đã mở scene ghép tĩnh Napoleon mẫu1 trên sân đá sáng A trong Godot, đang chờ người dùng duyệt tỷ lệ/phối cảnh.
 - Đã tạo ba ảnh concept local, chưa có phương án được duyệt, chưa tạo bộ asset chạy game và chưa hoàn thành cảnh mẫu Napoleon.
 - Demo local có trận hỗn hợp 9vs9, hai Napoleon mỗi đội, main Leonidas A5/B5, Auto/Restart/Builds/Xuất log. Phần lớn mã, asset và kiểm thử bản này vẫn chưa được upload vào repo; nhật ký ghi rõ khoảng cách.
 - Không coi README về demo cũ hoặc file kế hoạch này là bằng chứng repo đã có bản đồ họa mới.
@@ -80,7 +80,7 @@ Kiểm tra 18 nhân vật, hai Napoleon mỗi bên và nhiều DOT cùng lúc; g
 | Giai đoạn | Trạng thái | Bằng chứng / việc tiếp theo |
 | --- | --- | --- |
 | Baseline | Cần đồng bộ | Nhập demo local qua PR riêng trước tích hợp |
-| 1. Định hướng | Đã chọn hướng nhân vật, cần kiểm chứng tổng thể | Napoleon mẫu1 anime cel-shaded + environment A thành đá sáng; chưa phải asset chạy game |
+| 1. Định hướng | Scene ghép tĩnh, chờ duyệt | Local: art_direction_preview.tscn, 18 vị trí / 4 Napoleon mới; chưa có animation mới |
 | 2. Cảnh mẫu Napoleon | Chưa thực hiện | Chờ định hướng được duyệt |
 | 3. Environment | Chưa thực hiện | Theo chuẩn cảnh mẫu |
 | 4. Nhân vật / animation | Chưa thực hiện | Nhân rộng sau khi cảnh mẫu đạt |
@@ -106,3 +106,8 @@ Người dùng chọn rõ mẫu số1 (Anime Cel-Shaded) trong vòng thử bốn
 Tham chiếu local: outputs/napoleon-style-v1/01-anime-cel.png và prompts.md. Mẫu được duyệt là concept, chưa phải sprite tách nền, rig hay animation. Environment tiếp tục theo hướng A thành đá sáng mà người dùng đã ưu tiên.
 
 Bước tiếp: phối Napoleon theo hướng đã chọn vào sân đá sáng ở kích thước chơi thực tế, kiểm tra silhouette, màu và phối cảnh; sau đó tiến tới cảnh mẫu Napoleon chạy thật theo Giai đoạn2. Chưa mặc định người dùng đã duyệt thiết kế chi tiết của năm nhân vật còn lại hoặc cam kết chất lượng animation chưa được thực hiện. Không hỏi lại việc chọn phong cách số1.
+
+### Scene kiểm chứng tổng thể v1 — 2026-10-29
+Đã tạo hai asset nháp bằng imagegen từ tham chiếu đã chọn: Napoleon+cannon RGBA trong suốt, sân thành đá sáng sạch. Đã kiểm tra alpha thật, ghép và render trong Godot tại1280x820. Scene local riêng src/ui/art_direction_preview.tscn có18vị trí,4Napoleon mới,14nhân vật cũ để so tỷ lệ; hai đội đối xứng, main A5/B5. Có slider80–125%, chỉ xem Napoleon, xem gần và trở lại combat.
+
+Sau ảnh kiểm tra đầu, đã giãn hàng170px và chỉnh kích thước/label để giảm chồng nhau; base Napoleon150px, nhân vật tạm126px. Đã kiểm tra 18slot/4Napoleon, chế độsolo4, scale125%, closeup và mở scene trên máy. Đây là kiểm chứng ảnh tĩnh ở giai đoạn1, không phải cảnh animation giai đoạn2. Combat/main scene không bị thay; chưa đồng bộ scene và PNG lên repo. Ảnh chụp, PNG và prompt nằm local outputs/napoleon-stage-preview-v1. Chờ người dùng duyệt tổng thể trước khi làm cảnh bắn pháo.
