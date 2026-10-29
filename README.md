@@ -126,3 +126,7 @@ thư mục dự phòng dùng `.gitkeep`; có thể bỏ file này khi có nội 
 ## Làm việc giữa Cloud và Local
 
 Đọc [quy trình bàn giao](docs/design/cloud-local-workflow.md) và [nhật ký trạng thái](docs/design/cloud-local-status.md) trước khi tiếp tục. GitHub là nguồn chuẩn; kiểm tra cả pull request đang mở để biết thay đổi chưa hợp nhất.
+
+## Kế hoạch đồ họa đã chốt
+
+Theo [lộ trình nâng cấp đồ họa 2D](docs/design/graphics-roadmap.md), đã được người dùng duyệt ngày 29/10/2026. Thứ tự: định hướng → cảnh mẫu Napoleon → môi trường → sáu nhân vật/animation → hiệu ứng skill → polish/tối ưu. Tiến độ và điều kiện nghiệm thu nằm trong tài liệu; kế hoạch được duyệt không có nghĩa asset mới đã hoàn thành.
