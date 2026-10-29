@@ -87,5 +87,16 @@
 - Test timeline normal1fire/arrival, barrage3fire, DOT6tick và reset qua; đã render fire/impact và mở scene sau import trên project chính. Nút pause/speed/sound/shake/zoom/back có trong scene.
 - Đang chờ người dùng duyệt bản đầu. Chưa phải rig/animation/VFX hoàn thiện. Source/PNG/WAV local ở assets/art_direction/firing_v1 và outputs/napoleon-firing-v1; binary chưa upload GitHub.
 
+## 2026-10-29 — Hướng mới đã chốt: 3D anime, Bluetooth trước animation
+- Quyết định mới của người dùng thay thế lựa chọn giữ2D trước đó: chuyển phần hiển thị game sang3D, giữ cơ chế combat. Mẫu Viking3D đã được duyệt về chuyển động/cách hiển thị, KHÔNG duyệt tạo hình model Viking nguồn.
+- Công cụ: Godot4.7.2 đã chạy; Blender4.5.15 LTS portable đã thiết lập; DCC-MCP Blender0.2.26/Core0.20.52 đã khởi động và gọi get_scene_info thành công. MToon/VRM và Effekseer mới là lựa chọn đề xuất, chưa tích hợp hoặc kiểm chứng trong project.
+- Bluetooth concept V2 đã được người dùng duyệt: nam trưởng thành cao lớn, mặt vuông, tóc vàng dài buộc/tết, râu vàng, NGỰC TRẦN; giáp vai bất đối xứng, áo choàng/vải hông đỏ, quầnnavy, viềntrắng, rìu hai tay. Haaland là cảm hứng về một số nét chung; quan hệ tổ tiên là ý tưởng lore hư cấu, không phải thông tin lịch sử được xác minh.
+- Ảnh chuẩn local: outputs/bluetooth-concept-v2/bluetooth-approved.png. Bản tham chiếu A-pose trước/nghiêng/sau tại outputs/bluetooth-model-reference/turnaround-v1.png; chỉ là hướng dẫn dựng hình, không tự thay concept chuẩn.
+- Đã dựng MODEL STUDY3D sơ bộ từ base mesh MakeHumanCC0 và trang phục/phụ kiện tự dựng; có .blend chỉnh sửa được và .glb. Mặt, tóc/râu, chi tiết giáp và vật liệu CHƯA đạt concept; bản này chưa được người dùng duyệt, chưa rig, chưa animation. Không ghi nhận là nhân vật hoàn thiện.
+- Đã mở scene local src/bluetooth_review.tscn trong project thử work/viking-3d-test, so model với concept, xoay/zoom và Toon/PBR. Kiểm tra importGLB, material toggles và ảnh render qua; runtimeGodotMCP không báo lỗi. Mẫu Viking cũ có54bones, Walk/Run và chế độ18nhân vật; đây là stress sample, chưa phải trận3D9vs9.
+- Nguồn gameplay giữ workbookblob36876091de28fd6b889e2e32c7f57c4f2f59f37c cùng usercorrections trước đây; không sửa combat trong phần đồ họa này.
+- Toàn bộ code/ảnh/model/Blender vẫn CHỈ LOCAL, chưa upload quaPR, máy khác chưa thể tái tạo từGitHub. Bản cập nhật này chỉ đồng bộ quyết định/trạng thái.
+- Bước tiếp theo: hoàn thiện tạo hình Bluetooth theo concept đã duyệt rồi mới rig/idle/run/attack/hurt/death; duyệt một cảnh skill và battle camera trước khi chuyển9vs9. Không mở rộng hàng loạt nhân vật hoặc coi2Droadmap cũ là quyết định hiện hành.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
