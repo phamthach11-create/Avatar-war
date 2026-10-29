@@ -94,3 +94,8 @@ Bước tiếp theo: hướng dẫn và chuẩn bị Giai đoạn 1; chưa tự 
 
 ### Concept vòng1 — 2026-10-29
 Ba phương án đã được tạo bằng công cụ tạo ảnh tích hợp và hiển thị cho người dùng. A: thành đá sáng/ánh chiều ấm; B: pháo đài tối/lửa pháo tương phản; C: fantasy sáng trắng-xanh-vàng. Bố cục và số nhân vật trong ảnh chỉ minh họa; B có nhân vật thiếu/che, chưa đạt đội hình gameplay18slot. Không dùng ảnh concept như sprite hoặc screenshot triển khai. Bộ PNG và prompts.md được lưu local tại outputs/graphics-direction-v1; chưa upload binary lên repo. Bước tiếp: chọn hướng, sửa bố cục và duyệt trước khi sản xuất.
+
+### Nhân vật anime/manga — vòng2, 2026-10-29
+Người dùng nghiêng về environment A (thành đá sáng), nhưng nhận xét nhân vật vòng1 quá thực. Hướng mới cho nhân vật: anime/manga, người trưởng thành, thiết kế toàn thân hoàn chỉnh; không pixel/chibi. Genshin Impact là một tham chiếu người dùng nêu cho kiểu game anime đẹp, không phải yêu cầu sao chép nhân vật hay tài sản.
+
+Đang chuẩn bị bốn mẫu Napoleon cùng trang phục/tư thế/nền đơn giản để so sánh cách vẽ: (1) anime cel-shaded, (2) fantasy anime sắc nét, (3) manga tô màu, (4) anime painterly. Chưa chọn mẫu nhân vật. Giữ environment thành đá sáng làm định hướng; chưa đưa concept vào Godot và chưa chuyển sang cảnh mẫu animation.
