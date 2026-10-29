@@ -60,5 +60,11 @@
 - PNG và đầy đủ prompt lưu local trong outputs/napoleon-style-v1 bằng công cụ tạo ảnh tích hợp; binary chưa upload repo. Không dùng tài sản nhân vật của game tham chiếu.
 - Chưa chọn mẫu nhân vật; chờ người dùng duyệt số1–4 hoặc yêu cầu chỉnh. Chưa tạo asset animation hoặc sửa Godot.
 
+## 2026-10-29 — Đã chốt Napoleon mẫu1 anime cel-shaded
+- Người dùng chọn mẫu số1 trong bốn mẫu Napoleon. Dùng mẫu này làm tham chiếu phong cách nhân vật: anime cel-shaded, người trưởng thành, mảng màu sạch; không pixel/chibi/photorealistic.
+- Kết hợp hướng map A thành đá sáng. Đã ghi quyết định vào graphics-roadmap.md.
+- Concept được chọn lưu local: outputs/napoleon-style-v1/01-anime-cel.png, cùng prompts.md. Binary chưa upload GitHub; lựa chọn và kế hoạch đã ghi trên main.
+- Tiếp theo: ghép concept theo đúng tỷ lệ sân để kiểm chứng tổng thể, rồi dựng cảnh mẫu Napoleon. Chưa có sprite/rig/animation mới và chưa thay asset Godot trong lần chốt này.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
