@@ -12,3 +12,5 @@ skill behavior from its name or silently reuse historical rules.
 
 The Godot demo and Python simulator are separate implementations. Updating the
 Excel workbook or simulation data does not automatically update Godot gameplay.
+
+For all cloud/local handoffs, read docs/design/cloud-local-workflow.md and docs/design/cloud-local-status.md before continuing. GitHub main is the approved source of truth. Inspect open pull requests for proposed work. Update the handoff log in each implementation/design pull request with source revision, changes, validation, remaining gaps and next step. Do not claim local-only work is on GitHub or that Python and Godot are synchronized without evidence.
