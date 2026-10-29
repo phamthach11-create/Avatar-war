@@ -31,5 +31,13 @@
 - Kiểm tra sau sửa Accuracy: 8.196 checks qua; đánh thường gây HP damage ở cả bốn Leonidas; 6 trận seeded kết thúc Turn72–79.
 - Mã/asset demo vẫn chỉ local, chưa upload qua PR; nhật ký trên main thông báo thay đổi cho Cloud. Cần phản ánh Accuracy100/Evasion0 vào lần sửa workbook tiếp theo.
 
+## 2026-10-29 — Local: tùy chọn xuất log trận test
+- Đã thêm nút Xuất log vào demo local: chọn nơi lưu và JSON hoặc TXT; dùng được giữa trận sau khi hết playback hoặc sau kết quả trận.
+- Log có nguồn thiết kế, user corrections, build, seed/first team, Skills mode, engine/config hashes, từng lượt/hành động/impact, HP/MP/AP, cooldown, status, Stun và trạng thái đầu/cuối. JSON dùng delta unit snapshots để giảm lặp; có hướng dẫn tái dựng state. TXT đọc trực tiếp.
+- Chặn xuất lúc animation chưa xong; mở hộp lưu dừng Auto; Restart đổi match ID và hủy hộp lưu cũ. Không tự ghi log nếu người dùng chưa chọn xuất.
+- Module local: src/combat/battle_log.gd, src/ui/main.gd, tests/simulation/test_battle_log.gd, docs/design/log-export.md.
+- Kiểm tra trên project chính: 1.150 checks qua; JSON/TXT trận60 lượt, 1.114 impacts; khôi phục đúng state cuối từ JSON, xuất trận0lượt/đang chạy/đã xong, stale/busy guard, Auto pause. Đã kiểm tra ảnh toolbar và hộp lưu.
+- Trạng thái đồng bộ: mã demo/asset/test vẫn ở local, CHƯA upload qua PR. Nhật ký này chỉ thông báo tiến độ; không chứng minh GitHub đã có tính năng chạy được.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
