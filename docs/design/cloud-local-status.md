@@ -66,5 +66,12 @@
 - Concept được chọn lưu local: outputs/napoleon-style-v1/01-anime-cel.png, cùng prompts.md. Binary chưa upload GitHub; lựa chọn và kế hoạch đã ghi trên main.
 - Tiếp theo: ghép concept theo đúng tỷ lệ sân để kiểm chứng tổng thể, rồi dựng cảnh mẫu Napoleon. Chưa có sprite/rig/animation mới và chưa thay asset Godot trong lần chốt này.
 
+## 2026-10-29 — Đã mở scene ghép tĩnh Napoleon trên sân đá sáng
+- Giai đoạn1: tạo RGBA Napoleon mẫu1 + môi trường sạch từ mapA bằng imagegen, ghép trong scene Godot riêng.
+- 18vị trí / 4Napoleon mới / 14nhân vật cũ làm mốc tỷ lệ, main A5/B5. Có slider80–125%, chế độ chỉ Napoleon, xem gần và nút về trận test.
+- Đã kiểm tra alpha, render ảnh thực trong Godot và chỉnh khoảng cách hàng/label sau kiểm tra. Test18slot/4Napoleon, solo, scale125%, closeup qua; đã mở preview trên máy.
+- Scene/asset local: src/ui/art_direction_preview.gd/.tscn, assets/art_direction/v1/*.png, docs/design/art-stage-preview-v1.md. Screenshot và prompt local: outputs/napoleon-stage-preview-v1.
+- Chưa thay combat hoặc thêm animation bắn. Chờ duyệt tỷ lệ/phối cảnh để sang cảnh mẫu Napoleon. Scene/PNG vẫn chưa upload binary/source lên repo; mục này chỉ báo trạng thái.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
