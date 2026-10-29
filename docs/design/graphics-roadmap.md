@@ -1,3 +1,15 @@
+# Kế hoạch đồ họa — đã chuyển hướng sang 3D
+
+## Quyết định hiện hành — 2026-10-29, cập nhật sau thử Viking3D
+Người dùng đã CHỐT chuyển sang3D anime sau khi xem bản Viking chuyển động. Quyết định này thay thế lựa chọn tiếp tục2D/Napoleon105% ở phần lịch sử bên dưới. Giữ combat9vs9 và hướng môi trường thành đá sáng; không đổi luật để phục vụ đồ họa.
+
+Ưu tiên hiện tại là TẠO HÌNH BLUETOOTH trước rig/animation. ConceptV2 ngực trần, tóc/râu vàng, mặtvuông, cao lớn trưởng thành, áochoàngđỏ/quầnnavy/viềntrắng và rìuhai tay đã duyệt. Mẫu Viking nguồn chỉ duyệt về kỹ thuật hiển thị/chuyển động, không dùng làm tạo hình cuối. Bảnmodelstudy mới còn thô, chưa duyệt, chưa rig. Ảnh/model/source vẫn chỉ local; xem [nhật ký bàn giao](cloud-local-status.md) để biết giới hạn và đường dẫn tương đối.
+
+Bộ công cụ: Godot4.7.2 + Blender4.5.15 LTS đã hoạt động; kết nối DCC-MCP Blender đã kiểm tra. MToon/VRM và Effekseer mới được đề xuất, chưa tích hợp. Lộ trình mới: concept đã duyệt → hoàn thiện model/vật liệu → rig và5clipcơbản → cảnh skill mẫu chạy thật → environment và tích hợp9vs9 → mở rộng roster/tốiưu. Cần duyệt chất lượng model và cảnh skill trước nhân rộng.
+
+---
+## Kế hoạch 2D trước đây — giữ để tra cứu lịch sử, không còn là lựa chọn hiện hành
+
 # Kế hoạch nâng cấp đồ họa chiến đấu 2D — đã chốt
 
 Phiên bản: 1.0. Ngày chốt: 2026-10-29.
