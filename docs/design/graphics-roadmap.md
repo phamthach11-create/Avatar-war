@@ -12,7 +12,7 @@ MU Online, Lost Ark và Path of Exile là tham chiếu về không khí, ánh s�
 
 ## Trạng thái hiện tại
 - Kế hoạch: ĐÃ DUYỆT.
-- Giai đoạn hiện tại: 1 — đã tạo ba concept vòng1, đang chờ người dùng chọn hướng.
+- Giai đoạn hiện tại: 1 — đã chọn Napoleon mẫu1 anime cel-shaded; kết hợp hướng environment A thành đá sáng, chuẩn bị kiểm chứng tổng thể.
 - Đã tạo ba ảnh concept local, chưa có phương án được duyệt, chưa tạo bộ asset chạy game và chưa hoàn thành cảnh mẫu Napoleon.
 - Demo local có trận hỗn hợp 9vs9, hai Napoleon mỗi đội, main Leonidas A5/B5, Auto/Restart/Builds/Xuất log. Phần lớn mã, asset và kiểm thử bản này vẫn chưa được upload vào repo; nhật ký ghi rõ khoảng cách.
 - Không coi README về demo cũ hoặc file kế hoạch này là bằng chứng repo đã có bản đồ họa mới.
@@ -80,7 +80,7 @@ Kiểm tra 18 nhân vật, hai Napoleon mỗi bên và nhiều DOT cùng lúc; g
 | Giai đoạn | Trạng thái | Bằng chứng / việc tiếp theo |
 | --- | --- | --- |
 | Baseline | Cần đồng bộ | Nhập demo local qua PR riêng trước tích hợp |
-| 1. Định hướng | Concept vòng1, chờ chọn | A Stone Citadel / B Ashen Fortress / C Arcane Bastion; chưa phải asset chạy game |
+| 1. Định hướng | Đã chọn hướng nhân vật, cần kiểm chứng tổng thể | Napoleon mẫu1 anime cel-shaded + environment A thành đá sáng; chưa phải asset chạy game |
 | 2. Cảnh mẫu Napoleon | Chưa thực hiện | Chờ định hướng được duyệt |
 | 3. Environment | Chưa thực hiện | Theo chuẩn cảnh mẫu |
 | 4. Nhân vật / animation | Chưa thực hiện | Nhân rộng sau khi cảnh mẫu đạt |
@@ -99,3 +99,10 @@ Ba phương án đã được tạo bằng công cụ tạo ảnh tích hợp v�
 Người dùng nghiêng về environment A (thành đá sáng), nhưng nhận xét nhân vật vòng1 quá thực. Hướng mới cho nhân vật: anime/manga, người trưởng thành, thiết kế toàn thân hoàn chỉnh; không pixel/chibi. Genshin Impact là một tham chiếu người dùng nêu cho kiểu game anime đẹp, không phải yêu cầu sao chép nhân vật hay tài sản.
 
 Đang chuẩn bị bốn mẫu Napoleon cùng trang phục/tư thế/nền đơn giản để so sánh cách vẽ: (1) anime cel-shaded, (2) fantasy anime sắc nét, (3) manga tô màu, (4) anime painterly. Chưa chọn mẫu nhân vật. Giữ environment thành đá sáng làm định hướng; chưa đưa concept vào Godot và chưa chuyển sang cảnh mẫu animation.
+
+### Quyết định đã chốt — Napoleon mẫu1, 2026-10-29
+Người dùng chọn rõ mẫu số1 (Anime Cel-Shaded) trong vòng thử bốn mẫu toàn thân. Đây là tham chiếu phong cách nhân vật: nét anime rõ, mảng sáng/tối sạch, màu gọn, vóc dáng trưởng thành; không pixel/chibi và không quay lại chất liệu mặt photorealistic. Dùng Napoleon gốc của dự án, không sao chép thiết kế nhân vật của game tham chiếu.
+
+Tham chiếu local: outputs/napoleon-style-v1/01-anime-cel.png và prompts.md. Mẫu được duyệt là concept, chưa phải sprite tách nền, rig hay animation. Environment tiếp tục theo hướng A thành đá sáng mà người dùng đã ưu tiên.
+
+Bước tiếp: phối Napoleon theo hướng đã chọn vào sân đá sáng ở kích thước chơi thực tế, kiểm tra silhouette, màu và phối cảnh; sau đó tiến tới cảnh mẫu Napoleon chạy thật theo Giai đoạn2. Chưa mặc định người dùng đã duyệt thiết kế chi tiết của năm nhân vật còn lại hoặc cam kết chất lượng animation chưa được thực hiện. Không hỏi lại việc chọn phong cách số1.
