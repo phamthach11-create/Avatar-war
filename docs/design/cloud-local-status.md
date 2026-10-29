@@ -39,5 +39,14 @@
 - Kiểm tra trên project chính: 1.150 checks qua; JSON/TXT trận60 lượt, 1.114 impacts; khôi phục đúng state cuối từ JSON, xuất trận0lượt/đang chạy/đã xong, stale/busy guard, Auto pause. Đã kiểm tra ảnh toolbar và hộp lưu.
 - Trạng thái đồng bộ: mã demo/asset/test vẫn ở local, CHƯA upload qua PR. Nhật ký này chỉ thông báo tiến độ; không chứng minh GitHub đã có tính năng chạy được.
 
+## 2026-10-29 — Kế hoạch nâng cấp đồ họa đã được người dùng chốt
+- Quyết định: người dùng duyệt lộ trình sáu giai đoạn và yêu cầu lưu trên GitHub làm chuẩn cho các phiên tiếp theo.
+- Tài liệu chính: [graphics-roadmap.md](graphics-roadmap.md); README và AGENTS có liên kết/điểm đọc.
+- Phạm vi: fantasy Hàn Quốc, tỷ lệ trưởng thành, không chibi, chiến đấu2D 9vs9 đẹp và dễ đọc. Giữ cơ chế/build đã chốt.
+- Thứ tự: định hướng → cảnh mẫu Napoleon → environment → sáu nhân vật/animation → hiệu ứng skill → polish/tối ưu.
+- Trạng thái: mới chốt kế hoạch; chưa tạo hoặc duyệt bộ asset mới. Giai đoạn tiếp theo là1. Baseline demo local vẫn cần nhập mã/asset/tests qua PR trước tích hợp.
+- Kiểm tra: đối chiếu nội dung với kế hoạch người dùng đã duyệt, kiểm tra đường dẫn tài liệu và giữ các mục lịch sử. Không thay gameplay hoặc workbook; không cần chạy kiểm thử game cho thay đổi tài liệu.
+- Nhánh tài liệu đã chốt được hợp nhất vào main theo yêu cầu lưu kế hoạch đã duyệt; đối chiếu lịch sử PR/commit của tài liệu để xác nhận trạng thái thực tế.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
