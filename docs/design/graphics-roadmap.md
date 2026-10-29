@@ -12,7 +12,7 @@ MU Online, Lost Ark và Path of Exile là tham chiếu về không khí, ánh s�
 
 ## Trạng thái hiện tại
 - Kế hoạch: ĐÃ DUYỆT.
-- Giai đoạn hiện tại: 1 — đã mở scene ghép tĩnh Napoleon mẫu1 trên sân đá sáng A trong Godot, đang chờ người dùng duyệt tỷ lệ/phối cảnh.
+- Giai đoạn hiện tại: đã chốt tiếp tục2D, Napoleon mẫu1 ở tỷ lệ105% trên sân đá sáng A; mốc tiếp theo là Giai đoạn2 cảnh mẫu bắn pháo.
 - Đã tạo ba ảnh concept local, chưa có phương án được duyệt, chưa tạo bộ asset chạy game và chưa hoàn thành cảnh mẫu Napoleon.
 - Demo local có trận hỗn hợp 9vs9, hai Napoleon mỗi đội, main Leonidas A5/B5, Auto/Restart/Builds/Xuất log. Phần lớn mã, asset và kiểm thử bản này vẫn chưa được upload vào repo; nhật ký ghi rõ khoảng cách.
 - Không coi README về demo cũ hoặc file kế hoạch này là bằng chứng repo đã có bản đồ họa mới.
@@ -80,7 +80,7 @@ Kiểm tra 18 nhân vật, hai Napoleon mỗi bên và nhiều DOT cùng lúc; g
 | Giai đoạn | Trạng thái | Bằng chứng / việc tiếp theo |
 | --- | --- | --- |
 | Baseline | Cần đồng bộ | Nhập demo local qua PR riêng trước tích hợp |
-| 1. Định hướng | Scene ghép tĩnh, chờ duyệt | Local: art_direction_preview.tscn, 18 vị trí / 4 Napoleon mới; chưa có animation mới |
+| 1. Định hướng | Đã chốt hướng và tỷ lệ Napoleon | 2D, anime cel-shaded mẫu1, mapA thành đá sáng, Napoleon105%; cảnh mẫu chuyển động ở giai đoạn2 |
 | 2. Cảnh mẫu Napoleon | Chưa thực hiện | Chờ định hướng được duyệt |
 | 3. Environment | Chưa thực hiện | Theo chuẩn cảnh mẫu |
 | 4. Nhân vật / animation | Chưa thực hiện | Nhân rộng sau khi cảnh mẫu đạt |
@@ -111,3 +111,8 @@ Bước tiếp: phối Napoleon theo hướng đã chọn vào sân đá sáng �
 Đã tạo hai asset nháp bằng imagegen từ tham chiếu đã chọn: Napoleon+cannon RGBA trong suốt, sân thành đá sáng sạch. Đã kiểm tra alpha thật, ghép và render trong Godot tại1280x820. Scene local riêng src/ui/art_direction_preview.tscn có18vị trí,4Napoleon mới,14nhân vật cũ để so tỷ lệ; hai đội đối xứng, main A5/B5. Có slider80–125%, chỉ xem Napoleon, xem gần và trở lại combat.
 
 Sau ảnh kiểm tra đầu, đã giãn hàng170px và chỉnh kích thước/label để giảm chồng nhau; base Napoleon150px, nhân vật tạm126px. Đã kiểm tra 18slot/4Napoleon, chế độsolo4, scale125%, closeup và mở scene trên máy. Đây là kiểm chứng ảnh tĩnh ở giai đoạn1, không phải cảnh animation giai đoạn2. Combat/main scene không bị thay; chưa đồng bộ scene và PNG lên repo. Ảnh chụp, PNG và prompt nằm local outputs/napoleon-stage-preview-v1. Chờ người dùng duyệt tổng thể trước khi làm cảnh bắn pháo.
+
+### Chốt 2D và tỷ lệ105% — 2026-10-29
+Sau trao đổi về khả năng3D, người dùng quyết định tiếp tục kế hoạch2D và chốt Napoleon105% trong scene xem thử. Không chuyển dự án sang3D. Đã đặt mặc định preview105% (Napoleon157.5px từ base150px tại1280x820); đây là kích thước group người+pháo, không phải tăng chỉ số gameplay. Chọn này áp dụng đồng nhất cả bốn Napoleon và được giữ làm mốc khi dựng cảnh mẫu. Kích thước của năm thiết kế nhân vật khác chưa được suy ra là đã duyệt.
+
+Tiếp theo: Giai đoạn2 — chuẩn bị động tác lấy đà/khai hỏa/phản lực và đạn/va chạm/khói trong cảnh mẫu Napoleon; chưa coi các animation này đã được tạo. Giữ mốc impact của combat hiện có và không nhân rộng asset trước khi cảnh mẫu được duyệt.
