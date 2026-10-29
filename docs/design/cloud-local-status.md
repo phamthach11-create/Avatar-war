@@ -73,5 +73,12 @@
 - Scene/asset local: src/ui/art_direction_preview.gd/.tscn, assets/art_direction/v1/*.png, docs/design/art-stage-preview-v1.md. Screenshot và prompt local: outputs/napoleon-stage-preview-v1.
 - Chưa thay combat hoặc thêm animation bắn. Chờ duyệt tỷ lệ/phối cảnh để sang cảnh mẫu Napoleon. Scene/PNG vẫn chưa upload binary/source lên repo; mục này chỉ báo trạng thái.
 
+## 2026-10-29 — Chốt giữ2D, Napoleon105%
+- Người dùng quyết định tiếp tục2D sau trao đổi3D; không đổi engine/rendering sang3D.
+- Chốt Napoleon mẫu1 anime cel-shaded, mapA thành đá sáng, tỷ lệ105%. Local đã đặt mặc định preview1.05; group người+pháo157.5px so với base150px, áp dụng bốn Napoleon.
+- Kiểm tra mặc định105%, label105%, kích thước157.5px và18slot qua. Không đổi chỉ số/build/combat.
+- Cập nhật mốc đồ họa trong graphics-roadmap.md. Tiếp theo cảnh mẫu Napoleon bắn pháo (giai đoạn2), chưa tạo animation trong lần chốt tỷ lệ.
+- Source/PNG preview vẫn local, nhật ký và quyết định đã ghi trên GitHub main.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
