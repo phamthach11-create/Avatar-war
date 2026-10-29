@@ -122,3 +122,7 @@ Khi thêm nội dung, tài liệu diễn giải đặt trong `docs/`, dữ liệ
 
 Engine hiện tại là Godot, ngôn ngữ GDScript. Git không lưu thư mục trống nên các
 thư mục dự phòng dùng `.gitkeep`; có thể bỏ file này khi có nội dung thật.
+
+## Làm việc giữa Cloud và Local
+
+Đọc [quy trình bàn giao](docs/design/cloud-local-workflow.md) và [nhật ký trạng thái](docs/design/cloud-local-status.md) trước khi tiếp tục. GitHub là nguồn chuẩn; kiểm tra cả pull request đang mở để biết thay đổi chưa hợp nhất.
