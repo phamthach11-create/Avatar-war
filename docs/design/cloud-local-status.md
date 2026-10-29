@@ -54,5 +54,11 @@
 - Trạng thái: chờ người dùng chọn hướng; chưa hoàn thành giai đoạn1. Các ảnh chỉ dùng chọn style, không phải sprite hoặc screenshot đã triển khai. B có vài nhân vật thiếu/che; cần dựng lại đúng18slot ở bước tích hợp.
 - Đã cập nhật bảng tiến độ trong graphics-roadmap.md. Tiếp theo: chốt hướng và tinh chỉnh, chưa sản xuất hàng loạt.
 
+## 2026-10-29 — Napoleon anime/manga — bốn mẫu
+- Người dùng nghiêng về map A thành đá sáng; nhân vật concept trước quá thực. Yêu cầu thử phong cách gaming anime/manga, nêu Genshin Impact làm tham chiếu, không pixel/chibi.
+- Đã tạo và hiển thị bốn mẫu Napoleon toàn thân: 1 anime cel-shaded, 2 fantasy anime sắc nét, 3 manga tô màu, 4 anime painterly. Cùng trang phục sĩ quan/pháo và tư thế gần tương tự để so cách vẽ.
+- PNG và đầy đủ prompt lưu local trong outputs/napoleon-style-v1 bằng công cụ tạo ảnh tích hợp; binary chưa upload repo. Không dùng tài sản nhân vật của game tham chiếu.
+- Chưa chọn mẫu nhân vật; chờ người dùng duyệt số1–4 hoặc yêu cầu chỉnh. Chưa tạo asset animation hoặc sửa Godot.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
