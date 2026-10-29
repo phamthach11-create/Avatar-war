@@ -48,5 +48,11 @@
 - Kiểm tra: đối chiếu nội dung với kế hoạch người dùng đã duyệt, kiểm tra đường dẫn tài liệu và giữ các mục lịch sử. Không thay gameplay hoặc workbook; không cần chạy kiểm thử game cho thay đổi tài liệu.
 - Nhánh tài liệu đã chốt được hợp nhất vào main theo yêu cầu lưu kế hoạch đã duyệt; đối chiếu lịch sử PR/commit của tài liệu để xác nhận trạng thái thực tế.
 
+## 2026-10-29 — Đồ họa giai đoạn1: concept vòng1
+- Đã tạo và hiển thị ba bảng định hướng A Stone Citadel / B Ashen Fortress / C Arcane Bastion bằng công cụ tạo ảnh tích hợp; gồm mẫu Napoleon và minh họa trận.
+- PNG và prompt lưu local trong outputs/graphics-direction-v1, chưa upload binary lên GitHub. Chưa sửa gameplay hoặc asset Godot.
+- Trạng thái: chờ người dùng chọn hướng; chưa hoàn thành giai đoạn1. Các ảnh chỉ dùng chọn style, không phải sprite hoặc screenshot đã triển khai. B có vài nhân vật thiếu/che; cần dựng lại đúng18slot ở bước tích hợp.
+- Đã cập nhật bảng tiến độ trong graphics-roadmap.md. Tiếp theo: chốt hướng và tinh chỉnh, chưa sản xuất hàng loạt.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
