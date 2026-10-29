@@ -12,8 +12,8 @@ MU Online, Lost Ark và Path of Exile là tham chiếu về không khí, ánh s�
 
 ## Trạng thái hiện tại
 - Kế hoạch: ĐÃ DUYỆT.
-- Giai đoạn đang chuẩn bị: 1 — định hướng hình ảnh.
-- Chưa tạo hoặc duyệt bộ asset mới; chưa hoàn thành cảnh mẫu Napoleon.
+- Giai đoạn hiện tại: 1 — đã tạo ba concept vòng1, đang chờ người dùng chọn hướng.
+- Đã tạo ba ảnh concept local, chưa có phương án được duyệt, chưa tạo bộ asset chạy game và chưa hoàn thành cảnh mẫu Napoleon.
 - Demo local có trận hỗn hợp 9vs9, hai Napoleon mỗi đội, main Leonidas A5/B5, Auto/Restart/Builds/Xuất log. Phần lớn mã, asset và kiểm thử bản này vẫn chưa được upload vào repo; nhật ký ghi rõ khoảng cách.
 - Không coi README về demo cũ hoặc file kế hoạch này là bằng chứng repo đã có bản đồ họa mới.
 
@@ -80,7 +80,7 @@ Kiểm tra 18 nhân vật, hai Napoleon mỗi bên và nhiều DOT cùng lúc; g
 | Giai đoạn | Trạng thái | Bằng chứng / việc tiếp theo |
 | --- | --- | --- |
 | Baseline | Cần đồng bộ | Nhập demo local qua PR riêng trước tích hợp |
-| 1. Định hướng | Chưa thực hiện | Làm bảng phong cách, Napoleon và tổng thể 9vs9 |
+| 1. Định hướng | Concept vòng1, chờ chọn | A Stone Citadel / B Ashen Fortress / C Arcane Bastion; chưa phải asset chạy game |
 | 2. Cảnh mẫu Napoleon | Chưa thực hiện | Chờ định hướng được duyệt |
 | 3. Environment | Chưa thực hiện | Theo chuẩn cảnh mẫu |
 | 4. Nhân vật / animation | Chưa thực hiện | Nhân rộng sau khi cảnh mẫu đạt |
@@ -91,3 +91,6 @@ Bước tiếp theo: hướng dẫn và chuẩn bị Giai đoạn 1; chưa tự 
 
 ## Lịch sử
 - 2026-10-29: người dùng duyệt kế hoạch sáu giai đoạn và yêu cầu lưu GitHub để Cloud/Local theo cùng lộ trình. Bản1.0 ghi nhận quyết định này.
+
+### Concept vòng1 — 2026-10-29
+Ba phương án đã được tạo bằng công cụ tạo ảnh tích hợp và hiển thị cho người dùng. A: thành đá sáng/ánh chiều ấm; B: pháo đài tối/lửa pháo tương phản; C: fantasy sáng trắng-xanh-vàng. Bố cục và số nhân vật trong ảnh chỉ minh họa; B có nhân vật thiếu/che, chưa đạt đội hình gameplay18slot. Không dùng ảnh concept như sprite hoặc screenshot triển khai. Bộ PNG và prompts.md được lưu local tại outputs/graphics-direction-v1; chưa upload binary lên repo. Bước tiếp: chọn hướng, sửa bố cục và duyệt trước khi sản xuất.
