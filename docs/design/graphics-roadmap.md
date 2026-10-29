@@ -81,7 +81,7 @@ Kiểm tra 18 nhân vật, hai Napoleon mỗi bên và nhiều DOT cùng lúc; g
 | --- | --- | --- |
 | Baseline | Cần đồng bộ | Nhập demo local qua PR riêng trước tích hợp |
 | 1. Định hướng | Đã chốt hướng và tỷ lệ Napoleon | 2D, anime cel-shaded mẫu1, mapA thành đá sáng, Napoleon105%; cảnh mẫu chuyển động ở giai đoạn2 |
-| 2. Cảnh mẫu Napoleon | Chưa thực hiện | Chờ định hướng được duyệt |
+| 2. Cảnh mẫu Napoleon | V1 đang mở, chờ duyệt | Commander poses, cannon recoil, projectile/impact, Barrage/DOT VFX; chưa tích hợp combat |
 | 3. Environment | Chưa thực hiện | Theo chuẩn cảnh mẫu |
 | 4. Nhân vật / animation | Chưa thực hiện | Nhân rộng sau khi cảnh mẫu đạt |
 | 5. Hiệu ứng skill | Chưa thực hiện | Kiểm tra lần lượt từng kit |
@@ -116,3 +116,10 @@ Sau ảnh kiểm tra đầu, đã giãn hàng170px và chỉnh kích thước/la
 Sau trao đổi về khả năng3D, người dùng quyết định tiếp tục kế hoạch2D và chốt Napoleon105% trong scene xem thử. Không chuyển dự án sang3D. Đã đặt mặc định preview105% (Napoleon157.5px từ base150px tại1280x820); đây là kích thước group người+pháo, không phải tăng chỉ số gameplay. Chọn này áp dụng đồng nhất cả bốn Napoleon và được giữ làm mốc khi dựng cảnh mẫu. Kích thước của năm thiết kế nhân vật khác chưa được suy ra là đã duyệt.
 
 Tiếp theo: Giai đoạn2 — chuẩn bị động tác lấy đà/khai hỏa/phản lực và đạn/va chạm/khói trong cảnh mẫu Napoleon; chưa coi các animation này đã được tạo. Giữ mốc impact của combat hiện có và không nhân rộng asset trước khi cảnh mẫu được duyệt.
+
+## 2026-10-29 — Cảnh mẫu bắn pháo Napoleon v1
+- Đã tạo và mở scene local riêng src/ui/napoleon_firing_preview.tscn: bốn key pose ra lệnh, bộ phận pháo độc lập để recoil, đạn bay, nổ8frame, khói/tàn lửa, hurt pose, rung có tắt và hai âm thanh tổng hợp.
+- Giữ anime mẫu1 và chiều cao157.5px tương ứng105%. Bốn pose được đo vùng/anchor riêng vì atlas không chia cell chính xác; tránh cắt bàn tay và lệch chân.
+- Normal minh họa1hit vùngCross; Barrage minh họa3salvo, ápSunder/DOT không có directdamage rồi6tickDOT tua nhanh. Không sửa tài nguyên hoặc luật combat; đây là sceneVFX chưa tích hợp trận9vs9.
+- Test timeline normal1fire/arrival, barrage3fire, DOT6tick và reset qua; đã render fire/impact và mở scene sau import trên project chính. Nút pause/speed/sound/shake/zoom/back có trong scene.
+- Đang chờ người dùng duyệt bản đầu. Chưa phải rig/animation/VFX hoàn thiện. Source/PNG/WAV local ở assets/art_direction/firing_v1 và outputs/napoleon-firing-v1; binary chưa upload GitHub.
