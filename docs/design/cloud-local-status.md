@@ -80,5 +80,12 @@
 - Cập nhật mốc đồ họa trong graphics-roadmap.md. Tiếp theo cảnh mẫu Napoleon bắn pháo (giai đoạn2), chưa tạo animation trong lần chốt tỷ lệ.
 - Source/PNG preview vẫn local, nhật ký và quyết định đã ghi trên GitHub main.
 
+## 2026-10-29 — Cảnh mẫu bắn pháo Napoleon v1
+- Đã tạo và mở scene local riêng src/ui/napoleon_firing_preview.tscn: bốn key pose ra lệnh, bộ phận pháo độc lập để recoil, đạn bay, nổ8frame, khói/tàn lửa, hurt pose, rung có tắt và hai âm thanh tổng hợp.
+- Giữ anime mẫu1 và chiều cao157.5px tương ứng105%. Bốn pose được đo vùng/anchor riêng vì atlas không chia cell chính xác; tránh cắt bàn tay và lệch chân.
+- Normal minh họa1hit vùngCross; Barrage minh họa3salvo, ápSunder/DOT không có directdamage rồi6tickDOT tua nhanh. Không sửa tài nguyên hoặc luật combat; đây là sceneVFX chưa tích hợp trận9vs9.
+- Test timeline normal1fire/arrival, barrage3fire, DOT6tick và reset qua; đã render fire/impact và mở scene sau import trên project chính. Nút pause/speed/sound/shake/zoom/back có trong scene.
+- Đang chờ người dùng duyệt bản đầu. Chưa phải rig/animation/VFX hoàn thiện. Source/PNG/WAV local ở assets/art_direction/firing_v1 và outputs/napoleon-firing-v1; binary chưa upload GitHub.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
