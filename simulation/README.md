@@ -1,5 +1,12 @@
 # Mô phỏng combat dùng lại
 
+## Đội hình hỗn hợp có Automaton — 2026-10-31
+
+`python -m simulation.mixed_run --output simulation/results/my_mixed_test`
+
+Dùng workbook hiện tại và scenario `mixed_mirror_automata.json`, chạy đúng một trận seed42, hai đội giống nhau, main slot5. Tái sử dụng vòng lặp TeamBattle; bổ sung handler sáu kit đã chọn, cùng nguồn status không stack/refresh, máy đánh ở đầu allied team turn và Mona khi có đồng minh dưới50%HP. Đổi build/skill level/seed trong scenario; không viết script mới. Đây là Python, chưa cập nhật Godot. Xem `docs/design/mixed-roster-automata-test.md` để biết SP, chiến thuật, phạm vi và kiểm thử.
+
+
 Các lần thử tiếp theo dùng chung thư mục này. Tách dữ liệu, lựa chọn build,
 luật và xuất báo cáo để không phải viết lại trận đấu từ đầu.
 

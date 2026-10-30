@@ -1,0 +1,17 @@
+{
+  "name": "mixed_mirror_automata", "seed": 42, "first_team": 0,
+  "main_position": 4, "max_global_turns": 400, "team_size": 9,
+  "grand_battery_trigger": "allied_team_turn_start",
+  "mona_hp_threshold": 0.5,
+  "roster": [
+    {"sheet":"Destroyer class","nodes":["S1","S1.1.1","S1.2.1","S1.2.2","S1.2.3","S1.2.4"],"levels":{"Frozen Axe":5,"Deadly Strike":5}},
+    {"sheet":"Warrior class","nodes":["S1","S1.1.1","S1.2.1","S1.2.2","S1.2.3","S1.2.4"],"levels":{"Holy Blade":4,"Holy Guard":5,"Maiden’s Care":5}},
+    {"sheet":"Soldier class","nodes":["S2","S2.1.1","S2.1.2","S2.1.3","S2.1.4","S2.2.1"],"levels":{"War Cry":5,"Phalanx":5}},
+    {"sheet":"Devastator class","nodes":["S1","S1.1.1","S1.2.1","S1.2.2","S1.2.3","S1.2.4"],"levels":{"Crushing Barrage":5,"Grand Battery":5}},
+    {"sheet":"Soldier class","nodes":["S1","S1.1.1","S1.2.1","S1.2.2","S1.2.3","S1.2.4"],"levels":{"War Cry":5,"God-King Slayer":5}},
+    {"sheet":"Piercer class","nodes":["S2","S2.1.1","S2.1.2","S2.1.3","S2.1.4","S2.2.1"],"levels":{"Summon Piercing Automaton":5,"Summon Bombard Automaton":5}},
+    {"sheet":"Devastator class","nodes":["S2","S2.1.1","S2.1.2","S2.1.3","S2.1.4","S2.2.1"],"levels":{"Crushing Barrage":5,"Imperial Decree":5}},
+    {"sheet":"Piercer class","nodes":["S1","S1.1.1","S1.2.1","S1.2.2","S1.2.3","S1.3.1"],"levels":{"Mona Lisa":10,"Summon Piercing Automaton":7}},
+    {"sheet":"Ranger class","nodes":["S1","S1.1.1","S1.1.2","S1.1.3","S1.1.4","S1.2.1"],"levels":{"Golden Arrow Shot":5,"Man Under the Hood":5},"prefer_normal":true}
+  ]
+}

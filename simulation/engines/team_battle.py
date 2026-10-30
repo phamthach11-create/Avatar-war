@@ -258,6 +258,13 @@ class TeamBattle(Battle):
             lost=sum(u.max_hp-u.hp for u in team)
             assert abs(lost-self.metrics(1-side)['effective_damage'])<1e-5
 
+    def perform_action(self,side,act,target):
+        if act=='normal':self.normal(side)
+        elif act=='golden':self.golden(side)
+        elif act=='deadly':self.deadly(side)
+        elif act=='frozen':self.frozen(side)
+        else:raise ValueError('Unsupported team action: '+act)
+
     def run(self,limit=400):
         for self.t in range(1,limit+1):
             side=self.first if self.t%2 else 1-self.first
@@ -269,11 +276,7 @@ class TeamBattle(Battle):
                 act,target=self.choose_action(side,pos)
                 self.focus(side,pos,target)
                 u.metrics['voluntary_actions']+=1
-                if act=='normal':self.normal(side)
-                elif act=='golden':self.golden(side)
-                elif act=='deadly':self.deadly(side)
-                elif act=='frozen':self.frozen(side)
-                else:raise ValueError('Unsupported team action: '+act)
+                self.perform_action(side,act,target)
             if self.alive():self.ending()
             self.check_resources()
             if not self.alive():break

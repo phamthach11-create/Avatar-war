@@ -107,5 +107,14 @@
 - Khoảng cách: chưa cập nhật Godot/Python. Log test trước vẫn cộng Sunder từ hai Napoleon, không thể coi là đã tuân thủ luật mới.
 - Bước tiếp theo: review/hợp nhất workbook theo quy trình, Local dùng snapshot được duyệt để cập nhật khóa nguồn status và thứ tự sự kiện; kiểm tra các ứng dụng trùng nguồn, caster khác nhau, hết hạn và ngoại lệ stack.
 
+## 2026-10-31 — Cloud: trận hỗn hợp đối xứng, có Automaton
+- Trạng thái: triển khai Python trên nhánh `simulation/mixed-roster-automata-20261031`; chưa hợp nhất main, chưa thay Godot.
+- Nguồn: workbook người dùng tại commit `57a5c98`; roster/build chính xác lưu `simulation/scenarios/mixed_mirror_automata.json`.
+- Người dùng xác nhận: hai đội giống nhau; Grand Battery auto-cast đầu allied team turn. Mỗi đội có Leonardo Inventor slot6 và Leonardo Support slot8; main Leonidas slot5.
+- Thay đổi: mở rộng TeamBattle bằng handler mixed, importer từ workbook, runner một trận, test và baseline; log cùng input/hash được xuất vào results khi chạy.
+- Kiểm tra:14 test mới qua, bảo toàn HP/MP/AP và seed replay; một test importer lịch sử vẫn lỗi tên sheet cũ. Chi tiết giới hạn/giả định trong [mixed-roster-automata-test.md](mixed-roster-automata-test.md).
+- Kết quả seed42 A đi trước: B thắng global50, mainB còn5593.47HP. Mỗi đội triệu hồi2Piercing+1Bombard, Mona5lần. Không suy ra tỷ lệ thắng từ một trận.
+- Bước tiếp theo: Local review rồi đưa cùng roster, luật status và summon vào engine Godot; đối chiếu theo log. Không coi kết quả Python là xác nhận Godot đã hỗ trợ triệu hồi.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
