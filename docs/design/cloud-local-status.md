@@ -98,5 +98,14 @@
 - Toàn bộ code/ảnh/model/Blender vẫn CHỈ LOCAL, chưa upload quaPR, máy khác chưa thể tái tạo từGitHub. Bản cập nhật này chỉ đồng bộ quyết định/trạng thái.
 - Bước tiếp theo: hoàn thiện tạo hình Bluetooth theo concept đã duyệt rồi mới rig/idle/run/attack/hurt/death; duyệt một cảnh skill và battle camera trước khi chuyển9vs9. Không mở rộng hàng loạt nhân vật hoặc coi2Droadmap cũ là quyết định hiện hành.
 
+## 2026-10-31 — Cloud: workbook mới và luật status cùng nguồn
+- Trạng thái: bản cập nhật trên nhánh `design/workbook-status-rules-20261031`; chưa hợp nhất vào main. API GitHub trả Forbidden khi kiểm tra PR; trạng thái PR cần đối chiếu sau khi quyền truy cập hoạt động.
+- Nguồn: main `a2afe350854e6bfb31933d2ae93c02b67cd261ab`; workbook người dùng gửi ngày 2026-10-31, SHA-256 `d3d228ba437508d871a8cb4ae16e663e46c8818b051a0125844ab0f5df83d0d8`.
+- Thay đổi: thay nguyên bản workbook; có mục 14 Event Resolution Order và mục 15 Status Source & Duplicate Application. Cùng status/cùng skill hoặc passive node không stack/overwrite/refresh giữa các caster; giữ lần áp dụng hợp lệ đầu tiên. Có thay đổi Terminology, status và Soldier class theo file người dùng.
+- Review chi tiết: [status-source-review-2026-10-31.md](status-source-review-2026-10-31.md), gồm hệ quả cho Barrage DOT/Sunder, Thief’s Mark, Intimidated, Chill và ngoại lệ Stun Count.
+- Kiểm tra: ZIP hợp lệ, mở được 13 sheet, không có cell kiểu Excel error, workbook sao chép đúng từng byte; đã đối chiếu cell với bản main. Chưa tính lại toàn bộ công thức hoặc chạy mô phỏng.
+- Khoảng cách: chưa cập nhật Godot/Python. Log test trước vẫn cộng Sunder từ hai Napoleon, không thể coi là đã tuân thủ luật mới.
+- Bước tiếp theo: review/hợp nhất workbook theo quy trình, Local dùng snapshot được duyệt để cập nhật khóa nguồn status và thứ tự sự kiện; kiểm tra các ứng dụng trùng nguồn, caster khác nhau, hết hạn và ngoại lệ stack.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
