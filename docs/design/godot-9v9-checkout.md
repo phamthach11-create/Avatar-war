@@ -1,10 +1,10 @@
 # Godot 9vs9 — checkout và kiểm tra
 
-Nhánh đề xuất: `demo/godot-requested-9v9-2026-11-01`, chưa merge.
+Đã hợp nhất vào `main` qua [PR #4](https://github.com/phamthach11-create/Avatar-war/pull/4), commit `fda66d16924345fe42761a51d522fd93a6ccaaca`.
 Godot **4.7.2 Standard**, GL Compatibility; không cần plugin/Python cho runtime.
 
 ```sh
-git clone --branch demo/godot-requested-9v9-2026-11-01 https://github.com/phamthach11-create/Avatar-war.git
+git clone --branch main https://github.com/phamthach11-create/Avatar-war.git
 cd Avatar-war
 godot --headless --editor --import
 godot --path .
