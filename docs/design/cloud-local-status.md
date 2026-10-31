@@ -108,6 +108,7 @@
 - Bước tiếp: chat Cloud/Local đọc skill và chỉ mục trên main; nhập đầy đủ baseline Godot và các thay đổi gameplay qua PR riêng để chat/máy khác có thể chạy. Không coi chỉ mục hoặc skill là bản game có thể chạy.
 
 ## 2026-11-01 — Đóng gói demo Godot 9vs9
+- Pull request: [Godot demo 9vs9 #4](https://github.com/phamthach11-create/Avatar-war/pull/4); implementation commit `554acf5df651bdf84e617d92c4d61cb189ef00cd`.
 - Trạng thái: nhánh `demo/godot-requested-9v9-2026-11-01`, chờ review; KHÔNG merge. Bản project local gốc giữ nguyên.
 - Base repo: `9f5d06e47e3dacc6eaacf6001693cebf556d6e2d`. Thiết kế scenario: commit `a2afe350854e6bfb31933d2ae93c02b67cd261ab`, workbook blob `36876091de28fd6b889e2e32c7f57c4f2f59f37c` và đính chính người dùng ghi trong tài liệu scenario. Không nhập lại thiết kế hay sửa Python trong PR này.
 - Thêm code combat, scene mặc định `src/ui/requested_9v9.tscn`, roster `data/gameplay/requested_9v9.json`, test và PNG/WAV cần chạy; giữ baseline mixed/Dummy cùng preview lịch sử và phụ thuộc.
