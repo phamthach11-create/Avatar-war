@@ -98,5 +98,14 @@
 - Toàn bộ code/ảnh/model/Blender vẫn CHỈ LOCAL, chưa upload quaPR, máy khác chưa thể tái tạo từGitHub. Bản cập nhật này chỉ đồng bộ quyết định/trạng thái.
 - Bước tiếp theo: hoàn thiện tạo hình Bluetooth theo concept đã duyệt rồi mới rig/idle/run/attack/hurt/death; duyệt một cảnh skill và battle camera trước khi chuyển9vs9. Không mở rộng hàng loạt nhân vật hoặc coi2Droadmap cũ là quyết định hiện hành.
 
+## 2026-10-31 — Skill quản lý phạm vi và ngữ cảnh
+- Trạng thái: skill đã được cài và kiểm tra cấu trúc hợp lệ trên máy Local; bản portable được push trên nhánh của pull request này, CHƯA hợp nhất vào main.
+- Thay đổi: thêm `.agents/skills/avatar-war-workflow/`, `docs/design/project-index.md`; AGENTS định tuyến Godot/Python riêng và chỉ đọc mục nhật ký liên quan; README có liên kết.
+- Mục tiêu: thay đổi đội hình qua cấu hình, kiểm tra capability trước khi thêm mechanic, giới hạn việc đọc tài liệu theo phạm vi; không có cam kết giảm token theo một tỷ lệ cố định.
+- Kiểm tra: validator skill local qua; nội dung portable loại đường dẫn máy, phân biệt source/local/remote. Việc tự lựa chọn skill trên một chat mới chưa được kiểm chứng.
+- Combat local mới: trận9vs9 build ngày31/10, main slot5, hai loại Automaton với cap1/loại/đội và mất khi chủ chết; Leonardo2 ưu tiên Mona khi HP đồng minh≤65%, Robin ưu tiên normal. Báo cáo1742 checks scenario,8196 regression mixed,1150 log. CODE/ASSET/TEST của trận này vẫn CHƯA upload trong PR skill.
+- Đồ họa: người dùng chuyển sang Tripo sau khi không duyệt chất lượng model/animation tự làm; mới hướng dẫn xuất rig/texture, chưa xác minh đã nhận file.
+- Bước tiếp: review/hợp nhất PR skill; nhập đầy đủ baseline Godot và các thay đổi gameplay qua PR riêng để chat/máy khác có thể chạy. Không coi chỉ mục hoặc skill là bản game có thể chạy.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.

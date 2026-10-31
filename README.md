@@ -130,3 +130,8 @@ thư mục dự phòng dùng `.gitkeep`; có thể bỏ file này khi có nội 
 ## Kế hoạch đồ họa đã chốt
 
 Theo [lộ trình nâng cấp đồ họa 2D](docs/design/graphics-roadmap.md), đã được người dùng duyệt ngày 29/10/2026. Thứ tự: định hướng → cảnh mẫu Napoleon → môi trường → sáu nhân vật/animation → hiệu ứng skill → polish/tối ưu. Tiến độ và điều kiện nghiệm thu nằm trong tài liệu; kế hoạch được duyệt không có nghĩa asset mới đã hoàn thành.
+
+
+## Tiếp tục dự án với ngữ cảnh gọn
+
+Bắt đầu từ [chỉ mục dự án](docs/design/project-index.md) và [skill Avatar War](.agents/skills/avatar-war-workflow/SKILL.md). Chọn đúng backend và phạm vi trước khi đọc tài liệu chi tiết. Skill trong repo là bản dùng chung; đường dẫn máy và cách cài cá nhân giữ ở local. Xem chỉ mục để phân biệt code đã commit với các bản demo còn chỉ trên máy.
