@@ -118,5 +118,15 @@
 - Giới hạn:2D placeholder, không tích hợp Tripo/3D; chưa hỗ trợ node catalog tổng quát; kết quả là kiểm tra local từ checkout sạch, không phải CI GitHub. Hướng dẫn: [checkout](godot-9v9-checkout.md).
 - Bước tiếp: checkout `main`, import project và chạy F5/Auto; cập nhật tiếp theo qua nhánh/PR riêng.
 
+## 2026-11-01 — Loại Hunyuan khỏi pipeline asset
+- Quyết định của người dùng: Hunyuan hiện tại không đủ chất lượng để làm model cho Avatar War; model vẫn xuất hiện các mảnh rời sau lần thử lại. Ngừng dùng và không tự tiếp tục pipeline này nếu chưa có yêu cầu mới.
+- Đây là đánh giá chất lượng của người dùng trên bản đã thử, không phải kết luận về mọi phiên bản Hunyuan. Lần sửa setup đã được ghi ra đĩa nhưng chưa xác minh tiến trình đang chạy đã nạp sửa đổi; không ghi nhận là kiểm thử đầy đủ cấu hình mới.
+- Không dùng Simplify Mesh để xử lý vấn đề; người dùng muốn giữ chất lượng và chi tiết model.
+- Dọn project local: bỏ source mesh, model đã xử lý, texture, rig/retarget dẫn xuất, ảnh kiểm tra và script/scene thử nghiệm của pipeline bị loại. Giữ concept Bluetooth đã duyệt, mẫu Viking độc lập và combat.
+- Rà soát repo tại `8bd7e022e8cdf5e9e740739179f6b8c118328a3f`: không có file model, code hay setup Hunyuan được commit; chỉ có một tham chiếu trong project-index.md. Đã gỡ tham chiếu đang hoạt động đó; giữ tên công cụ trong mục nhật ký này để tránh lặp lại thử nghiệm bị loại.
+- Kiểm tra: tìm tên file và nội dung văn bản trong tree hiện tại; kiểm tra tham chiếu local sau dọn. Không sửa workbook, luật hoặc mã combat.
+- Trạng thái: cập nhật tài liệu qua nhánh/PR riêng, chờ review; phần xóa asset thực hiện ở local vì chưa từng có trên GitHub.
+- Bước tiếp: tiếp tục làm asset từ nguồn khác theo lựa chọn của người dùng; Tripo/Mixamo là hướng đã ghi nhận trước đó, chưa tự coi model mới đã đạt chất lượng.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.

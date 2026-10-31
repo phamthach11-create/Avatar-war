@@ -1,5 +1,8 @@
 # Kế hoạch đồ họa — đã chuyển hướng sang 3D
 
+## Cập nhật pipeline asset — 2026-11-01
+Người dùng đã loại công cụ tạo model được ghi trong [nhật ký quyết định](cloud-local-status.md#2026-11-01--loại-hunyuan-khỏi-pipeline-asset) vì chất lượng model chưa đạt. Không tái sử dụng model, texture hoặc rig dẫn xuất từ pipeline bị loại. Giữ concept Bluetooth đã duyệt; chỉ rig/animation sau khi model thay thế được duyệt.
+
 ## Quyết định hiện hành — 2026-10-29, cập nhật sau thử Viking3D
 Người dùng đã CHỐT chuyển sang3D anime sau khi xem bản Viking chuyển động. Quyết định này thay thế lựa chọn tiếp tục2D/Napoleon105% ở phần lịch sử bên dưới. Giữ combat9vs9 và hướng môi trường thành đá sáng; không đổi luật để phục vụ đồ họa.
 
