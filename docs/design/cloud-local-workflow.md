@@ -16,7 +16,7 @@ GitHub là nguồn chuẩn. Thiết kế được chốt trên nhánh chính là
 2. Làm trên nhánh riêng. Tách cập nhật thiết kế, Python và Godot thành phạm vi dễ review.
 3. Kiểm tra phần bị ảnh hưởng; ghi rõ kiểm tra nào đã chạy, kết quả và giới hạn.
 4. Cập nhật nhật ký trong cùng pull request: thay đổi gì, file/module liên quan, thiết kế nào đã áp dụng, phần nào còn thiếu, bước tiếp theo.
-5. Tạo pull request có mô tả cụ thể; chờ người dùng duyệt trước khi hợp nhất. Chỉ thay đổi đã hợp nhất mới được coi là trạng thái triển khai trên nhánh chính.
+5. Tạo pull request có mô tả cụ thể. Theo chỉ thị người dùng ngày 2026-11-01, agent tự hợp nhất sau khi rà soát diff và hoàn thành các kiểm tra phù hợp đối với thay đổi đã được người dùng yêu cầu rõ; không hỏi lại chỉ để merge. Không bỏ qua kiểm tra bắt buộc hoặc branch protection. Nếu kiểm tra thất bại, có xung đột, phạm vi chưa được cho phép hoặc còn quyết định thiết kế chưa rõ thì xử lý hoặc hỏi đúng điểm còn thiếu trước khi merge. Chỉ thay đổi đã hợp nhất mới được coi là trạng thái triển khai trên nhánh chính.
 
 ## Cách cloud nhận biết việc local đã làm
 Mỗi pull request của local phải cập nhật nhật ký. Cloud đọc nhật ký trên nhánh chính cho phần đã hợp nhất, đồng thời xem pull request mở cho phần đang đề xuất. Nhãn “đã chạy trên máy” không đồng nghĩa “đã push” hoặc “đã hợp nhất”. Hai chat không tự chia sẻ lịch sử hay tự nhận thông báo từ GitHub.
