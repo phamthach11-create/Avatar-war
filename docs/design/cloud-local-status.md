@@ -107,5 +107,16 @@
 - Đồ họa: người dùng chuyển sang Tripo sau khi không duyệt chất lượng model/animation tự làm; mới hướng dẫn xuất rig/texture, chưa xác minh đã nhận file.
 - Bước tiếp: chat Cloud/Local đọc skill và chỉ mục trên main; nhập đầy đủ baseline Godot và các thay đổi gameplay qua PR riêng để chat/máy khác có thể chạy. Không coi chỉ mục hoặc skill là bản game có thể chạy.
 
+## 2026-11-01 — Đóng gói demo Godot 9vs9
+- Pull request: [Godot demo 9vs9 #4](https://github.com/phamthach11-create/Avatar-war/pull/4); implementation commit `554acf5df651bdf84e617d92c4d61cb189ef00cd`.
+- Trạng thái: nhánh `demo/godot-requested-9v9-2026-11-01`, chờ review; KHÔNG merge. Bản project local gốc giữ nguyên.
+- Base repo: `9f5d06e47e3dacc6eaacf6001693cebf556d6e2d`. Thiết kế scenario: commit `a2afe350854e6bfb31933d2ae93c02b67cd261ab`, workbook blob `36876091de28fd6b889e2e32c7f57c4f2f59f37c` và đính chính người dùng ghi trong tài liệu scenario. Không nhập lại thiết kế hay sửa Python trong PR này.
+- Thêm code combat, scene mặc định `src/ui/requested_9v9.tscn`, roster `data/gameplay/requested_9v9.json`, test và PNG/WAV cần chạy; giữ baseline mixed/Dummy cùng preview lịch sử và phụ thuộc.
+- Hai đội cùng build, main slot5, Automaton cap1/loại/đội/mất khi chủ chết; Grand Battery tự cast; Mona ưu tiên đồng minh≤65%HP. Chi tiết: [scenario](requested-9v9-2026-10-31.md).
+- Portable: sửa đường dẫn xuất ảnh/log trong test sang `artifacts/` được ignore. Loại `.godot`, log trận/ảnh tạm, file công cụ và đường dẫn máy; không thay workbook main. Giữ `.import`/`.uid` là metadata nguồn.
+- Kiểm tra checkout riêng không có cache ban đầu bằng Godot4.7.2: import asset,1742 checks requested,8196 checks mixed,1150 checks log đều0fail; UI requested và Build scroll cả9 qua trong cửa sổ thật. Chạy main scene smoke qua. CLI môi trường có lỗi đọc certificate store và không ghi được editor settings ngoài sandbox, không có lỗi script/runtime game.
+- Giới hạn:2D placeholder, không tích hợp Tripo/3D; chưa hỗ trợ node catalog tổng quát; kết quả là kiểm tra local từ checkout sạch, không phải CI GitHub. Hướng dẫn: [checkout](godot-9v9-checkout.md).
+- Bước tiếp: review PR và chạy F5/Auto từ nhánh trên; chỉ sau phê duyệt riêng mới merge.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.

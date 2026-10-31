@@ -1,11 +1,11 @@
 # Avatar War — chỉ mục công việc
-Cập nhật 2026-10-31. Đọc phần liên quan và kiểm tra revision/file trước khi dùng; đây là chỉ mục, không thay luật hoặc kiểm thử.
+Cập nhật 2026-11-01. Đọc phần liên quan và kiểm tra revision/file trước khi dùng; đây là chỉ mục, không thay luật hoặc kiểm thử.
 
 ## Nguồn và trạng thái
 - Thiết kế chuẩn: main, `data/excel/Thiết kế game.xlsx`, cùng đính chính trực tiếp mới hơn của người dùng. Snapshot trận local gần nhất: blob `36876091de28fd6b889e2e32c7f57c4f2f59f37c`.
 - Godot, Python và asset là các implementation/tài nguyên riêng. Không tự đồng bộ từ Excel hoặc từ chat khác.
-- PR skill này chỉ thêm workflow/chỉ mục; KHÔNG upload code hoặc asset demo local.
-- Mã Godot local mới vẫn cần một PR riêng kèm các phụ thuộc để máy khác có thể chạy. Không tự tái tạo engine từ lịch sử chat nếu thiếu file.
+- Nhánh `demo/godot-requested-9v9-2026-11-01` bổ sung code, scene, cấu hình, test và asset Godot; chờ review, chưa merge. Main chưa nhận implementation này.
+- Xem `docs/design/godot-9v9-checkout.md` để chạy và kiểm tra từ checkout sạch.
 
 ## Chọn đúng phần
 | Yêu cầu | Điểm vào |
@@ -16,9 +16,9 @@ Cập nhật 2026-10-31. Đọc phần liên quan và kiểm tra revision/file t
 | Đồ họa/nhân vật/animation | `docs/design/graphics-roadmap.md`, checkpoint 3D bên dưới; giữ combat |
 | Quy trình tiết kiệm ngữ cảnh | `.agents/skills/avatar-war-workflow/SKILL.md` |
 
-## Checkpoint combat local
+## Checkpoint combat Godot (PR, chưa merge)
 Bản test gần nhất có hai đội cùng build, main Leonidas slot5; đội hình Bluetooth / Jean / Leonidas / Napoleon1 / main Leonidas / Leonardo1 / Napoleon2 / Leonardo2 / Robin.
-Các điểm vào được ghi nhận ở bản local: `src/ui/requested_9v9.tscn`, `data/gameplay/requested_9v9.json`, `src/combat/requested_battle.gd` (mở rộng mixed battle), `docs/design/requested-9v9-2026-10-31.md`. Những file này CHƯA có trên main tại lần bàn giao này.
+Các điểm vào được ghi nhận ở bản local: `src/ui/requested_9v9.tscn`, `data/gameplay/requested_9v9.json`, `src/combat/requested_battle.gd` (mở rộng mixed battle), `docs/design/requested-9v9-2026-10-31.md`. Những file này có trong nhánh demo; CHƯA hợp nhất vào main.
 Giới hạn được chốt: tối đa một Automaton mỗi loại/đội; không chiếm slot, không bị chọn, mất khi chủ chết. Chỉ Attack kế thừa theo skill; MHR/Accuracy nền100%, CHC/PEN/CDB nền0, node Automaton áp dụng. Grand Battery auto-cast đầu lượt đồng minh. Leonardo2 ưu tiên Mona Lisa khi đồng minh≤65%HP (AI policy); Robin ưu tiên normal.
 Local báo cáo1742 checks cho scenario,8196 checks regression mixed và1150 checks log qua; không phải kết quả CI trên GitHub.
 Chưa có bộ node catalog Godot tổng quát: chỉ các build/handler đã kiểm tra được xác nhận. Build hoặc kit mới cần kiểm tra gap trước, không chỉ sửa tên trong JSON.
