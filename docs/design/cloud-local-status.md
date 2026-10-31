@@ -125,8 +125,13 @@
 - Dọn project local: bỏ source mesh, model đã xử lý, texture, rig/retarget dẫn xuất, ảnh kiểm tra và script/scene thử nghiệm của pipeline bị loại. Giữ concept Bluetooth đã duyệt, mẫu Viking độc lập và combat.
 - Rà soát repo tại `8bd7e022e8cdf5e9e740739179f6b8c118328a3f`: không có file model, code hay setup Hunyuan được commit; chỉ có một tham chiếu trong project-index.md. Đã gỡ tham chiếu đang hoạt động đó; giữ tên công cụ trong mục nhật ký này để tránh lặp lại thử nghiệm bị loại.
 - Kiểm tra: tìm tên file và nội dung văn bản trong tree hiện tại; kiểm tra tham chiếu local sau dọn. Không sửa workbook, luật hoặc mã combat.
-- Trạng thái: cập nhật tài liệu qua nhánh/PR riêng, chờ review; phần xóa asset thực hiện ở local vì chưa từng có trên GitHub.
+- Triển khai tài liệu: [PR #5](https://github.com/phamthach11-create/Avatar-war/pull/5); xem trạng thái PR để xác nhận hợp nhất. Phần xóa asset thực hiện ở local vì chưa từng có trên GitHub.
 - Bước tiếp: tiếp tục làm asset từ nguồn khác theo lựa chọn của người dùng; Tripo/Mixamo là hướng đã ghi nhận trước đó, chưa tự coi model mới đã đạt chất lượng.
+
+## 2026-11-01 — Tự hợp nhất thay đổi đã kiểm tra
+- Người dùng cho phép agent tự merge sau khi kiểm tra; đã cập nhật bước 5 trong cloud-local-workflow.md. Áp dụng cho công việc được yêu cầu rõ, không bỏ qua kiểm tra bắt buộc hay branch protection; hỏi khi thiếu quyết định hoặc phạm vi chưa được cho phép.
+- Kiểm tra PR #5: tài liệu nhất quán với quyết định loại pipeline; Godot local đã import và chạy smoke thành công (VIKING_READY, 54 bones), không lỗi script/resource. Lỗi certificate store/editor settings là giới hạn môi trường đã ghi nhận.
+- Triển khai qua PR #5; trạng thái hợp nhất được xác nhận bằng GitHub, không suy từ việc đã push.
 
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
