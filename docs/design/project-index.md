@@ -24,7 +24,7 @@ Local báo cáo1742 checks cho scenario,8196 checks regression mixed và1150 che
 Chưa có bộ node catalog Godot tổng quát: chỉ các build/handler đã kiểm tra được xác nhận. Build hoặc kit mới cần kiểm tra gap trước, không chỉ sửa tên trong JSON.
 
 ## Checkpoint đồ họa
-Người dùng đã chọn hướng3D và concept Bluetooth ngực trần/râu vàng/trang phục đỏ–navy. Các bản model/texture/rig Hunyuan và retarget tự làm chỉ ở local; chất lượng animation chưa được duyệt.
+Người dùng đã chọn hướng3D và concept Bluetooth ngực trần/râu vàng/trang phục đỏ–navy. Các thử nghiệm model/texture/rig và retarget tự làm bị loại; không dùng lại làm nguồn asset.
 Nguồn người dùng mới chọn là Tripo với rig Mixamo. Đã hướng dẫn xuất FBX kèm texture; chưa xác minh file đã được nhận hoặc tích hợp. Không tiếp tục pipeline bị loại nếu không có yêu cầu mới.
 Các đường dẫn máy và phần mềm cài đặt giữ ở cấu hình/chỉ mục local, không đưa vào bản dùng chung này.
 
