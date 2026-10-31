@@ -16,41 +16,17 @@ Mặc định 1.000 trận/cặp, chia đều bên đi trước; xuất Excel v�
 Đọc hướng dẫn trong thư mục này trước các lần mô phỏng tiếp theo. Mã Bluetooth 9vs9
 cũ được giữ riêng với snapshot lịch sử; engine Godot chưa đồng bộ tự động với Python.
 
-## Demo Godot đầu tiên
+## Demo Godot 9vs9
 
-Repository hiện có bản demo **2D hai Balanced Dummy**, kiểm tra cùng kịch bản
-đánh thường trong sheet `Combat demo`. Phiên bản đã kiểm tra: **Godot 4.6.3 Standard**,
-dùng GDScript, không cần bản .NET hay plugin.
+Mở `project.godot` bằng Godot **4.7.2 Standard**, import asset rồi nhấn **F5**.
+Scene mặc định: `src/ui/requested_9v9.tscn`; hai đội cùng build, Leonidas main slot5.
+Có Auto, Next turn, Restart, Build và Export log; cấu hình ở
+`data/gameplay/requested_9v9.json`. Không cần Python, Blender hoặc plugin để chơi demo.
 
-Để mở trên Windows:
-
-1. Tải Godot Standard từ https://godotengine.org/download/windows/ và giải nén.
-2. Tải repository về máy. Trong Godot Project Manager, chọn **Import**, chọn
-   file `project.godot` ở thư mục gốc repository rồi chọn **Import & Edit**.
-3. Nhấn **F5** để chạy toàn bộ dự án.
-
-Nếu chỉ chơi bản xuất chạy riêng hoặc bản web trong tương lai, người chơi không
-cần Godot editor. Repository hiện có source project, chưa có bản export đóng gói.
-
-Điều khiển:
-
-- **Next turn:** thực hiện một lượt đội.
-- **Auto: OFF / ON:** bật hoặc tắt tự chạy.
-- **Restart:** khôi phục toàn bộ trận và dừng tự chạy.
-- **Initiative tie winner:** chọn A/B cho trường hợp hòa AP; thay lựa chọn sẽ bắt đầu lại.
-
-Hai bên có HP 20.000, ATK 2.000, DEF 1.000, APR 100, K 1.000 và SE 100%.
-AP đầu trận là 0. Hồi AP trước khi cấp suất; mỗi đội chỉ có một nhân vật nên
-chỉ nhận tối đa một suất, kể cả khi giới hạn lượt là 2/4/5. Tấn công luôn trúng,
-không crit hoặc multi-hit. Mỗi hit gây 1.000 sát thương. Bên đi trước thắng ở
-lượt toàn trận 39, sau 20 hit, còn 1.000 HP.
-
-Demo này chưa triển khai phòng thủ, skill, đổi chỗ, chuyển suất, trigger hoặc
-đội hình 3×3. Hai hình nhân vật được vẽ bằng code, chưa cần tài nguyên bên ngoài.
-
-Luật nằm trong `src/combat/dummy_duel.gd`, dữ liệu trong
-`data/gameplay/balanced_dummy.json`, scene chính trong `src/ui/main.tscn`.
-Dữ liệu JSON là bản chụp kịch bản thiết kế; thay Excel chưa tự cập nhật JSON.
+Xem [hướng dẫn checkout và kiểm tra](docs/design/godot-9v9-checkout.md) và
+[build, nguồn thiết kế, giới hạn](docs/design/requested-9v9-2026-10-31.md).
+Các scene Dummy/mixed và preview đồ họa cũ vẫn giữ để hồi quy; đây là bản combat2D,
+chưa tích hợp model Tripo hay trận3D.
 
 ## AI và tài nguyên đồ họa
 

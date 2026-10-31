@@ -1,0 +1,17 @@
+{
+  "source": "Thiết kế game.xlsx / Balanced dummy!H1:O2; Combat mechanic!A57:C63",
+  "source_location": "User-provided OneDrive workbook; repository main still contains the older workbook",
+  "base_mp": 20000.0,
+  "base_skill_defense": 1000.0,
+  "skill": {
+    "id": "dummy_special_hit",
+    "name": "Dummy special hit",
+    "ap_cost": 100.0,
+    "mp_cost": 1000.0,
+    "cooldown": 1,
+    "allocated_level": 10,
+    "level_bonus": 0,
+    "attack_per_k_per_level": 0.3
+  },
+  "demo_policy": "Use the skill whenever ready with sufficient MP; otherwise normal attack. Reuse the demo's front-first single-target selection."
+}

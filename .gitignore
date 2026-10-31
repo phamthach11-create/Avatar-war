@@ -24,3 +24,10 @@ __pycache__/
 *.py[cod]
 .venv/
 simulation/results/
+
+# Demo-generated outputs (source .import recipes are intentionally retained)
+tests/requested-match.json
+log combat/
+log *.json
+*.log
+artifacts/
