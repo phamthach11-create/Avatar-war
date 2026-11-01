@@ -133,5 +133,16 @@
 - Kiểm tra PR #5: tài liệu nhất quán với quyết định loại pipeline; Godot local đã import và chạy smoke thành công (VIKING_READY, 54 bones), không lỗi script/resource. Lỗi certificate store/editor settings là giới hạn môi trường đã ghi nhận.
 - Triển khai qua PR #5; trạng thái hợp nhất được xác nhận bằng GitHub, không suy từ việc đã push.
 
+## 2026-11-01 — Cloud: workbook người dùng cập nhật mechanic và nhân vật
+- Nhánh triển khai: `design/workbook-20261101`, dựa trên main `3e8e1aacae64c071c580f39b8727d3213f3cd958`. Trạng thái hợp nhất cần kiểm tra trên GitHub; mục này không tự xác nhận đã merge.
+- Thay nguyên bản `data/excel/Thiết kế game.xlsx` bằng file người dùng gửi, 109240 bytes, SHA-256 `d568840b996909224583dc2860f7d52783c1d5543c3675d788fe7f76c275babe`. Không sửa nội dung, công thức hoặc định dạng của file upload.
+- Khác biệt theo giá trị/công thức ô: Combat Mechanics 200; Terminology 78; Balanced Dummy 39; status 14; Soldier class 3; Devastator class 1; Piercer class 1; Ranger class 1. Các sheet còn lại không đổi giá trị/công thức.
+- Mechanic mới: HP Decay từ global turn 30 ở đầu lượt của đội, mất 5% Max HP trực tiếp, có thể chết; đồng minh chết cộng +5 Base AP Recovery; định nghĩa Row/Line theo hướng đối mặt, các AOE và aura liên tục. Adjacent gồm cả đường chéo. Có thêm Event Order và Status Source rules so với main trước đó.
+- Nhân vật: Soldier C11 đổi phân bổ Attack CP từ 34206 sang 13273, C17 Base Character MHR 140% → 120%, C25 Base Character Accuracy 0% → 100%. Ranger H39 đổi proc Golden Arrow từ 5% lên 20%, vẫn ghi When Hitting. Devastator ghi rõ auto-cast đầu team turn; Piercer chỉnh mô tả Mona Lisa. Balanced Dummy bỏ mục review cooldown ngày 2026-10-29; không tự phục hồi phần đã bị xóa trong file người dùng.
+- Điểm cần lưu ý khi triển khai: Combat Mechanics C173 vẫn cấm refresh/extend status cùng nguồn, trong khi đính chính trong chat cho phép cập nhật duration mà không stack. Ranger H39 là 20% mỗi HIT; con số khoảng 18,2%/20% từng tính trong chat là mỗi NORMAL ATTACK. Giữ nguyên file upload, không tự đổi hai dòng này.
+- Kiểm tra: ZIP integrity hợp lệ, openpyxl đọc đủ 13 sheet; bản repo khớp byte-for-byte với upload. Đã đối chiếu giá trị/công thức với workbook main. Không chạy mô phỏng hoặc tính lại Excel; cache công thức là cache trong file người dùng.
+- Giới hạn: cập nhật workbook không tự cập nhật `data/gameplay/requested_9v9.json` hoặc engine Godot/Python. Demo Godot đã có trên main qua PR #4; không còn là chỉ local.
+- Bước tiếp theo: đối chiếu các khác biệt thiết kế nêu trên khi cập nhật engine/scenario theo yêu cầu riêng.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
