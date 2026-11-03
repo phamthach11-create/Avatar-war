@@ -163,3 +163,8 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - Source/evidence/limitations:design/sync/review-2026-11-03.md, implementation-receipt.json. Python simulator không thay cơ chế;3D renderer và mọi kit ngoài roster chưa được triển khai trong PR này.
 - PR https://github.com/phamthach11-create/Avatar-war/pull/6; chờ kết quả CI rồi merge theo phê duyệt đã có.
 - CI Python33 tests qua: sửa test importer dùng fixture đúng contract Python lịch sử và xác nhận workbook mới bị importer đó từ chối; không đổi engine/luật Python để nhận vơ đồng bộ.
+
+## 2026-11-03 — Đã hợp nhất hệ thống đồng bộ và luật mới
+- PR [#6](https://github.com/phamthach11-create/Avatar-war/pull/6) đã squash merge theo yêu cầu người dùng; merge commit `9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`.
+- CI của head `d09cab9d66a13c0c83321f5979f368ff96252396`: unit, freshness và simulation đều success; workbook/runtime đúng revision. Giữ K1000 và thứ tự hồi sinh > decay > passive/Auto-Cast > AP đã chốt.
+- Main hiện có công cụ đồng bộ và requested9v9 đã áp dụng các thay đổi được review. Các bản demo local đang mở không tự reload từ GitHub; lần chạy mới dùng checkout main và check trước khi mở.
