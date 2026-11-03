@@ -168,3 +168,14 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - PR [#6](https://github.com/phamthach11-create/Avatar-war/pull/6) đã squash merge theo yêu cầu người dùng; merge commit `9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`.
 - CI của head `d09cab9d66a13c0c83321f5979f368ff96252396`: unit, freshness và simulation đều success; workbook/runtime đúng revision. Giữ K1000 và thứ tự hồi sinh > decay > passive/Auto-Cast > AP đã chốt.
 - Main hiện có công cụ đồng bộ và requested9v9 đã áp dụng các thay đổi được review. Các bản demo local đang mở không tự reload từ GitHub; lần chạy mới dùng checkout main và check trước khi mở.
+
+## 2026-11-03 — Cloud: cập nhật workbook Nightingale và Morgan
+- Source main: `334ea46fc2a2e13960018a7cd0a9720152c15f26`; nhánh `design/workbook-20261103`. Đây là cập nhật thiết kế; chưa chứng nhận đồng bộ runtime, chưa hợp nhất.
+- Thay nguyên bản `data/excel/Thiết kế game.xlsx` bằng upload mới: 120531 bytes; SHA-256 `af238b367bef1f2bab757bef14d3b5b7c3d7e7ba7c76b09d19d7c6a26862611f`. Giữ nguyên nội dung, công thức, cache và định dạng; không lưu lại bằng openpyxl.
+- Có14 sheet; thêm `Caster class` với Florence Nightingale và Morgan le Fay, skill/spec/cost. Khác biệt giá trị/công thức so với main: Caster482, Item111, Soldier21, Destroyer20, Piercer19, Warrior17, Devastator16, Ranger16, status1. Một phần khác biệt là dịch dòng Item và nới phạm vi SUMIFS1003→1004; không coi tất cả là mechanic mới.
+- Thay đổi đáng chú ý ngoài Caster: Soldier dùng tên Heraclid/Spartan King; aura S2.1.4 đổi Fortify7%/Rage5% thành12%/4%. Bluetooth Connection đổi công thức scaling Fortify/Resistance. Item thêm Healing Amplification cho Caster weapon. Status F23 đổi Stun thành không dùng passive. Đây là thay đổi thiết kế trong file người dùng, không tự triển khai trong engine.
+- Kiểm tra file: ZIP integrity hợp lệ, openpyxl đọc đủ14 sheet; checksum và bytes repo khớp upload. Không tự tính lại công thức Excel.
+- `python -m tools.design_sync plan` với workbook mới: BLOCKED,735 changed cells/724 require implementation review; pipeline yêu cầu xác nhận đã tính lại Excel. Không dùng `--recalculated` khi chưa xác minh, không sửa accepted.json, receipt hoặc runtime hashes để bỏ qua cổng.
+- Giữ nguyên engine Godot/Python, accepted baseline và runtime bundle. Main trước nhánh này đã có runtime đồng bộ phiên bản cũ; workbook mới sẽ làm freshness check bị chặn cho đến khi triển khai và kiểm tra diff.
+- API GitHub PR trả Forbidden trong phiên Cloud; push nhánh bằng Git là khả dụng. Không tuyên bố đã tạo PR hoặc merge.
+- Bước tiếp: rà soát scope và handler cho Stun/auras/new Caster và formula changes; tính lại Excel, kiểm thử đúng backend, rồi tạo receipt/bundle theo docs/design/excel-runtime-sync.md.
