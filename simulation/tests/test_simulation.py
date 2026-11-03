@@ -118,11 +118,24 @@ class CombatTests(unittest.TestCase):
 
     def test_excel_numeric_import_and_semantic_change_guard(self):
         import openpyxl
-        source=ROOT.parent/'data/excel/Thiết kế game.xlsx'
-        d=import_excel(source);self.assertEqual(d['HP'],self.d['HP'])
+        from simulation.configuration import STAT_NAMES
+        # This importer intentionally supports a frozen Python contract, not the
+        # newer Godot workbook. Exercise its actual reviewed schema as a fixture.
+        with self.assertRaises(ValueError):
+            import_excel(ROOT.parent/'data/excel/Thiết kế game.xlsx')
         with tempfile.TemporaryDirectory() as temp:
             path=Path(temp)/'input.xlsx'
-            wb=openpyxl.load_workbook(source,data_only=True)
+            wb=openpyxl.Workbook()
+            for sheet,cells in read_json(ROOT/'data/robin_workbook_contract.json').items():
+                sh=wb.create_sheet(sheet)
+                for address,value in cells.items():sh[address]=value
+            sh=wb['Ranger class'];sh['B2']=self.d['name']
+            for row,label in enumerate(STAT_NAMES,9):sh.cell(row,1,label);sh.cell(row,2,self.d[label])
+            for key,row in [('golden',29),('hood',30),('mark',31)]:
+                for field,col in [('ap',2),('mp',3),('cd',4),('duration',8),('stat',11)]:
+                    sh.cell(row,col,self.d['skills'][key][field])
+            sh['K32']=self.d['mark_satk'];wb.save(path)
+            self.assertEqual(import_excel(path)['HP'],self.d['HP'])
             wb['Ranger class']['B9']=40000;wb.save(path)
             self.assertEqual(import_excel(path)['HP'],40000)
             wb['Ranger class']['H36']='When casting, trigger Golden Arrow';wb.save(path)

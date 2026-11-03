@@ -1,0 +1,31 @@
+{
+  "baseline_tests": [
+    "1742 requested",
+    "8196 mixed",
+    "1150 log"
+  ],
+  "clarifications": [
+    "Mirrored teams; main Leonidas slot5",
+    "At most one active Automaton of each type per team",
+    "Automata have no targetable HP and no roster slot; expire when their summoner dies",
+    "Automaton inherits only Base Attack through skill rate; base MHR/Accuracy=1, CHC/PEN/CDB=0; passive upgrades apply",
+    "Grand Battery auto-casts at allied turn start",
+    "Leonidas Accuracy100/Evasion0 retained",
+    "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
+    "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
+  ],
+  "coverage": "Only requested_9v9 builds and handlers; not all workbook mechanics",
+  "engine_files": {
+    "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
+    "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
+    "src/combat/mixed_battle.gd": "2d2c1c0aaf1409951455ca6416d0dc9c5709e5d5c37c6d30781799cd77415a23",
+    "src/combat/requested_battle.gd": "cb0c3e18086e7045430867450cdc332328e43aecdd863b53b82bc756f4a8eb3e",
+    "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
+    "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
+  },
+  "implementation_source": "fda66d16924345fe42761a51d522fd93a6ccaaca",
+  "schema_version": 1,
+  "snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
+  "workbook_sha256": "90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38"
+}

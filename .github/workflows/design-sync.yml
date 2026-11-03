@@ -1,0 +1,36 @@
+name: Excel runtime synchronization
+on:
+  pull_request:
+    paths: ['data/excel/**', 'data/runtime/**', 'design/**', 'tools/design_sync/**', 'src/combat/**', 'src/design/**', 'tests/design_sync/**']
+  push:
+    paths: ['data/excel/**', 'data/runtime/**', 'design/**', 'tools/design_sync/**', 'src/combat/**', 'src/design/**', 'tests/design_sync/**']
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r tools/design_sync/requirements.txt
+      - run: python -m unittest discover -s tests/design_sync -v
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r tools/design_sync/requirements.txt
+      - run: python -m tools.design_sync plan
+      - run: python -m tools.design_sync check
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: design-sync-report
+          path: design/sync/pending/report.json
+          if-no-files-found: ignore
+          retention-days: 7

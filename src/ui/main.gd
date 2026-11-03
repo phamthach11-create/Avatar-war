@@ -41,6 +41,14 @@ var _presented_actions := 0
 var _initiative: OptionButton
 
 func _ready() -> void:
+	if requested_scenario:
+		var sync_problem: String = preload("res://src/design/runtime_catalog.gd").problem()
+		if not sync_problem.is_empty():
+			var notice := Label.new()
+			notice.text = "DESIGN SYNC REQUIRED\n\n" + sync_problem + "\n\nSee docs/design/excel-runtime-sync.md"
+			notice.position = Vector2(35, 45)
+			add_child(notice)
+			return
 	_build_interface()
 	_restart()
 
@@ -291,7 +299,7 @@ func _advance() -> void:
 				await get_tree().create_timer(travel).timeout
 			if ticket != _playback_id:
 				return
-		if action.kind != "dot":
+		if action.kind not in ["dot", "hp_loss"]:
 			attacker.animate_attack(animation_speed)
 			if not melee and action.target >= 0 and action.target_team != action.team:
 				attacker.fire_at(_cards[action.target_team][action.target].view, action.kind != "attack", animation_speed)
