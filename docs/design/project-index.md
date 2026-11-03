@@ -7,6 +7,9 @@ Cập nhật 2026-11-01. Đọc phần liên quan và kiểm tra revision/file t
 - Code, scene, cấu hình, test và asset Godot đã có trên `main` qua [PR #4](https://github.com/phamthach11-create/Avatar-war/pull/4), merge commit `fda66d16924345fe42761a51d522fd93a6ccaaca` (2026-11-01).
 - Xem `docs/design/godot-9v9-checkout.md` để chạy và kiểm tra từ checkout sạch.
 
+## Đồng bộ Excel/runtime (PR, chưa merge)
+`tools/design_sync/` → `design/sync/` → `data/runtime/`; hướng dẫn `docs/design/excel-runtime-sync.md`. Baseline demo cũ được ghi đúng hash; workbook main mới có thay đổi chưa triển khai nên freshness hiện bị chặn. Không coi extraction JSON là hoàn thành mechanic.
+
 ## Chọn đúng phần
 | Yêu cầu | Điểm vào |
 |---|---|

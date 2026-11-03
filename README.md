@@ -2,6 +2,10 @@
 
 Game chiến thuật theo lượt với đội hình 3×3, gồm một main và tám avatar.
 
+## Đồng bộ Excel và game
+
+Xem [quy trình đồng bộ](docs/design/excel-runtime-sync.md). Chạy `python -m tools.design_sync plan` trước cập nhật; demo dùng lại engine/scenario. Chỉ số có ánh xạ nhập tự động; luật/công thức mới cần code + kiểm thử + receipt. Workbook mới còn diff chưa triển khai thì demo requested được chặn rõ ràng.
+
 ## Mô phỏng thiết kế bằng Python
 
 Bộ mô phỏng dùng lại nằm trong [simulation/](simulation/README.md): dữ liệu nhân vật,

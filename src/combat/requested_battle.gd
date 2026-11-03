@@ -2,7 +2,7 @@ extends "res://src/combat/mixed_battle.gd"
 ## Requested 2026-10-31 scenario. Reuses the existing battle state/timeline/UI contract.
 
 static func load_mixed_config() -> Dictionary:
-	return JSON.parse_string(FileAccess.get_file_as_string("res://data/gameplay/requested_9v9.json"))
+	return preload("res://src/design/runtime_catalog.gd").scenario("requested_9v9")
 
 func _apply_build(u: Dictionary) -> void:
 	var n: Array = u.nodes

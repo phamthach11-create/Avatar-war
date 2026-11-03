@@ -146,3 +146,11 @@
 
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
+
+## 2026-11-03 — Hạ tầng đồng bộ Excel/runtime (PR, chưa merge)
+- Source repo c4648b7c6503cfabf46236e00890df4d5f001de4; giữ accepted baseline của demo cũ, không tự công nhận workbook mới.
+- Thêm tools/design_sync: extract toàn workbook, diff ô, phân loại dữ liệu/luật, candidate theo classes/rules/tables/scenarios, bundle bất biến + active pointer và cổng Godot xác minh hash Excel/code.
+- Có numeric sync cho stat/cost đã ánh xạ, checkpoint receipt sau sửa mechanic, CI kiểm tra freshness; dùng lại engine và build, không rewrite demo. Không sửa Python simulator, workbook hoặc asset local.
+- Ban đầu359 ô đổi/335 cần review; luật HP decay/area mới và các diff khác chưa triển khai trong PR này. CI freshness và scene requested dự kiến blocked, tránh chạy nhầm snapshot. Workflow không tự commit/merge hoặc watch OneDrive.
+- Hướng dẫn và giới hạn: docs/design/excel-runtime-sync.md. Bước tiếp triển khai từng nhóm semantic diff, test, lập receipt rồi mới xuất runtime cho workbook mới.
+- Kiểm tra hạ tầng:12 unit tests qua; chạy với snapshot baseline đã xác nhận:1742 requested +8196 mixed +1150 log qua, sau đó phục hồi workbook mới đúng byte. Godot import và stale gate smoke qua; current check trả blocked đúng dự kiến. Hash source chuẩn hóa LF để Windows/Linux cùng revision.

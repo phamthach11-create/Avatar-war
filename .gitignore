@@ -25,6 +25,11 @@ __pycache__/
 .venv/
 simulation/results/
 
+# Design synchronization candidates and local verification outputs
+design/sync/pending/
+artifacts/
+tests/requested-match.json
+
 # Demo-generated outputs (source .import recipes are intentionally retained)
 tests/requested-match.json
 log combat/

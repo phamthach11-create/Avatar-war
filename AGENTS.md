@@ -23,3 +23,8 @@ Excel workbook or simulation data does not automatically update Godot gameplay.
 For cloud/local handoffs, read docs/design/cloud-local-workflow.md and inspect the relevant dated entries in docs/design/cloud-local-status.md, using docs/design/project-index.md to route first. GitHub main is the approved source of truth. Inspect open pull requests for proposed work. Update the handoff log in each implementation/design pull request with source revision, changes, validation, remaining gaps and next step. Do not claim local-only work is on GitHub or that Python and Godot are synchronized without evidence.
 
 For graphics, environment, character art, animation, VFX and combat presentation work, follow the user-approved docs/design/graphics-roadmap.md. Read its progress table and the handoff log first. Use the current milestone in docs/design/project-index.md and the user's latest decisions; older Napoleon/2D milestones are historical after the switch to 3D. Do not mass-produce assets before the current quality sample is reviewed. Preserve combat behavior. Do not treat local demo code/assets as uploaded until verified in the repository.
+
+For Excel/game synchronization, read docs/design/excel-runtime-sync.md. Run
+`python -m tools.design_sync plan` and inspect only relevant changes. Never advance
+accepted.json or mint a receipt merely to suppress stale/unimplemented mechanics.
+Reuse src/combat and design/scenarios; renderer changes do not rewrite gameplay.
