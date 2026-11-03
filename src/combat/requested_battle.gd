@@ -1,4 +1,6 @@
 extends "res://src/combat/mixed_battle.gd"
+var _status_source := ""
+
 ## Requested 2026-10-31 scenario. Reuses the existing battle state/timeline/UI contract.
 
 static func load_mixed_config() -> Dictionary:
@@ -56,13 +58,49 @@ func _sum(u: Dictionary, key: String) -> float:
 	if not u.get("is_automaton",false) and key in ["def_mod","attack_mod"]:
 		for source in teams[u.side]:
 			if source.hp <= 0 or source.type != "Soldier" or not source.nodes.has("S2.1.4"): continue
-			var distance: int = absi(int(source.index)/3-int(u.index)/3)+absi(int(source.index)%3-int(u.index)%3)
-			if distance <= 1: value += 0.07 if key == "def_mod" else 0.05
+			if u.index in _area(source.index,"Adjacent"):
+				value += 0.07 if key == "def_mod" else 0.05
+				break # Same passive-node source contributes at most once.
 	return value
 
 func _blocked(u: Dictionary) -> bool:
 	if u.get("is_automaton",false): return _unit(u.side,u.owner).hp <= 0
 	return super(u)
+
+func _area(primary: int, shape: String) -> Array[int]:
+	return preload("res://src/combat/current_rules.gd").area(primary,shape)
+
+func _effect(u: Dictionary, tag: String, duration: int, data: Dictionary, caster: Dictionary) -> void:
+	if u.hp <= 0 or duration <= 0: return
+	var source_id := _status_source if not _status_source.is_empty() else tag
+	for old in u.statuses:
+		if old.tag == tag and old.get("source_id",old.tag) == source_id and int(old.expires) > global_turn:
+			return # No refresh/replacement even from a different caster of the same source.
+	var effect := data.duplicate(true)
+	effect.merge({"tag":tag,"source_id":source_id,"expires":global_turn+duration,
+		"creator_side":caster.side,"creator":caster.index,"applied":global_turn},true)
+	u.statuses.append(effect)
+
+func _death_event(v: Dictionary) -> void:
+	if v.get("death_processed",false): return
+	v.death_processed = true
+	v.has_slot = false
+	if v.has("automata"): v.automata.clear()
+	for ally in teams[v.side]:
+		if ally.hp > 0:
+			ally.ap_recovery += 5.0
+			ally.character_ap_recovery += 5.0
+	_check_end()
+
+func _hp_decay(side: String) -> void:
+	if global_turn < 30: return
+	for victim in teams[side]:
+		if finished: return
+		if victim.hp <= 0: continue
+		var amount := minf(victim.hp, victim.max_hp * 0.05)
+		victim.hp -= amount # Direct loss: no mitigation, damage credit, block or hit events.
+		if victim.hp <= 0: _death_event(victim)
+		_record(victim,"HP decay",victim.index,side,[_impact(side,victim.index,amount)],"hp_loss")
 
 func _ready_skill(u: Dictionary, name: String) -> bool:
 	if not super(u,name): return false
@@ -87,7 +125,7 @@ func _pay(u: Dictionary, name: String, automatic: bool = false) -> void:
 func _take_hp(v: Dictionary, amount: float, source: Dictionary) -> float:
 	var result := super(v,amount,source)
 	if source.get("is_automaton",false): _unit(source.side,source.owner).damage_done += result
-	if v.hp <= 0 and v.has("automata"): v.automata.clear()
+	if v.hp <= 0: _death_event(v)
 	return result
 
 func _record(u: Dictionary, name: String, primary: int, side: String, impacts: Array, kind: String = "skill") -> void:
@@ -111,24 +149,19 @@ func _normal(u: Dictionary, primary: int, counter: bool = false, coordinated: bo
 	var rate: float = maxf(1.0,(u.multi_hit_rate+_sum(u,"mhr_flat"))*(1+u.mhr_mod+_sum(u,"mhr_mod")))
 	var count := 1 if counter else int(floor(rate))+int(_roll(rate-floor(rate)))
 	for hit_index in range(count):
-		if finished or _blocked(u): break
-		var impacts: Array = []
-		var counters: Array[int] = []
-		var golden_proc := false
 		for target in targets:
+			if finished or _blocked(u): break
 			var v := _unit(_enemy(u.side),target)
-			if finished or v.hp <= 0: continue
+			if v.hp <= 0: continue
 			var penalty: float = 0.0 if target == primary else u.sub_penalty
-			if target != primary and u.type == "Piercer" and int(target)/3-int(primary)/3>1: penalty = 0.75
+			if target != primary and u.type == "Piercer" and absi(int(target)/3-int(primary)/3)>1: penalty = 0.75
 			var power: float = u.attack*(1+u.attack_mod+_sum(u,"attack_mod"))*u.attack_effectiveness
 			var hit := _damage(u,v,power,true,penalty,-1,counter)
-			impacts.append(hit)
-			if hit.get("counter",false): counters.append(target)
-			if u.type == "Ranger" and hit.landed and u.nodes.has("S1.1.4") and _ready_skill(u,"Golden Arrow Shot") and _roll(0.05): golden_proc = true
-		_record(u,"Counterattack" if counter else ("Coordinated attack" if coordinated else "Normal attack · hit %d" % (hit_index+1)),primary,_enemy(u.side),impacts,"attack")
-		if golden_proc and not finished and _unit(_enemy(u.side),primary).hp>0: _cast(u,"Golden Arrow Shot",primary,true)
-		for target in counters:
-			if not finished: _normal(_unit(_enemy(u.side),target),u.index,true)
+			_record(u,"Counterattack" if counter else ("Coordinated attack" if coordinated else "Normal attack · hit %d" % (hit_index+1)),primary,_enemy(u.side),[hit],"attack")
+			# Resolve this recipient's hit effects before advancing to the next recipient/hit.
+			if u.type == "Ranger" and hit.landed and u.nodes.has("S1.1.4") and _ready_skill(u,"Golden Arrow Shot") and _roll(0.20):
+				if not finished and _unit(_enemy(u.side),primary).hp>0: _cast(u,"Golden Arrow Shot",primary,true)
+			if hit.get("counter",false) and not finished: _normal(v,u.index,true)
 	if not counter and not coordinated and not machine and not finished:
 		for effect in u.statuses.duplicate(true):
 			if effect.tag != "decree": continue
@@ -136,6 +169,12 @@ func _normal(u: Dictionary, primary: int, counter: bool = false, coordinated: bo
 			if not _blocked(owner) and owner.ap>=100 and _unit(_enemy(u.side),primary).hp>0 and _roll(effect.chance): _normal(owner,primary,false,true)
 
 func _cast(u: Dictionary, name: String, primary: int, automatic: bool = false) -> void:
+	var previous := _status_source
+	_status_source = name
+	_cast_impl(u, name, primary, automatic)
+	_status_source = previous
+
+func _cast_impl(u: Dictionary, name: String, primary: int, automatic: bool = false) -> void:
 	var skill: Dictionary = u.skills[name]
 	var level: int = u.levels[name]
 	if name.begins_with("Summon "):
@@ -145,7 +184,7 @@ func _cast(u: Dictionary, name: String, primary: int, automatic: bool = false) -
 		_record(u,name,u.index,u.side,[])
 		return
 	var handled := name in ["Mona Lisa","Grand Battery","Imperial Decree","God-King Slayer","Golden Arrow Shot","Man Under the Hood","Maiden’s Care"]
-	if not handled: super(u,name,primary,automatic); return
+	if not handled: super._cast(u,name,primary,automatic); return
 	_pay(u,name,automatic)
 	var impacts: Array = []
 	var side: String = u.side
@@ -193,10 +232,12 @@ func _cast(u: Dictionary, name: String, primary: int, automatic: bool = false) -
 	_record(u,name,primary,side,impacts)
 
 func _passives(side: String) -> void:
-	for u in teams[side]:
-		if finished: return
-		if _ready_skill(u,"Maiden’s Care"): _cast(u,"Maiden’s Care",scenario.main_index,true)
-		if _ready_skill(u,"Grand Battery"): _cast(u,"Grand Battery",u.index,true)
+	# Independent auto-casts: acting team first, then opposing team, slot order.
+	for owner in [side,_enemy(side)]:
+		for caster in teams[owner]:
+			if finished: return
+			if owner == side and _ready_skill(caster,"Maiden’s Care"): _cast(caster,"Maiden’s Care",scenario.main_index,true)
+			if not finished and _ready_skill(caster,"Grand Battery"): _cast(caster,"Grand Battery",caster.index,true)
 	for u in teams[side]:
 		if u.hp<=0: u.automata.clear(); continue
 		for machine in u.automata.duplicate():
@@ -241,7 +282,7 @@ func _act(u: Dictionary) -> void:
 
 
 func _end_turn() -> void:
-	for side in ["A","B"]:
+	for side in [_next,_enemy(_next)]:
 		for victim in teams[side]:
 			if finished: return
 			for effect in victim.statuses.duplicate(true):
@@ -253,7 +294,7 @@ func _end_turn() -> void:
 				var hit := _damage(source,victim,power,false,effect.penalty)
 				_record(source,"DOT · "+str(effect.tag).trim_prefix("dot:"),victim.index,side,[hit],"dot")
 				if finished: return
-	for side in ["A","B"]:
+	for side in [_next,_enemy(_next)]:
 		for unit in teams[side]:
 			unit.statuses=unit.statuses.filter(func(e: Dictionary) -> bool: return int(e.expires)>global_turn+1)
 			if unit.stun_count>0 and global_turn>=unit.last_stack_turn+2: unit.stun_count=0
@@ -269,7 +310,8 @@ func step() -> Dictionary:
 	var start: Dictionary = teams.duplicate(true)
 	for owner in ["A","B"]:
 		for unit in teams[owner]: unit.has_slot=false
-	_passives(side)
+	_hp_decay(side)
+	if not finished: _passives(side)
 	var cap := 2 if global_turn<=2 else (4 if global_turn<=4 else 5)
 	if not finished:
 		for unit in teams[side]:

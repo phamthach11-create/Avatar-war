@@ -154,4 +154,12 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - Ban đầu359 ô đổi/335 cần review; luật HP decay/area mới và các diff khác chưa triển khai trong PR này. CI freshness và scene requested dự kiến blocked, tránh chạy nhầm snapshot. Workflow không tự commit/merge hoặc watch OneDrive.
 - Hướng dẫn và giới hạn: docs/design/excel-runtime-sync.md. Bước tiếp triển khai từng nhóm semantic diff, test, lập receipt rồi mới xuất runtime cho workbook mới.
 - Kiểm tra hạ tầng:12 unit tests qua; chạy với snapshot baseline đã xác nhận:1742 requested +8196 mixed +1150 log qua, sau đó phục hồi workbook mới đúng byte. Godot import và stale gate smoke qua; current check trả blocked đúng dự kiến. Hash source chuẩn hóa LF để Windows/Linux cùng revision.
-- PR hạ tầng: [#6](https://github.com/phamthach11-create/Avatar-war/pull/6), draft/chưa merge; CI đính kèm report diff dạng artifact để Cloud đọc phần chưa áp dụng.
+
+## 2026-11-03 — Hoàn tất diff và chuẩn bị merge PR#6
+- Người dùng yêu cầu xử lý rồi merge; xác nhận K1000, các ô354 điền nhầm, và thứ tự hồi sinh > HP decay > passive/Auto-Cast > AP.
+- Sửa78 ô Terminology qua ZIP/XML, bảo toàn formula caches và các sheet khác.282 diff còn lại được review theo nhóm; không coi cell shift/CP appendix/roundoff là mechanic mới.
+- Requested engine:HP decay GT30+, ally death baseAPR+5, Adjacent/Line/FullLine đúng hướng, status cùng nguồn không refresh, aura nguồn không stack, phản đòn ngắt hit khi chết, GrandBattery mỗi team turn, Ranger proc20%; nhập chỉ số Soldier mới.
+- Plan0diff và check SYNC CURRENT.12 pipeline tests;453 new-rule +1338 requested +8196 mixed +1150 log checks qua, UI thật qua. Trận requested seed42/A kết thúc turn55,4summon/10Mona (thay snapshot75turn cũ).
+- Source/evidence/limitations:design/sync/review-2026-11-03.md, implementation-receipt.json. Python simulator không thay cơ chế;3D renderer và mọi kit ngoài roster chưa được triển khai trong PR này.
+- PR https://github.com/phamthach11-create/Avatar-war/pull/6; chờ kết quả CI rồi merge theo phê duyệt đã có.
+- CI Python33 tests qua: sửa test importer dùng fixture đúng contract Python lịch sử và xác nhận workbook mới bị importer đó từ chối; không đổi engine/luật Python để nhận vơ đồng bộ.

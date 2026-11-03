@@ -299,7 +299,7 @@ func _advance() -> void:
 				await get_tree().create_timer(travel).timeout
 			if ticket != _playback_id:
 				return
-		if action.kind != "dot":
+		if action.kind not in ["dot", "hp_loss"]:
 			attacker.animate_attack(animation_speed)
 			if not melee and action.target >= 0 and action.target_team != action.team:
 				attacker.fire_at(_cards[action.target_team][action.target].view, action.kind != "attack", animation_speed)

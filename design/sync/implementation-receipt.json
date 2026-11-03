@@ -1,0 +1,48 @@
+{
+  "engine_files": {
+    "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
+    "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
+    "src/combat/mixed_battle.gd": "2d2c1c0aaf1409951455ca6416d0dc9c5709e5d5c37c6d30781799cd77415a23",
+    "src/combat/requested_battle.gd": "cb0c3e18086e7045430867450cdc332328e43aecdd863b53b82bc756f4a8eb3e",
+    "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
+    "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
+  },
+  "implementation_notes": "design/sync/review-2026-11-03.md; user confirmed K1000 and revival > HP decay > passive/auto-cast > AP. All282 cell deltas reviewed for requested build scope.",
+  "previous_snapshot": "design/sync/snapshots/37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c.json",
+  "reviewed_change_sha256": "9f64d9dff2b56661b66c0463f34c2ef2951c2b9142bf467d3110d4c20e6a052c",
+  "schema_version": 1,
+  "source_sha256": "90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38",
+  "tests": [
+    {
+      "command": "godot --headless --path . --script res://tests/simulation/test_current_rules.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/current-rules.txt",
+      "sha256": "9a66e05fd42fb0e21ca2dd17f1409b4adda182b9bcabe3aa77cb0e24f255e112"
+    },
+    {
+      "command": "godot --headless --path . --script res://tests/simulation/test_requested_battle.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/current-test_requested_battle.txt",
+      "sha256": "17fad577cc9c18961e352ef081500fc47adc2d9c4be9901936f45e4e5e9768ea"
+    },
+    {
+      "command": "godot --headless --path . --script res://tests/simulation/test_mixed_battle.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/current-test_mixed_battle.txt",
+      "sha256": "c5c808be7af27e45196d77ad1b0f281ca39154ffdff216a4965e5d8a3130e2de"
+    },
+    {
+      "command": "godot --headless --path . --script res://tests/simulation/test_battle_log.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/current-test_battle_log.txt",
+      "sha256": "a1ff9c895456572090ffdc2bb5514ae897bf8cf87c8485c551fbafd1dd2932b5"
+    },
+    {
+      "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/current-ui.txt",
+      "sha256": "58868d507a19da62c9404f5b998ed70b875ec3863294f7004bc29c32e5053139"
+    }
+  ]
+}

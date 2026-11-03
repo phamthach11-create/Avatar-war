@@ -92,9 +92,11 @@ không có watcher ngầm kết nối một file OneDrive bất kỳ với GitHu
 Accepted baseline giữ đúng snapshot demo cũ (workbook blob
 `36876091de28fd6b889e2e32c7f57c4f2f59f37c`), không nhận vơ workbook mới đã áp dụng.
 Base repo của PR: `c4648b7c6503cfabf46236e00890df4d5f001de4`, có cập nhật HP decay và area.
-Lần chạy ban đầu thấy359 ô đổi,335 ô cần review. Chưa triển khai các luật mới đó trong
-PR hạ tầng này; scene requested được chặn có thông báo khi dùng workbook mới.
-CI freshness dự kiến chưa qua cho đến khi các thay đổi được triển khai/receipt hợp lệ.
+Lần chạy ban đầu thấy359 ô đổi. Người dùng xác nhận các ô354 điền nhầm và K1000;
+đã sửa đúng78 ô trong Terminology, giữ các formula cache.282 diff còn lại được review:
+triển khai HP decay, deathAPR, area, duplicate source, event order, Ranger20%,
+GrandBattery và chỉ số Soldier. Xem design/sync/review-2026-11-03.md.
+Runtime đã xuất với workbook sửa đúng; plan/check hiện READY/SYNC CURRENT.
 
 Ánh xạ số v1 giới hạn ở6 class đã có và requested_9v9. Soldier Accuracy100/Evasion0,
 Healer Leonardo SP+7 và các build/user corrections cũ vẫn được ghi rõ trong template.

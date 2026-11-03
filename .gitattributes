@@ -1,2 +1,3 @@
 # Content-addressed runtime JSON must have identical bytes on Windows/Linux.
 data/runtime/**/*.json text eol=lf
+design/sync/evidence/*.txt text eol=lf

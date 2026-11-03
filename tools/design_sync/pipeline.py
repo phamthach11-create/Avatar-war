@@ -59,7 +59,9 @@ def extract(path):
                     cells[cell.coordinate] = {'source': raw, 'value': cached}
         sheets[sheet.title] = cells
     formulas.close(); values.close()
-    return {'schema_version':1, 'workbook_sha256':digest_bytes(Path(path).read_bytes()), 'sheets':sheets}
+    raw = Path(path).read_bytes()
+    blob = hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+    return {'schema_version':1, 'workbook_sha256':digest_bytes(raw), 'workbook_git_blob':blob, 'sheets':sheets}
 
 def engine_hashes(root):
     return {p.relative_to(root).as_posix():digest_bytes(p.read_text(encoding='utf-8').replace('\r\n','\n').encode('utf-8'))
@@ -133,6 +135,8 @@ def build_scenario(snapshot, template):
                 raise ValueError(f'{name}: costs must be nonnegative and cooldown integral')
             # Keep other effect fields frozen until their handlers are reviewed.
     result['source_sha256'] = snapshot['workbook_sha256']
+    result['source_blob'] = snapshot.get('workbook_git_blob',result.get('source_blob'))
+    result['source_commit'] = 'workbook blob pinned below; see PR implementation commit'
     return result
 
 def run(root, workbook, publish=False, recalculated=False):

@@ -31,7 +31,7 @@ func run() -> void:
 	check(b.teams.A[7].levels['Mona Lisa']==10 and b.teams.A[7].levels['Summon Piercing Automaton']==7,"healer priority allocation")
 	check(is_equal_approx(b.teams.A[7].skills['Mona Lisa'].mp,20415*.51),"49% skill mana reduction")
 	check(is_equal_approx(b._sum(b.teams.A[1],'def_mod'),.07),"tank aura adjacent")
-	check(is_equal_approx(b._sum(b.teams.A[4],'def_mod'),0),"aura does not reach diagonal")
+	check(is_equal_approx(b._sum(b.teams.A[4],'def_mod'),.07),"Adjacent aura includes diagonal")
 	check(not b._ready_skill(b.teams.A[0],'Deadly Strike'),"Deadly locked by cooldown/health")
 	var u=ready(b,0,'Deadly Strike')
 	check(not b._ready_skill(u,'Deadly Strike'),"HP restriction retained")

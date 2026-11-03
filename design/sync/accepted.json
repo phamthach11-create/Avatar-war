@@ -17,14 +17,15 @@
   "coverage": "Only requested_9v9 builds and handlers; not all workbook mechanics",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
     "src/combat/mixed_battle.gd": "2d2c1c0aaf1409951455ca6416d0dc9c5709e5d5c37c6d30781799cd77415a23",
-    "src/combat/requested_battle.gd": "dc7fb1be8295fbb56b09a3bb8b7e46ced9bc0baacaa3e84d0c05a790cef0d97f",
+    "src/combat/requested_battle.gd": "cb0c3e18086e7045430867450cdc332328e43aecdd863b53b82bc756f4a8eb3e",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
   "implementation_source": "fda66d16924345fe42761a51d522fd93a6ccaaca",
   "schema_version": 1,
-  "snapshot": "design/sync/snapshots/37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c.json",
-  "workbook_sha256": "37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c"
+  "snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
+  "workbook_sha256": "90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38"
 }
