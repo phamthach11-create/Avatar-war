@@ -9,7 +9,7 @@ Cập nhật 2026-11-01. Đọc phần liên quan và kiểm tra revision/file t
 
 ## Đồng bộ Excel/runtime
 `tools/design_sync/` → `design/sync/` → `data/runtime/`; hướng dẫn `docs/design/excel-runtime-sync.md`.
-PR#6 đã triển khai các diff hiện tại cho requested9v9, workbook đã sửa các ô354 theo người dùng, K1000.
+Đã merge [PR#6](https://github.com/phamthach11-create/Avatar-war/pull/6) vào main (`9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`); đã triển khai diff hiện tại cho requested9v9, sửa các ô354 theo người dùng, K1000. CI unit/freshness/simulation đều qua.
 Plan/check local READY/SYNC CURRENT; nguồn và evidence trong accepted.json / implementation-receipt.json.
 Tái sử dụng engine/scenario. Node/kit mới vẫn cần kiểm tra coverage; không coi JSON là handler.
 
