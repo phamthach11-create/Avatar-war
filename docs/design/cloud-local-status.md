@@ -154,3 +154,4 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - Ban đầu359 ô đổi/335 cần review; luật HP decay/area mới và các diff khác chưa triển khai trong PR này. CI freshness và scene requested dự kiến blocked, tránh chạy nhầm snapshot. Workflow không tự commit/merge hoặc watch OneDrive.
 - Hướng dẫn và giới hạn: docs/design/excel-runtime-sync.md. Bước tiếp triển khai từng nhóm semantic diff, test, lập receipt rồi mới xuất runtime cho workbook mới.
 - Kiểm tra hạ tầng:12 unit tests qua; chạy với snapshot baseline đã xác nhận:1742 requested +8196 mixed +1150 log qua, sau đó phục hồi workbook mới đúng byte. Godot import và stale gate smoke qua; current check trả blocked đúng dự kiến. Hash source chuẩn hóa LF để Windows/Linux cùng revision.
+- PR hạ tầng: [#6](https://github.com/phamthach11-create/Avatar-war/pull/6), draft/chưa merge; CI đính kèm report diff dạng artifact để Cloud đọc phần chưa áp dụng.
