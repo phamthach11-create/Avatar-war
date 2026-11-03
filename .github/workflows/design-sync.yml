@@ -26,3 +26,11 @@ jobs:
       - run: python -m pip install -r tools/design_sync/requirements.txt
       - run: python -m tools.design_sync plan
       - run: python -m tools.design_sync check
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: design-sync-report
+          path: design/sync/pending/report.json
+          if-no-files-found: ignore
+          retention-days: 7
