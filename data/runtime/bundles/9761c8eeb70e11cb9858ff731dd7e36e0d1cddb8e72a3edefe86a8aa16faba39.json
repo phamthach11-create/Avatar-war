@@ -1,0 +1,1302 @@
+{
+  "engine_files": {
+    "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
+    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
+    "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
+    "src/combat/mixed_battle.gd": "e3049b99487d71de54220d326404d05f5f863bdce4d8cf5f3a9be5560bd7f2d7",
+    "src/combat/requested_battle.gd": "3db4f657a2466434758583d7ad1f8e652802612d1f884527e394b841a8ab3ce7",
+    "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
+    "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
+  },
+  "scenarios": {
+    "legacy_requested_9v9": {
+      "main_index": 4,
+      "max_global_turns": 300,
+      "roster": [
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 70,
+          "attack": 4353.74280230327,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 70,
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 1442.76978417266,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 0,
+          "label": "Bluetooth",
+          "levels": {
+            "Deadly Strike": 5,
+            "Frozen Axe": 5
+          },
+          "max_hp": 61234,
+          "max_mp": 29530,
+          "multi_hit_rate": 1.2,
+          "name": "Harald Bluetooth",
+          "nodes": [
+            "S1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4",
+            "S1.1.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 897.268359643102,
+          "skill_points": 10,
+          "skills": {
+            "Deadly Strike": {
+              "ap": 250,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 4,
+              "description": "Deals heavy skill damage to one Front target. Usable only while the caster’s current HP is below 50% of Max HP.",
+              "duration": 0,
+              "mp": 6530,
+              "satk": 17400,
+              "sheet_row": 34,
+              "target": "Front"
+            },
+            "Frozen Axe": {
+              "ap": 150,
+              "area": "Full Row",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Deals initial skill damage and applies Damage over Time and Immobilized to enemies in the target row for the skill duration.",
+              "duration": 3,
+              "mp": 7014,
+              "satk": 580,
+              "sheet_row": 32,
+              "target": "Front"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Destroyer"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 70,
+          "attack": 2243.09021113243,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 80,
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 2331.19424460432,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 1,
+          "label": "Jean · Support",
+          "levels": {
+            "Holy Blade": 4,
+            "Holy Guard": 5,
+            "Maiden’s Care": 5
+          },
+          "max_hp": 56724,
+          "max_mp": 40600,
+          "multi_hit_rate": 1,
+          "name": "Joan of Arc",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 1960.43925875086,
+          "skill_points": 14,
+          "skills": {
+            "Holy Blade": {
+              "ap": 100,
+              "area": "Line Adjacent",
+              "base_max_level": 5,
+              "cd": 3,
+              "description": "Deals skill damage and applies the listed Stun Count to affected enemies. ",
+              "duration": 0,
+              "mp": 8171,
+              "satk": 8270,
+              "sheet_row": 32,
+              "target": "Front"
+            },
+            "Holy Guard": {
+              "ap": 150,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 8,
+              "description": "Heals one ally using the Heal stat and applies Immunity for the skill duration. ",
+              "duration": 4,
+              "mp": 5166,
+              "satk": 3308,
+              "sheet_row": 35,
+              "target": "Any"
+            },
+            "Maiden’s Care": {
+              "ap": 0,
+              "area": "Main character",
+              "base_max_level": 5,
+              "cd": 2,
+              "description": "At the start of each allied team turn, auto-casts a heal on the main character and applies Resistance for the skill duration based on Joans's base SDEF",
+              "duration": 2,
+              "mp": 1000,
+              "satk": 3308,
+              "sheet_row": 36,
+              "target": "Main character"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Warrior"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 2647.12092130518,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 85,
+          "critical_chance": 0.2,
+          "critical_damage_bonus": 0.5,
+          "defense": 2167.19424460432,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 2,
+          "label": "Leonidas · Tank",
+          "levels": {
+            "Phalanx": 5,
+            "War Cry": 5
+          },
+          "max_hp": 53284,
+          "max_mp": 34550,
+          "multi_hit_rate": 1.2,
+          "name": "Leonidas",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 1480.43925875086,
+          "skill_points": 10,
+          "skills": {
+            "Phalanx": {
+              "ap": 0,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 0,
+              "description": "When receiving a landed melee normal hit, has the listed chance to counterattack its attacker. When receiving a ranged normal hit, has the listed chance to block it",
+              "duration": 0,
+              "mp": 0,
+              "satk": 0.2,
+              "sheet_row": 38,
+              "target": "Self"
+            },
+            "War Cry": {
+              "ap": 125,
+              "area": "Cross",
+              "base_max_level": 5,
+              "cd": 4,
+              "description": "Applies Damage over Time and Falter to enemies in the affected area for the skill duration. DOT deals double damage if the affected enemy’s Final Multi-Hit Rate equals 100%.",
+              "duration": 6,
+              "mp": 9385,
+              "satk": -0.2375,
+              "sheet_row": 32,
+              "target": "Any enemy in rows 1 or 2"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Soldier"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 4491.68942861361,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 75,
+          "critical_chance": 0.25,
+          "critical_damage_bonus": 0.5,
+          "defense": 850,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 3,
+          "label": "Napoleon 1 · Artillery",
+          "levels": {
+            "Crushing Barrage": 5,
+            "Grand Battery": 5
+          },
+          "max_hp": 40610,
+          "max_mp": 36880,
+          "multi_hit_rate": 1.45,
+          "name": "Napoleon",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 850,
+          "skill_points": 10,
+          "skills": {
+            "Crushing Barrage": {
+              "ap": 200,
+              "area": "All enemies",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Sunder, reducing Defense Modifier by the listed rate, and Damage over Time using DOT SATK to all enemies for the skill duration.",
+              "duration": 6,
+              "mp": 16325,
+              "satk": -0.58,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Grand Battery": {
+              "ap": 0,
+              "area": "All eligible allies",
+              "base_max_level": 5,
+              "cd": 2,
+              "description": "At the start of each team turn, Auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates.",
+              "duration": 1,
+              "mp": 1000,
+              "satk": 0.1,
+              "sheet_row": 34,
+              "target": "Self and allied Devastators"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Devastator"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 2647.12092130518,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 85,
+          "critical_chance": 0.2,
+          "critical_damage_bonus": 0.5,
+          "defense": 2167.19424460432,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 4,
+          "label": "Leonidas · MAIN",
+          "levels": {
+            "God-King Slayer": 5,
+            "War Cry": 5
+          },
+          "max_hp": 53284,
+          "max_mp": 34550,
+          "multi_hit_rate": 1.2,
+          "name": "Leonidas",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 1480.43925875086,
+          "skill_points": 10,
+          "skills": {
+            "God-King Slayer": {
+              "ap": 100,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 5,
+              "description": "Hurls a Spartan spear that deals skill damage. Can critically strike using this skill’s Critical Hit Chance and Leonidas’s Final Critical Damage Bonus. Gains +50% SATK Effectiveness against enemy main characters.",
+              "duration": 0,
+              "mp": 7219,
+              "satk": 8270,
+              "sheet_row": 35,
+              "target": "Any enemy in rows 1 or 2"
+            },
+            "War Cry": {
+              "ap": 125,
+              "area": "Cross",
+              "base_max_level": 5,
+              "cd": 4,
+              "description": "Applies Damage over Time and Falter to enemies in the affected area for the skill duration. DOT deals double damage if the affected enemy’s Final Multi-Hit Rate equals 100%.",
+              "duration": 6,
+              "mp": 9385,
+              "satk": -0.2375,
+              "sheet_row": 32,
+              "target": "Any enemy in rows 1 or 2"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Soldier"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 90,
+          "attack": 3214.7792706334,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 90,
+          "critical_chance": 0.4,
+          "critical_damage_bonus": 0.5,
+          "defense": 905,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 5,
+          "label": "Leonardo 1 · Inventor",
+          "levels": {
+            "Summon Bombard Automaton": 5,
+            "Summon Piercing Automaton": 5
+          },
+          "max_hp": 42034,
+          "max_mp": 41000,
+          "multi_hit_rate": 1.65,
+          "name": "Leonardo Da Vinci",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0.35,
+          "skill_defense": 890,
+          "skill_points": 10,
+          "skills": {
+            "Summon Bombard Automaton": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 10,
+              "cd": 0,
+              "description": "Summons one Bombard Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Devastator weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Bombard Automaton.",
+              "duration": 0,
+              "mp": 9150,
+              "satk": 1,
+              "sheet_row": 38,
+              "target": "Self"
+            },
+            "Summon Piercing Automaton": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 10,
+              "cd": 0,
+              "description": "Summons one Piercing Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Piercer weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Piercing Automaton.",
+              "duration": 0,
+              "mp": 5894,
+              "satk": 1,
+              "sheet_row": 32,
+              "target": "Self"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Piercer"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 4491.68942861361,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 75,
+          "critical_chance": 0.25,
+          "critical_damage_bonus": 0.5,
+          "defense": 850,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 6,
+          "label": "Napoleon 2 · Emperor",
+          "levels": {
+            "Crushing Barrage": 5,
+            "Imperial Decree": 5
+          },
+          "max_hp": 40610,
+          "max_mp": 36880,
+          "multi_hit_rate": 1.45,
+          "name": "Napoleon",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 850,
+          "skill_points": 10,
+          "skills": {
+            "Crushing Barrage": {
+              "ap": 200,
+              "area": "All enemies",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Sunder, reducing Defense Modifier by the listed rate, and Damage over Time using DOT SATK to all enemies for the skill duration.",
+              "duration": 6,
+              "mp": 16325,
+              "satk": -0.58,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Imperial Decree": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Imperial Decree to one allied Devastator for the skill duration. When that ally performs a normal attack, Napoleon has the listed chance to perform a Coordinated Attack after it resolves.",
+              "duration": 12,
+              "mp": 3652,
+              "satk": 0.65,
+              "sheet_row": 37,
+              "target": "Allied Devastator"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Devastator"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 90,
+          "attack": 3214.7792706334,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 90,
+          "critical_chance": 0.4,
+          "critical_damage_bonus": 0.5,
+          "defense": 905,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 7,
+          "label": "Leonardo 2 · Healer",
+          "levels": {
+            "Mona Lisa": 10,
+            "Summon Piercing Automaton": 7
+          },
+          "max_hp": 42034,
+          "max_mp": 41000,
+          "multi_hit_rate": 1.65,
+          "name": "Leonardo Da Vinci",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.3.1"
+          ],
+          "penetration_chance": 0.35,
+          "skill_defense": 890,
+          "skill_points": 17,
+          "skills": {
+            "Mona Lisa": {
+              "ap": 150,
+              "area": "All Allies",
+              "base_max_level": 10,
+              "cd": 6,
+              "description": "Inspire teamates with a masterpiece. Heals all allies using the Heal stat and removes the listed number of oldest negative statuses from each.",
+              "duration": 0,
+              "mp": 20415,
+              "satk": 4135,
+              "sheet_row": 36,
+              "target": "Any"
+            },
+            "Summon Piercing Automaton": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 10,
+              "cd": 0,
+              "description": "Summons one Piercing Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Piercer weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Piercing Automaton.",
+              "duration": 0,
+              "mp": 5894,
+              "satk": 1,
+              "sheet_row": 32,
+              "target": "Self"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Piercer"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": true
+          },
+          "ap_recovery": 100,
+          "attack": 2512.18809980806,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 100,
+          "critical_chance": 0.6,
+          "critical_damage_bonus": 1.5,
+          "defense": 740,
+          "evasion": 0.1,
+          "healing_amp": 0,
+          "index": 8,
+          "label": "Robin Hood · Normal attacks",
+          "levels": {
+            "Golden Arrow Shot": 5,
+            "Man Under the Hood": 5
+          },
+          "max_hp": 41734,
+          "max_mp": 34230,
+          "multi_hit_rate": 1.9,
+          "name": "Robin Hood",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.1.2",
+            "S1.1.3",
+            "S1.1.4",
+            "S1.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 740,
+          "skill_points": 10,
+          "skills": {
+            "Golden Arrow Shot": {
+              "ap": 100,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 1,
+              "description": "Fires an unavoidable arrow that deals skill damage using this skill's SATK.",
+              "duration": 0,
+              "mp": 5474,
+              "satk": 8270,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Man Under the Hood": {
+              "ap": 75,
+              "area": "Self",
+              "base_max_level": 5,
+              "cd": 10,
+              "description": "Applies Invisible and Precision to Robin Hood for the skill duration. Precision adds the listed percentage points to Base Critical Hit Chance. Immediately grants another action slot.",
+              "duration": 6,
+              "mp": 5072,
+              "satk": 0.1,
+              "sheet_row": 33,
+              "target": "Self"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Ranger"
+        }
+      ],
+      "scenario_id": "requested-2026-10-31",
+      "source_blob": "4997041eb765df38533f4f7ca5f372c5f9a1bfe0",
+      "source_commit": "workbook blob pinned below; see PR implementation commit",
+      "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
+      "user_clarifications": [
+        "Mirrored teams; main Leonidas slot5",
+        "At most one active Automaton of each type per team",
+        "Automata have no targetable HP and no roster slot; expire when their summoner dies",
+        "Automaton inherits only Base Attack through skill rate; base MHR/Accuracy=1, CHC/PEN/CDB=0; passive upgrades apply",
+        "Grand Battery auto-casts at allied turn start",
+        "Leonidas Accuracy100/Evasion0 retained",
+        "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
+        "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
+      ]
+    },
+    "requested_9v9": {
+      "main_index": 7,
+      "max_global_turns": 300,
+      "roster": [
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 70,
+          "attack": 4353.74280230327,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 70,
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 1442.76978417266,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 0,
+          "label": "Bluetooth",
+          "levels": {
+            "Deadly Strike": 5,
+            "Frozen Axe": 5
+          },
+          "max_hp": 61234,
+          "max_mp": 29530,
+          "multi_hit_rate": 1.2,
+          "name": "Harald Bluetooth",
+          "nodes": [
+            "S1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4",
+            "S1.1.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 897.268359643102,
+          "skill_points": 10,
+          "skills": {
+            "Deadly Strike": {
+              "ap": 250,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 4,
+              "description": "Deals heavy skill damage to one Front target. Usable only while the caster’s current HP is below 50% of Max HP.",
+              "duration": 0,
+              "mp": 6530,
+              "satk": 17400,
+              "sheet_row": 34,
+              "target": "Front"
+            },
+            "Frozen Axe": {
+              "ap": 150,
+              "area": "Full Row",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Deals initial skill damage and applies Damage over Time and Immobilized to enemies in the target row for the skill duration.",
+              "duration": 3,
+              "mp": 7014,
+              "satk": 580,
+              "sheet_row": 32,
+              "target": "Front"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Destroyer"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 70,
+          "attack": 2243.09021113243,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 80,
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 2331.19424460432,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 1,
+          "label": "Jean · Support",
+          "levels": {
+            "Holy Blade": 4,
+            "Holy Guard": 5,
+            "Maiden’s Care": 5
+          },
+          "max_hp": 56724,
+          "max_mp": 40600,
+          "multi_hit_rate": 1,
+          "name": "Joan of Arc",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 1960.43925875086,
+          "skill_points": 14,
+          "skills": {
+            "Holy Blade": {
+              "ap": 100,
+              "area": "Line Adjacent",
+              "base_max_level": 5,
+              "cd": 3,
+              "description": "Deals skill damage and applies the listed Stun Count to affected enemies. ",
+              "duration": 0,
+              "mp": 8171,
+              "satk": 8270,
+              "sheet_row": 32,
+              "target": "Front"
+            },
+            "Holy Guard": {
+              "ap": 150,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 8,
+              "description": "Heals one ally using the Heal stat and applies Immunity for the skill duration. ",
+              "duration": 4,
+              "mp": 5166,
+              "satk": 3308,
+              "sheet_row": 35,
+              "target": "Any"
+            },
+            "Maiden’s Care": {
+              "ap": 0,
+              "area": "Main character",
+              "base_max_level": 5,
+              "cd": 2,
+              "description": "At the start of each allied team turn, auto-casts a heal on the main character and applies Resistance for the skill duration based on Joans's base SDEF",
+              "duration": 2,
+              "mp": 1000,
+              "satk": 3308,
+              "sheet_row": 36,
+              "target": "Main character"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Warrior"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 2647.12092130518,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 85,
+          "critical_chance": 0.2,
+          "critical_damage_bonus": 0.5,
+          "defense": 2167.19424460432,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 2,
+          "label": "Leonidas · Tank",
+          "levels": {
+            "Phalanx": 5,
+            "War Cry": 5
+          },
+          "max_hp": 53284,
+          "max_mp": 34550,
+          "multi_hit_rate": 1.2,
+          "name": "Leonidas",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 1480.43925875086,
+          "skill_points": 10,
+          "skills": {
+            "Phalanx": {
+              "ap": 0,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 0,
+              "description": "When receiving a landed melee normal hit, has the listed chance to counterattack its attacker. When receiving a ranged normal hit, has the listed chance to block it",
+              "duration": 0,
+              "mp": 0,
+              "satk": 0.2,
+              "sheet_row": 38,
+              "target": "Self"
+            },
+            "War Cry": {
+              "ap": 125,
+              "area": "Cross",
+              "base_max_level": 5,
+              "cd": 4,
+              "description": "Applies Damage over Time and Falter to enemies in the affected area for the skill duration. DOT deals double damage if the affected enemy’s Final Multi-Hit Rate equals 100%.",
+              "duration": 6,
+              "mp": 9385,
+              "satk": -0.2375,
+              "sheet_row": 32,
+              "target": "Any enemy in rows 1 or 2"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Soldier"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 4491.68942861361,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 75,
+          "critical_chance": 0.25,
+          "critical_damage_bonus": 0.5,
+          "defense": 850,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 3,
+          "label": "Napoleon 1 · Artillery",
+          "levels": {
+            "Crushing Barrage": 5,
+            "Grand Battery": 5
+          },
+          "max_hp": 40610,
+          "max_mp": 36880,
+          "multi_hit_rate": 1.45,
+          "name": "Napoleon",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.2.1",
+            "S1.2.2",
+            "S1.2.3",
+            "S1.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 850,
+          "skill_points": 10,
+          "skills": {
+            "Crushing Barrage": {
+              "ap": 200,
+              "area": "All enemies",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Sunder, reducing Defense Modifier by the listed rate, and Damage over Time using DOT SATK to all enemies for the skill duration.",
+              "duration": 6,
+              "mp": 16325,
+              "satk": -0.58,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Grand Battery": {
+              "ap": 0,
+              "area": "All eligible allies",
+              "base_max_level": 5,
+              "cd": 2,
+              "description": "At the start of each team turn, Auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates.",
+              "duration": 1,
+              "mp": 1000,
+              "satk": 0.1,
+              "sheet_row": 34,
+              "target": "Self and allied Devastators"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Devastator"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.8,
+            "prefer_normal": false
+          },
+          "ap_recovery": 95,
+          "attack": 1409.17466410749,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 95,
+          "character_id": "morgan_le_fay",
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 689,
+          "design_binding": {
+            "equipment_start": 44,
+            "name_cell": "B43",
+            "nodes": {
+              "S2": "D81",
+              "S2.1.1": "E81",
+              "S2.2.1": "E82",
+              "S2.2.2": "F82",
+              "S2.2.3": "G82",
+              "S2.2.4": "H82"
+            },
+            "sheet": "Caster class",
+            "stat_start": 50
+          },
+          "evasion": 0,
+          "healing_amp": 0.15,
+          "index": 4,
+          "label": "Morgan le Fay · Enchantress",
+          "levels": {
+            "Fae Starfall": 6,
+            "Malediction": 6
+          },
+          "max_hp": 39800,
+          "max_mp": 95600,
+          "multi_hit_rate": 1.1,
+          "name": "Morgan le Fay",
+          "node_descriptions": {
+            "S2": "Unlock Malediction",
+            "S2.1.1": " Base AP Recovery +8",
+            "S2.2.1": "Base HP +5847",
+            "S2.2.2": "Malediction: Stat Effectiveness +13%.",
+            "S2.2.3": " Fae Starfall: SATK Effectiveness +13%",
+            "S2.2.4": "Fae Starfall: Cooldown −2."
+          },
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.2.1",
+            "S2.2.2",
+            "S2.2.3",
+            "S2.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 2019.83870967742,
+          "skill_points": 12,
+          "skills": {
+            "Fae Starfall": {
+              "ap": 300,
+              "area": "All enemies",
+              "base_max_level": 6,
+              "cd": 10,
+              "description": "Calls down stars infused with fae magic, dealing skill damage to all enemies using this skill’s SATK.",
+              "duration": 0,
+              "mp": 12382.84,
+              "passive": false,
+              "satk": 16540,
+              "sheet_row": 73,
+              "target": "Any"
+            },
+            "Malediction": {
+              "ap": 150,
+              "area": "Full Row",
+              "base_max_level": 6,
+              "cd": 8,
+              "description": "Curses enemies in the selected row, applying Damage over Time, Silence, and Intimidated for the skill duration. DOT uses this skill’s DOT SATK. Intimidated reduces Attack Modifier by the listed rate.",
+              "duration": 4,
+              "mp": 8766.13,
+              "passive": false,
+              "satk": 2067.5,
+              "sheet_row": 76,
+              "target": "Any enemy in the front or middle row"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Caster"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 90,
+          "attack": 3214.7792706334,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 90,
+          "critical_chance": 0.4,
+          "critical_damage_bonus": 0.5,
+          "defense": 905,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 5,
+          "label": "Leonardo 1 · Inventor",
+          "levels": {
+            "Summon Bombard Automaton": 5,
+            "Summon Piercing Automaton": 5
+          },
+          "max_hp": 42034,
+          "max_mp": 41000,
+          "multi_hit_rate": 1.65,
+          "name": "Leonardo Da Vinci",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0.35,
+          "skill_defense": 890,
+          "skill_points": 10,
+          "skills": {
+            "Summon Bombard Automaton": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 10,
+              "cd": 0,
+              "description": "Summons one Bombard Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Devastator weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Bombard Automaton.",
+              "duration": 0,
+              "mp": 9150,
+              "satk": 1,
+              "sheet_row": 38,
+              "target": "Self"
+            },
+            "Summon Piercing Automaton": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 10,
+              "cd": 0,
+              "description": "Summons one Piercing Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Piercer weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Piercing Automaton.",
+              "duration": 0,
+              "mp": 5894,
+              "satk": 1,
+              "sheet_row": 32,
+              "target": "Self"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Piercer"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": false
+          },
+          "ap_recovery": 75,
+          "attack": 4491.68942861361,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 75,
+          "critical_chance": 0.25,
+          "critical_damage_bonus": 0.5,
+          "defense": 850,
+          "evasion": 0,
+          "healing_amp": 0,
+          "index": 6,
+          "label": "Napoleon 2 · Emperor",
+          "levels": {
+            "Crushing Barrage": 5,
+            "Imperial Decree": 5
+          },
+          "max_hp": 40610,
+          "max_mp": 36880,
+          "multi_hit_rate": 1.45,
+          "name": "Napoleon",
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.1.2",
+            "S2.1.3",
+            "S2.1.4",
+            "S2.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 850,
+          "skill_points": 10,
+          "skills": {
+            "Crushing Barrage": {
+              "ap": 200,
+              "area": "All enemies",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Sunder, reducing Defense Modifier by the listed rate, and Damage over Time using DOT SATK to all enemies for the skill duration.",
+              "duration": 6,
+              "mp": 16325,
+              "satk": -0.58,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Imperial Decree": {
+              "ap": 200,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 6,
+              "description": "Applies Imperial Decree to one allied Devastator for the skill duration. When that ally performs a normal attack, Napoleon has the listed chance to perform a Coordinated Attack after it resolves.",
+              "duration": 12,
+              "mp": 3652,
+              "satk": 0.65,
+              "sheet_row": 37,
+              "target": "Allied Devastator"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Devastator"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.8,
+            "prefer_normal": false
+          },
+          "ap_recovery": 95,
+          "attack": 1271.93857965451,
+          "attack_stun_count": 1,
+          "character_ap_recovery": 95,
+          "character_id": "nightingale",
+          "critical_chance": 0,
+          "critical_damage_bonus": 0,
+          "defense": 710,
+          "design_binding": {
+            "equipment_start": 3,
+            "name_cell": "B2",
+            "nodes": {
+              "S2": "D39",
+              "S2.1.1": "E39",
+              "S2.2.1": "E40",
+              "S2.2.2": "F40",
+              "S2.2.3": "G40",
+              "S2.2.4": "H40"
+            },
+            "sheet": "Caster class",
+            "stat_start": 9
+          },
+          "evasion": 0,
+          "healing_amp": 0.25,
+          "index": 7,
+          "label": "Nightingale · Matron",
+          "levels": {
+            "Back to Duty": 6,
+            "Healing Hands": 6
+          },
+          "max_hp": 38684,
+          "max_mp": 89600,
+          "multi_hit_rate": 1.1,
+          "name": "Florence Nightingale",
+          "node_descriptions": {
+            "S2": "Unlocks Back to Duty",
+            "S2.1.1": "Base HP + 4000",
+            "S2.2.1": "Base SDEF + 275",
+            "S2.2.2": "Base HP + 1500",
+            "S2.2.3": "S2.2.3\n Required to unlock the next passive",
+            "S2.2.4": " Changes Back to Duty’s area of effect to Cross."
+          },
+          "nodes": [
+            "S2",
+            "S2.1.1",
+            "S2.2.1",
+            "S2.2.2",
+            "S2.2.3",
+            "S2.2.4"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 2066.83870967742,
+          "skill_points": 12,
+          "skills": {
+            "Back to Duty": {
+              "ap": 150,
+              "area": "Full Row",
+              "base_max_level": 10,
+              "cd": 4,
+              "description": "Heals allies in the selected row using this skill’s Heal stat and applies Haste for the skill duration. Haste increases AP Recovery Modifier by the listed rate.",
+              "duration": 8,
+              "mp": 6158.37,
+              "passive": false,
+              "satk": 1033.75,
+              "sheet_row": 34,
+              "target": "Any"
+            },
+            "Healing Hands": {
+              "ap": 125,
+              "area": "Full Row",
+              "base_max_level": 10,
+              "cd": 5,
+              "description": "Heals allies in the selected row using this skill’s Heal stat.",
+              "duration": 0,
+              "mp": 10657.47,
+              "passive": false,
+              "satk": 12405,
+              "sheet_row": 32,
+              "target": "Any"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Caster"
+        },
+        {
+          "accuracy": 1,
+          "ai": {
+            "heal_hp_ratio": 0.65,
+            "prefer_normal": true
+          },
+          "ap_recovery": 100,
+          "attack": 2512.18809980806,
+          "attack_stun_count": 0,
+          "character_ap_recovery": 100,
+          "critical_chance": 0.6,
+          "critical_damage_bonus": 1.5,
+          "defense": 740,
+          "evasion": 0.1,
+          "healing_amp": 0,
+          "index": 8,
+          "label": "Robin Hood · Normal attacks",
+          "levels": {
+            "Golden Arrow Shot": 5,
+            "Man Under the Hood": 5
+          },
+          "max_hp": 41734,
+          "max_mp": 34230,
+          "multi_hit_rate": 1.9,
+          "name": "Robin Hood",
+          "nodes": [
+            "S1",
+            "S1.1.1",
+            "S1.1.2",
+            "S1.1.3",
+            "S1.1.4",
+            "S1.2.1"
+          ],
+          "penetration_chance": 0,
+          "skill_defense": 740,
+          "skill_points": 10,
+          "skills": {
+            "Golden Arrow Shot": {
+              "ap": 100,
+              "area": "Single",
+              "base_max_level": 5,
+              "cd": 1,
+              "description": "Fires an unavoidable arrow that deals skill damage using this skill's SATK.",
+              "duration": 0,
+              "mp": 5474,
+              "satk": 8270,
+              "sheet_row": 32,
+              "target": "Any"
+            },
+            "Man Under the Hood": {
+              "ap": 75,
+              "area": "Self",
+              "base_max_level": 5,
+              "cd": 10,
+              "description": "Applies Invisible and Precision to Robin Hood for the skill duration. Precision adds the listed percentage points to Base Critical Hit Chance. Immediately grants another action slot.",
+              "duration": 6,
+              "mp": 5072,
+              "satk": 0.1,
+              "sheet_row": 33,
+              "target": "Self"
+            }
+          },
+          "stun_threshold": 4,
+          "type": "Ranger"
+        }
+      ],
+      "scenario_id": "nightingale-morgan-2026-11-04",
+      "source_blob": "4997041eb765df38533f4f7ca5f372c5f9a1bfe0",
+      "source_commit": "workbook blob pinned below; see PR implementation commit",
+      "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
+      "user_clarifications": [
+        "At most one active Automaton of each type per team",
+        "Automata have no targetable HP and no roster slot; expire when their summoner dies",
+        "Automaton inherits only Base Attack through skill rate; base MHR/Accuracy=1, CHC/PEN/CDB=0; passive upgrades apply",
+        "Grand Battery auto-casts at allied turn start",
+        "Leonidas Accuracy100/Evasion0 retained",
+        "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
+        "Caster build source coordinates recorded in design/characters/caster-bindings.json; Matron prerequisite S2.2.3 grants no stat.",
+        "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6."
+      ]
+    }
+  },
+  "schema_version": 1,
+  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f"
+}

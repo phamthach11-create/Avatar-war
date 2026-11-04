@@ -181,3 +181,11 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 Supersedes the initial Morgan Witch main proposal. Nightingale MAIN slot8; Morgan slot5 S2 + S2.1.1 + S2.2.1-4, Starfall6/Malediction6 confirmed. Both12SP; all other seven slots unchanged. See nightingale-morgan-9v9-2026-11-04.md for source hash, mechanics and verification. Separate demo branch; not merged.
 
 Published: PR https://github.com/phamthach11-create/Avatar-war/pull/7, implementation commit9b4039a11d695e2542736f0b6aadcfb89aea2e68. Open, not merged. Local demo reopened with Nightingale main and Morgan Enchantress; final4915 Caster checks,1324 requested,8196 mixed,1150 log,453 rules,13 importer tests and UI QA passed.
+
+## 2026-11-04 — Weapon AoE presentation fix (PR7 follow-up)
+
+All weapon classes audited: Destroyer Row Adjacent, Soldier Line Adjacent, Piercer Full Line, Devastator Cross; Warrior/Ranger/Caster remain Single. Both Automaton weapon types included. This does not expand Destroyer to Full Row: retains the exact current weapon area.
+
+Normal weapon records carry unique hit presentation ids. UI folds all recipients of each hit into one swing/projectile and simultaneous hit effects/HP refresh. Multi-hit remains distinct; reactions follow the initiating impact in original relative reaction order. Snapshot deltas rebase intermediate presentation state so counter damage is neither premature nor rolled back. Raw combat order, RNG, damage, AP, targeting and exported raw logs remain unchanged. Source event counts retained for export/readiness. Restarts cancel pending impact timers.
+
+349 playback checks passed across all7 classes, both Automata, multi-hit, forced counter between AoE recipients and two complete matches.4915 Caster,1324 requested,453 rules and real-timer UI/cancellation tests pass. Existing six Caster match results unchanged. Runtime receipt/bundle refreshed for metadata-only combat hash. Pending PR7; not merged.

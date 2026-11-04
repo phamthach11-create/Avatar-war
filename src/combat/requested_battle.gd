@@ -1,5 +1,6 @@
 extends "res://src/combat/mixed_battle.gd"
 var _status_source := ""
+var _weapon_presentation_sequence := 0
 
 ## Requested 2026-10-31 scenario. Reuses the existing battle state/timeline/UI contract.
 
@@ -180,6 +181,8 @@ func _normal(u: Dictionary, primary: int, counter: bool = false, coordinated: bo
 	var shape: String = {"Destroyer":"Row Adjacent","Soldier":"Line Adjacent","Piercer":"Full Line","Devastator":"Cross"}.get(str(u.type),"Single")
 	if counter and u.type in ["Warrior","Destroyer","Soldier"]: shape = "Single"
 	var targets := _area(primary,shape)
+	_weapon_presentation_sequence += 1
+	var presentation_sequence := _weapon_presentation_sequence
 	var rate: float = maxf(1.0,(u.multi_hit_rate+_sum(u,"mhr_flat"))*(1+u.mhr_mod+_sum(u,"mhr_mod")))
 	var count := 1 if counter else int(floor(rate))+int(_roll(rate-floor(rate)))
 	for hit_index in range(count):
@@ -192,6 +195,7 @@ func _normal(u: Dictionary, primary: int, counter: bool = false, coordinated: bo
 			var power: float = u.attack*(1+u.attack_mod+_sum(u,"attack_mod"))*u.attack_effectiveness
 			var hit := _damage(u,v,power,true,penalty,-1,counter)
 			_record(u,"Counterattack" if counter else ("Coordinated attack" if coordinated else "Normal attack · hit %d" % (hit_index+1)),primary,_enemy(u.side),[hit],"attack")
+			timeline[-1]["weapon_hit_id"] = "%d:%d" % [presentation_sequence,hit_index]
 			# Resolve this recipient's hit effects before advancing to the next recipient/hit.
 			if u.type == "Ranger" and hit.landed and u.nodes.has("S1.1.4") and _ready_skill(u,"Golden Arrow Shot") and _roll(0.20):
 				if not finished and _unit(_enemy(u.side),primary).hp>0: _cast(u,"Golden Arrow Shot",primary,true)

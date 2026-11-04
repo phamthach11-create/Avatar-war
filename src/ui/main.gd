@@ -281,7 +281,7 @@ func _advance() -> void:
 	_display_teams = event["turn_start_state"].duplicate(true)
 	_busy = true
 	var ticket := _playback_id
-	for action in event["actions"]:
+	for action in preload("res://src/ui/weapon_playback.gd").group(event["actions"],event["turn_start_state"]):
 		var team: String = action.team
 		_acting_team = team
 		_acting_index = action.actor
@@ -320,13 +320,13 @@ func _advance() -> void:
 				view.animate_heal(-impact.damage)
 			elif impact.damage > 0:
 				view.animate_hit(impact.damage, action.kind != "attack")
-				if _sound_enabled and impact.damage > 0:
-					_hit_audio.play()
+
 			if not impact.landed:
 				misses += 1
 			total += impact.damage
+		if _sound_enabled and total > 0: _hit_audio.play()
 		_display_teams = action.state_after.duplicate(true)
-		_presented_actions += 1
+		_presented_actions += int(action.get("source_action_count",1))
 		_log.append_text("T%d | %s%d %s | %s | %d target(s) | HP change %.0f\n" % [event.turn,team,action.actor+1,_display_teams[team][action.actor].name,action.name + (" · MISS %d" % misses if misses > 0 else ""),action.impacts.size(),-total])
 		_refresh()
 		if animation_speed > 0:
