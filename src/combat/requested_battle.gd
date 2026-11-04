@@ -18,13 +18,13 @@ func _apply_build(u: Dictionary) -> void:
 			preload("res://src/combat/caster_kit.gd").apply_build(u)
 			if not skill_mode: u.max_mp = u.mp_without_veil
 		"Destroyer":
-			if n.has("S1.1.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
-			if n.has("S1.2.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
+			if n.has("S1.1.1"): u.ap_recovery += 8
+			if n.has("S1.2.1"): u.ap_recovery += 8
 			if n.has("S1.2.2"): u.sub_penalty -= 0.30
 			if n.has("S1.2.3"): u.critical_chance += 0.23
 			if n.has("S1.2.4"): u.multi_hit_rate += 0.17; u.critical_chance += 0.17; u.critical_damage_bonus += 0.58
 		"Warrior":
-			if n.has("S1.1.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
+			if n.has("S1.1.1"): u.ap_recovery += 8
 			if n.has("S1.2.1"): u.max_hp += 4000
 			if n.has("S1.2.2"): u.sdef_mod += 0.27
 			if n.has("S1.2.3"): u.max_mp += 20000
@@ -37,7 +37,7 @@ func _apply_build(u: Dictionary) -> void:
 			if n.has("S2.1.3"): u.stun_threshold += 2
 		"Devastator":
 			for node in ["S1.1.1","S1.2.1","S2.2.1"]:
-				if n.has(node): u.ap_recovery += 8; u.character_ap_recovery += 8
+				if n.has(node): u.ap_recovery += 8
 			if n.has("S1.2.2"): u.max_hp += 4000
 			if n.has("S2.1.2"): u.attack_mod += 0.20
 			if n.has("S2.1.3"): u.skills["Imperial Decree"].ap -= 80
@@ -79,10 +79,12 @@ func _area(primary: int, shape: String) -> Array[int]:
 
 func _effect(u: Dictionary, tag: String, duration: int, data: Dictionary, caster: Dictionary) -> void:
 	if u.hp <= 0 or duration <= 0: return
+	if data.get("negative",false) and (_has(u,"immunity") or _has(u,"invincible")): return
 	var source_id := _status_source if not _status_source.is_empty() else tag
 	for old in u.statuses:
 		if old.tag == tag and old.get("source_id",old.tag) == source_id and int(old.expires) > global_turn:
-			return # No refresh/replacement even from a different caster of the same source.
+			old.expires = global_turn + duration
+			return # Refresh duration only; preserve magnitude, caster and application order.
 	var effect := data.duplicate(true)
 	effect.merge({"tag":tag,"source_id":source_id,"expires":global_turn+duration,
 		"creator_side":caster.side,"creator":caster.index,"applied":global_turn},true)
@@ -96,7 +98,6 @@ func _death_event(v: Dictionary) -> void:
 	for ally in teams[v.side]:
 		if ally.hp > 0:
 			ally.ap_recovery += 5.0
-			ally.character_ap_recovery += 5.0
 	_check_end()
 
 func _hp_decay(side: String) -> void:
@@ -276,18 +277,30 @@ func _cast_impl(u: Dictionary, name: String, primary: int, automatic: bool = fal
 	_record(u,name,primary,side,impacts)
 
 func _passives(side: String) -> void:
-	# Independent auto-casts: acting team first, then opposing team, slot order.
+	# One ordered queue per owner: acting team first, then slot, then design-sheet order.
+	# Summons remain independent of their owner's Stun, but disappear with the owner.
 	for owner in [side,_enemy(side)]:
-		for caster in teams[owner]:
+		for u in teams[owner]:
 			if finished: return
-			if owner == side and _ready_skill(caster,"Maiden’s Care"): _cast(caster,"Maiden’s Care",scenario.main_index,true)
-			if not finished and _ready_skill(caster,"Grand Battery"): _cast(caster,"Grand Battery",caster.index,true)
-	for u in teams[side]:
-		if u.hp<=0: u.automata.clear(); continue
-		for machine in u.automata.duplicate():
-			if finished: return
-			var targets := _targets(_enemy(side),machine.type=="Piercer")
-			if not targets.is_empty(): _normal(machine,_choose(targets,_enemy(side)),false,true)
+			if u.hp <= 0: u.automata.clear(); continue
+			var events: Array[Dictionary] = []
+			if owner == side:
+				for name in ["Maiden’s Care","Grand Battery"]:
+					if u.skills.has(name): events.append({"row":u.skills[name].sheet_row,"skill":name})
+				for machine in u.automata:
+					events.append({"row":u.skills[machine.summon_skill].sheet_row,"machine":machine})
+			events.sort_custom(func(a: Dictionary,b: Dictionary) -> bool: return a.row < b.row)
+			for event in events:
+				if finished: return
+				if u.hp <= 0: break
+				if event.has("skill"):
+					var name: String = event.skill
+					if _ready_skill(u,name): _cast(u,name,scenario.main_index if name == "Maiden’s Care" else u.index,true)
+				else:
+					var machine: Dictionary = event.machine
+					if machine not in u.automata: continue
+					var targets := _normal_targets(machine)
+					if not targets.is_empty(): _normal(machine,_choose(targets,_enemy(side)),false,true)
 
 func _heal_target(side: String) -> int:
 	var best := -1

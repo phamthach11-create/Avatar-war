@@ -15,7 +15,7 @@ static func apply_build(u: Dictionary) -> void:
 		"morgan_le_fay":
 			for node in n: assert(node in ["S2","S2.1.1","S2.2.1","S2.2.2","S2.2.3","S2.2.4"],"Unimplemented Morgan node")
 			for name in u.levels: assert(name in ["Fae Starfall","Malediction"],"Unimplemented Morgan skill")
-			if n.has("S2.1.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
+			if n.has("S2.1.1"): u.ap_recovery += 8
 			if n.has("S2.2.1"): u.max_hp += 5847
 			if n.has("S2.2.2"): u.skills["Malediction"]["effectiveness"] = 1.13
 			if n.has("S2.2.3"): u.skills["Fae Starfall"]["effectiveness"] = 1.13

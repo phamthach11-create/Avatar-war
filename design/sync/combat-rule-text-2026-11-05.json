@@ -1,0 +1,62 @@
+[
+  {
+    "sheet": "Devastator class",
+    "cell": "E34",
+    "before": "At the start of each team turn, Auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates.",
+    "after": "At the start of each allied team turn, auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates."
+  },
+  {
+    "sheet": "status",
+    "cell": "F23",
+    "before": "Prevents receiving action slots and performing voluntary actions, including normal attacks, active skills, defending, and position swaps. Sets Base Character AP Recovery to 0, cant use passive",
+    "after": "Prevents receiving action slots and performing voluntary actions, including normal attacks, active skills, defending, and position swaps. Sets only Base Character AP Recovery to 0. AP Recovery contributions from items, intrinsic specialization bonuses, statuses, and allied deaths remain and follow the normal stat pipeline. Disables passive skills, including Auto-Cast and reactive skills; intrinsic specialization stat bonuses remain active."
+  },
+  {
+    "sheet": "status",
+    "cell": "C48",
+    "before": "Only applicable active contributions participate in stat calculation. Remove a contribution when its effect ends and recalculate affected stats. Follow the source’s stacking and refresh rules; recalculation does not create additional stacks.",
+    "after": "Only active contributions participate in stat calculation. Remove a contribution when its effect ends and recalculate affected stats. Reapplying the same status from the same skill or passive node resets its duration without adding a stack; retain the existing magnitude and caster reference. Follow explicit source exceptions. Recalculation does not create additional stacks."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C160",
+    "before": "Resolve revival, passive and Auto-Cast effects, AP recovery, then initial action-slot assignment, in that order.",
+    "after": "Resolve revival, then HP Decay when applicable, then all start-of-turn effects (including passive skills, Auto-Cast, and summoned-unit actions), then AP recovery and initial action-slot assignment. Use the simultaneous-event order within each phase; stop immediately if the battle ends."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C162",
+    "before": "Follow any explicitly defined priority first. Otherwise, resolve the acting team before the opposing team, then characters in ascending formation-slot order, from 1 to 9.",
+    "after": "Follow explicitly defined priority first. Otherwise, resolve all eligible events of the acting team before those of the opposing team, then sources in ascending formation-slot order. Resolve a summoned unit's event at its owner's formation slot and in the order of its summoning skill in the owner's design sheet. Recheck requirements immediately before each event."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C173",
+    "before": "Ignore a new application while the same status from the same source remains active. Do not stack, replace, refresh, or extend the existing status. Retain its original value, caster reference, and expiration.",
+    "after": "When the same status from the same source is reapplied while active, keep one instance and reset its expiration to the end of global turn R + D - 1, where R is the new application turn and D is the new duration. Do not add durations or stack magnitudes. Retain the existing magnitude and caster reference unless the source explicitly states otherwise."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C174",
+    "before": "The first valid application under Event Resolution Order takes effect. Ignore subsequent duplicate applications.",
+    "after": "The first valid application determines the active instance, magnitude, and caster reference. Resolve later applications in Event Resolution Order; each resets the duration under the duplicate-application rule without creating another stack."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C175",
+    "before": "A new application may take effect after the existing status expires or is removed.",
+    "after": "After the existing status expires or is removed, a new application creates a new instance using the new source parameters and caster reference."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C177",
+    "before": "Check each status separately for each recipient. Ignoring a duplicate status does not cancel the cast, refund its costs, or prevent other valid effects from resolving.",
+    "after": "Check each status separately for each recipient. Refreshing a duplicate status does not cancel the cast, refund its costs, or prevent other valid effects from resolving."
+  },
+  {
+    "sheet": "Combat Mechanics",
+    "cell": "C178",
+    "before": "Explicit status or source rules override the default duplicate restriction, including defined stacking and refresh behavior such as Stun Count.",
+    "after": "Explicit status or source rules override the default same-source limit and duration-refresh behavior, including defined stacking such as Stun Count."
+  }
+]

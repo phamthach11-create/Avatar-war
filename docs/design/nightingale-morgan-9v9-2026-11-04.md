@@ -1,5 +1,7 @@
 # Nightingale main / Morgan Enchantress 9vs9
 
+Current update: [2026-11-05 combat corrections](combat-rule-review-2026-11-05.md) supersedes the historical source and validation notes below. The active workbook/bundle includes the approved corrections; pending PR7.
+
 Source: exact workbook SHA256 0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f from design/workbook-20261103 commit1c0ff16cde52e5f75306ef82ef5dc54f2c14dc50; pending design source, not claimed merged. Review: workbook-caster-review-2026-11-04.md.
 
 User revision supersedes the initial Witch build. Both teams mirrored; seven other slots unchanged. Slot8 Florence Nightingale The Matron is MAIN, Healing Hands6/Back to Duty6. Nodes S2,S2.1.1,S2.2.1-4; HP+5500, SDEF+275, Back to Duty Cross; S2.2.3 prerequisite grants no stat.

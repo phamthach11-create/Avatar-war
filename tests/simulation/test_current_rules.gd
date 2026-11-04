@@ -64,7 +64,8 @@ func run() -> void:
 	var first: Dictionary=ally.statuses[0].duplicate(true)
 	b.global_turn=5
 	b._effect(ally,"battery",5,{"attack_mod":.99},ally)
-	check(ally.statuses.size()==1 and ally.statuses[0]==first,"Same source duplicate neither refreshes nor changes caster/value")
+	first.expires=10
+	check(ally.statuses.size()==1 and ally.statuses[0]==first,"Same source refreshes duration only, preserving caster/value")
 	b._status_source="Other skill"
 	b._effect(ally,"battery",2,{"attack_mod":.2},u)
 	check(ally.statuses.size()==2,"Different skill source may coexist")
@@ -74,7 +75,7 @@ func run() -> void:
 	b=fresh()
 	b.teams.B[3].skills["Grand Battery"].remaining=0
 	b._passives("A")
-	check(b._has(b.teams.B[3],"battery"),"Grand Battery triggers on opponent team turn")
+	check(not b._has(b.teams.B[3],"battery") and b.teams.B[3].skills["Grand Battery"].remaining==0,"Grand Battery waits for allied team turn")
 	check(b.teams.A[2].attack<3000,"Latest Soldier Attack imported")
 	check(is_equal_approx(b.teams.A[2].multi_hit_rate,1.2),"Latest Soldier MHR imported")
 	b=fresh();u=b.teams.A[2]

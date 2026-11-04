@@ -264,7 +264,7 @@
           "area": "All eligible allies",
           "base_max_level": 5,
           "cd": 2,
-          "description": "At the start of each team turn, Auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates.",
+          "description": "At the start of each allied team turn, auto-casts an aura that applies Rage and Onslaught to Napoleon and all allied Devastators for the skill duration. Rage increases Attack Modifier; Onslaught increases Multi-Hit Rate Modifier by their listed rates.",
           "duration": 1,
           "mp": 1000,
           "satk": 0.1,
@@ -669,6 +669,7 @@
     "Caster build source coordinates recorded in design/characters/caster-bindings.json; Matron prerequisite S2.2.3 grants no stat.",
     "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6.",
     "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited.",
-    "Latest main workbook1a07c01a84a540676ac2cd8863bb0993bc057fdd imported. User-approved F82 Malediction and G81 Firestorm inheritance wording recorded separately; selected Morgan has no S2.1.3 and Starfall remains direct damage. New explicit2/3/4/5 opening override retained. No workbook text/formula/cache rewritten."
+    "Latest main workbook1a07c01a84a540676ac2cd8863bb0993bc057fdd imported. User-approved F82 Malediction and G81 Firestorm inheritance wording recorded separately; selected Morgan has no S2.1.3 and Starfall remains direct damage. New explicit2/3/4/5 opening override retained. No workbook text/formula/cache rewritten.",
+    "2026-11-05 combat review: Grand Battery only at allied team start; Stun suppresses Base Character APR only, retaining item/spec/status/death bonuses; duplicate statuses refresh duration only while retaining magnitude/caster; start events include summons in owner-slot and design-sheet order; Immunity blocks negative statuses including Malediction."
   ]
 }

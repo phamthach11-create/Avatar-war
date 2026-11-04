@@ -19,16 +19,16 @@
   "design_source_workbook_blob": "1a07c01a84a540676ac2cd8863bb0993bc057fdd",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
-    "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
+    "src/combat/caster_kit.gd": "0e8fc51f20298a1320767bafea3b887f2e7eda57b35601ba00650049ea5aa3b4",
     "src/combat/current_rules.gd": "078f64b7d75a6e583a6feade23317e5d6236513cda940bf8b71c456da164217b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
     "src/combat/mixed_battle.gd": "6d0f13a1f5f52dac388c0be142288f4167eb7235df986ed02e5eb7db13188877",
-    "src/combat/requested_battle.gd": "947ff86a1fef0b19af422d58ca565501b148cb06828319c46dc8b13bf63d88d0",
+    "src/combat/requested_battle.gd": "6e160288a73385cd59f3166fb940b096f7fd32e2744bc18144df38a565feaf18",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
   "implementation_source": "demo/nightingale-morgan-9v9 (PR pending)",
   "schema_version": 1,
-  "snapshot": "design/sync/snapshots/5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d.json",
-  "workbook_sha256": "5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d"
+  "snapshot": "design/sync/snapshots/bf3f94bc362a90b72aac824cd41ce695f53c0dbbda28e69c3227a1b6e4c9f2f3.json",
+  "workbook_sha256": "bf3f94bc362a90b72aac824cd41ce695f53c0dbbda28e69c3227a1b6e4c9f2f3"
 }

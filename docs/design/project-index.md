@@ -39,3 +39,7 @@ Ghi ngắn: nguồn thiết kế → file/scene → thay đổi → kiểm tra �
 
 ## Scenario đang đề xuất2026-11-04
 NightingaleMatron slot8 / MorganWitch main5, cả hai12SP6/6,7slot giữ nguyên. Engine dùng lại, caster_kit.gd là module skill. Xem docs/design/nightingale-morgan-9v9-2026-11-04.md. Nhánh demo/nightingale-morgan-9v9, chưa merge; main trước đó vẫn roster cũ.
+
+## Combat corrections approved 2026-11-05
+
+Current pending demo roster is Nightingale Matron MAIN slot8 / Morgan Enchantress slot5 (supersedes initial Witch proposal). PR7 now includes allied-turn Grand Battery, source-correct APR under Stun, duplicate-status duration refresh, unified start events including summons, and Malediction Immunity handling. Workbook and requested demo updated together; see [review and validation](combat-rule-review-2026-11-05.md). Python combat and other historical scenes are not claimed synchronized. Pull demo/nightingale-morgan-9v9 for this pending version; main is separate until merge.
