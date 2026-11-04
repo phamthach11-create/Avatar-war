@@ -205,3 +205,7 @@ Final validation for opening slots:80 focused,5779 Caster,1312 requested,9420 mi
 User explicitly approved2/3/4/5 initial slots for Global Turns1–4, then5 from Turn5 onward. Reapplied the exact tested implementation in shared Godot current_rules for requested/mixed, with scenario override, runtime bundle and receipt. This supersedes the temporary revert and simulation-only decision. No merge authorized.
 
 Same100-match experiment (seeds0–49, each with both starting sides): first team56 wins, second44, no draws; average46.70 Global Turns (range31–71). Old opening had64/36. Verified experiment requested_battle hash equals the reapplied implementation; no second run is claimed.80 focused allocation checks pass again; previously completed regression evidence retained. Excel Combat Mechanics C36/C38 still require source-document reconciliation; explicit user approval is recorded in scenario overrides and this handoff. Python backend remains separate.
+
+## 2026-11-04 — Approved Caster text clarification
+
+User confirmed S2.2.2 uses the name Malediction and S2.1.3 Firestorm inherits Starfall upgrades (AP/cooldown; SATK effectiveness applies to DOT SATK). Exact two-cell edits against latest main workbook blob1a07c01a84a540676ac2cd8863bb0993bc057fdd recorded in caster-approved-node-text-2026-11-04.json. This records the approved wording; workbook binary and combat not edited by this text-only follow-up. Latest workbook synchronization remains pending. Selected Morgan build still excludes S2.1.3, so retains direct-damage Starfall.
