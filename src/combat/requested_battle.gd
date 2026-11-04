@@ -370,7 +370,7 @@ func step() -> Dictionary:
 		for unit in teams[owner]: unit.has_slot=false
 	_hp_decay(side)
 	if not finished: _passives(side)
-	var cap := 2 if global_turn<=2 else (4 if global_turn<=4 else 5)
+	var cap := preload("res://src/combat/current_rules.gd").initial_slot_limit(global_turn)
 	if not finished:
 		for unit in teams[side]:
 			if unit.hp>0:
