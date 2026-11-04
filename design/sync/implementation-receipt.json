@@ -3,14 +3,14 @@
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
     "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
-    "src/combat/current_rules.gd": "078f64b7d75a6e583a6feade23317e5d6236513cda940bf8b71c456da164217b",
+    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
-    "src/combat/mixed_battle.gd": "6d0f13a1f5f52dac388c0be142288f4167eb7235df986ed02e5eb7db13188877",
-    "src/combat/requested_battle.gd": "947ff86a1fef0b19af422d58ca565501b148cb06828319c46dc8b13bf63d88d0",
+    "src/combat/mixed_battle.gd": "e3049b99487d71de54220d326404d05f5f863bdce4d8cf5f3a9be5560bd7f2d7",
+    "src/combat/requested_battle.gd": "3db4f657a2466434758583d7ad1f8e652802612d1f884527e394b841a8ab3ce7",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
-  "implementation_notes": "User revision: Nightingale main slot8; Morgan Enchantress S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Candidate built by importer from exact workbook; 4915 checks passed incl six complete mirrored matches, DOT/Silence/Intimidated, APR/HP/CD and targeting. Full earlier Caster source review retained in dated handoff. Presentation follow-up: raw combat calculations/order unchanged; annotate each weapon hit with unique presentation id. UI groups all recipients per hit, rebases state deltas to avoid early counter damage/HP rollback, preserves raw logs.349 candidate presentation checks cover all7 classes, two Automata, multi-hit and an intervening forced counter plus two full matches. User override2026-11-04 opening slot caps2/3/4/5 then5, shared by Godot mixed/requested. Workbook Combat Mechanics C36/C38 still old2/4; explicit newer user instruction overrides those two cells; workbook bytes unchanged, override recorded in scenario and handoff.80 candidate checks prove actual allocations, both initiative sides, zero-action progression and fewer eligible actors.",
+  "implementation_notes": "User revision: Nightingale main slot8; Morgan Enchantress S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Candidate built by importer from exact workbook; 4915 checks passed incl six complete mirrored matches, DOT/Silence/Intimidated, APR/HP/CD and targeting. Full earlier Caster source review retained in dated handoff. Presentation follow-up: raw combat calculations/order unchanged; annotate each weapon hit with unique presentation id. UI groups all recipients per hit, rebases state deltas to avoid early counter damage/HP rollback, preserves raw logs.349 candidate presentation checks cover all7 classes, two Automata, multi-hit and an intervening forced counter plus two full matches.",
   "previous_snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
   "reviewed_change_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
   "schema_version": 1,
@@ -86,60 +86,6 @@
       "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
       "exit_code": 0,
       "log": "design/sync/evidence/aoe-test_requested_ui.txt",
-      "sha256": "26fe2adbf0942ec1e83724b82a67cdacb673c81c832eb2a6a6f80c3c605ca65c"
-    },
-    {
-      "command": "godot --headless --script res://artifacts/test_slots_candidate.gd (committed opening-slot test against importer candidate)",
-      "exit_code": 0,
-      "log": "design/sync/evidence/opening-slots-candidate.txt",
-      "sha256": "99cf36ac6ac85992324e0cca00a09d14a5723f3e687aea744ffd893bfa265bca"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_opening_slots.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_opening_slots.txt",
-      "sha256": "99cf36ac6ac85992324e0cca00a09d14a5723f3e687aea744ffd893bfa265bca"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_caster_roster.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_caster_roster.txt",
-      "sha256": "f5783632f7ab74351280cd2234b485c37cef42ff7c811da159bff3addcca4727"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_requested_battle.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_requested_battle.txt",
-      "sha256": "e6d9cbf58c54f9d5d689b7fbded12630bc89a5018a4f8a6929da787230d435b3"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_mixed_battle.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_mixed_battle.txt",
-      "sha256": "17a02050a482e897740282d2206b6ff66d516e4938e8782f8dd58feb4dc450bd"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_battle_log.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_battle_log.txt",
-      "sha256": "908e6f597bd2830f47341b56ff214d185e82e6029b74fb6cf8967be028038106"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_current_rules.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_current_rules.txt",
-      "sha256": "2bbf7077578e52a3edf0c726eac28d48d4496c83303b06282b331605705b7176"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_weapon_playback.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_weapon_playback.txt",
-      "sha256": "c141eeff80f3fd746d759f38a11b6917739161d6d730d2730c8055214847c754"
-    },
-    {
-      "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
-      "exit_code": 0,
-      "log": "design/sync/evidence/slots-test_requested_ui.txt",
       "sha256": "26fe2adbf0942ec1e83724b82a67cdacb673c81c832eb2a6a6f80c3c605ca65c"
     }
   ]

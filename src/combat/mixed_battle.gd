@@ -463,7 +463,7 @@ func step() -> Dictionary:
 	for u in teams[side]:
 		if u.hp > 0:
 			u.ap += u.ap_recovery-u.character_ap_recovery if is_stunned(side,u.index) else u.ap_recovery
-	var cap := preload("res://src/combat/current_rules.gd").initial_slot_limit(global_turn)
+	var cap := 2 if global_turn <= 2 else (4 if global_turn <= 4 else 5)
 	var eligible: Array[Dictionary] = []
 	for u in teams[side]:
 		if not _blocked(u) and u.ap >= 100:

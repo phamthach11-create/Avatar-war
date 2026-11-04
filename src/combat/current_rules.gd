@@ -1,9 +1,5 @@
 extends RefCounted
-## Shared turn/formation rules. Formation indices are zero-based.
-static func initial_slot_limit(global_turn: int) -> int:
-	assert(global_turn >= 1,"Global Turn begins at1")
-	return mini(5,global_turn+1)
-
+## Pure formation helpers, shared by requested combat and tests. Zero-based slots.
 static func area(primary: int, shape: String) -> Array[int]:
 	var result: Array[int] = []
 	if primary < 0 or primary >= 9: return result

@@ -14,8 +14,6 @@ func _initialize() -> void:
 func run() -> void:
 	check(DirAccess.make_dir_recursive_absolute(output)==OK,"test output directory")
 	var b=Battle.new(Battle.load_mixed_config(),"B",42)
-	# Export coverage must not depend on a balance change randomly producing misses.
-	b.teams.B[8].accuracy=0
 	var meta={"match_id":"test-match","seed":42,"first_team":"B","started_at_utc":"test"}
 	check(Log.save(output+"empty.json",b,meta)==OK,"zero-turn export")
 	var empty=JSON.parse_string(FileAccess.get_file_as_string(output+"empty.json"))

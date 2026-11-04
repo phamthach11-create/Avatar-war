@@ -1,3 +1,0 @@
-Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
-
-PASS LOG EXPORT: 1355 checks, failures 0; turns 69; impacts 1319; JSON bytes 11105572

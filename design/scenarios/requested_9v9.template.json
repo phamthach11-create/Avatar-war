@@ -349,17 +349,17 @@
           "target": "Any"
         },
         "Malediction": {
-          "ap": 150,
-          "area": "Full Row",
+          "sheet_row": 76,
           "base_max_level": 6,
+          "ap": 150,
+          "mp": 8766.13,
           "cd": 8,
           "description": "Curses enemies in the selected row, applying Damage over Time, Silence, and Intimidated for the skill duration. DOT uses this skill’s DOT SATK. Intimidated reduces Attack Modifier by the listed rate.",
+          "target": "Any enemy in the front or middle row",
+          "area": "Full Row",
           "duration": 4,
-          "mp": 8766.13,
-          "passive": false,
           "satk": 2067.5,
-          "sheet_row": 76,
-          "target": "Any enemy in the front or middle row"
+          "passive": false
         }
       },
       "stun_threshold": 4,
@@ -663,7 +663,6 @@
     "Leonidas Accuracy100/Evasion0 retained",
     "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
     "Caster build source coordinates recorded in design/characters/caster-bindings.json; Matron prerequisite S2.2.3 grants no stat.",
-    "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6.",
-    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited."
+    "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6."
   ]
 }

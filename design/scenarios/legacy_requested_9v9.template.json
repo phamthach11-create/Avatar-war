@@ -613,7 +613,6 @@
     "Grand Battery auto-casts at allied turn start",
     "Leonidas Accuracy100/Evasion0 retained",
     "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
-    "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
-    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited."
+    "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
   ]
 }
