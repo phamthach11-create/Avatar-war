@@ -168,3 +168,14 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - PR [#6](https://github.com/phamthach11-create/Avatar-war/pull/6) đã squash merge theo yêu cầu người dùng; merge commit `9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`.
 - CI của head `d09cab9d66a13c0c83321f5979f368ff96252396`: unit, freshness và simulation đều success; workbook/runtime đúng revision. Giữ K1000 và thứ tự hồi sinh > decay > passive/Auto-Cast > AP đã chốt.
 - Main hiện có công cụ đồng bộ và requested9v9 đã áp dụng các thay đổi được review. Các bản demo local đang mở không tự reload từ GitHub; lần chạy mới dùng checkout main và check trước khi mở.
+
+## 2026-11-04 — Cloud: upload workbook mới với mã node Caster
+- Nhánh `design/workbook-20261104`, base main `334ea46fc2a2e13960018a7cd0a9720152c15f26`. Cập nhật thiết kế riêng; chưa merge và không tự hợp nhất nhánh demo.
+- File người dùng mới nhất: 120444 bytes, SHA256 `5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d`, 14 sheet. Đã kiểm tra ZIP integrity, đọc workbook và xác nhận byte-for-byte với upload; không lưu lại hoặc chỉnh nội dung Excel.
+- Đã đối chiếu với nhánh `demo/nightingale-morgan-9v9` tại `99d5f7553e2c877b0a194bd7eab0af5ad0846603`: 38 ô giá trị/công thức khác biệt (Caster36, Piercer1, status1). Đây là đối chiếu thiết kế, không phải 38 lỗi code.
+- Thay đổi chính: bổ sung mã node cho Nightingale/Morgan; Piercer L34 đưa SATK equivalent Vitruvian về33080 (`8270*2*2`).
+- Một số text đã chỉnh trong nhánh demo xuất hiện lại dạng cũ: Nurse Care/Continue Battle/Adrenaline/Curse, Avalon’s Veil thiếu chữ, Fae Starfall I73 lại ghi DOT SATK, node nâng Firestorm không còn câu kế thừa; Stun F23 không còn câu phân biệt passive skill và intrinsic spec stats. Giữ nguyên upload theo yêu cầu; các đính chính trực tiếp trước đó cần được đối chiếu khi triển khai, không tự suy ra người dùng đã hủy chúng.
+- Combat Mechanics C35:C38 vẫn2/2/4/4. Nhánh demo đã có quyết định mới2/3/4/5 trong override, chưa phản ánh vào file này; không tự đổi các ô.
+- Pipeline main khi dùng upload: BLOCKED734 changed cells/723 implementation review; còn yêu cầu xác nhận workbook đã tính lại. Đây là so với accepted baseline trên main, không phải trạng thái kiểm thử của nhánh demo mới. Không thay accepted, receipt, runtime bundle hoặc dùng cờ recalculated khi chưa xác minh.
+- Caster đã có triển khai và kiểm thử được báo cáo trên nhánh demo/PR7; không lặp lại nhận định cũ rằng chưa có code Caster ở toàn bộ GitHub. Chưa tự chạy lại hoặc chứng nhận các kiểm thử đó trong lần upload này.
+- Bước tiếp: dùng workbook này đối chiếu nhánh demo và các đính chính đã chốt trước khi đồng bộ/merge. Không merge code demo chưa được yêu cầu trong tác vụ upload.
