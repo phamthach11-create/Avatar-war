@@ -20,5 +20,5 @@
   "selected_caster_handler": "src/combat/caster_kit.gd",
   "semantic_changes": "Implement handler + verify behavior + exact implementation receipt + PR review",
   "unsupported_policy": "block and report, never substitute another skill or infer a handler from JSON existence",
-  "verified_scope": "Requested Nightingale Matron/Morgan Witch builds plus legacy roster; unselected Caster kits unsupported"
+  "verified_scope": "Requested Nightingale Matron/Morgan Enchantress selected builds plus legacy roster; unselected Caster kits unsupported"
 }

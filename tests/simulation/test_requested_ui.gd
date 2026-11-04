@@ -36,6 +36,9 @@ func run() -> void:
 	assert(not ui._busy and ui._duel.global_turn==0)
 	ui._show_builds()
 	await process_frame
+	var build_content = ui.find_child("BuildContent",true,false)
+	assert(build_content!=null and build_content.text.contains("MAIN: A8/B8"))
+	assert(build_content.text.contains("Malediction: Stat Effectiveness +13%"))
 	await process_frame
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://artifacts/requested-builds.png")

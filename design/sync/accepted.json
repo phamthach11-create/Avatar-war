@@ -15,7 +15,8 @@
     "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
   ],
   "coverage": "Requested Nightingale Matron/Morgan Witch builds plus legacy roster; unselected Caster kits unsupported",
-  "design_source_commit": "1c0ff16cde52e5f75306ef82ef5dc54f2c14dc50",
+  "design_source_ref": "main",
+  "design_source_workbook_blob": "1a07c01a84a540676ac2cd8863bb0993bc057fdd",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
     "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
@@ -28,6 +29,6 @@
   },
   "implementation_source": "demo/nightingale-morgan-9v9 (PR pending)",
   "schema_version": 1,
-  "snapshot": "design/sync/snapshots/0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f.json",
-  "workbook_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f"
+  "snapshot": "design/sync/snapshots/5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d.json",
+  "workbook_sha256": "5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d"
 }

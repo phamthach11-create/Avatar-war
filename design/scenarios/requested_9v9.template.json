@@ -282,6 +282,10 @@
         "prefer_normal": false
       },
       "ap_recovery": 95,
+      "approved_node_text": {
+        "S2.1.3": "S2.1.3\nReplaces Fae Starfall with Fae Firestorm, applying Damage over Time instead of dealing direct skill damage. Fae Firestorm inherits upgrades to Fae Starfall, including AP cost and cooldown changes. SATK Effectiveness bonuses apply to its DOT SATK instead.",
+        "S2.2.2": "S2.2.2\nMalediction: Stat Effectiveness +13%"
+      },
       "attack": 1409.17466410749,
       "attack_stun_count": 1,
       "character_ap_recovery": 95,
@@ -316,12 +320,12 @@
       "multi_hit_rate": 1.1,
       "name": "Morgan le Fay",
       "node_descriptions": {
-        "S2": "Unlock Malediction",
-        "S2.1.1": " Base AP Recovery +8",
-        "S2.2.1": "Base HP +5847",
-        "S2.2.2": "Malediction: Stat Effectiveness +13%.",
-        "S2.2.3": " Fae Starfall: SATK Effectiveness +13%",
-        "S2.2.4": "Fae Starfall: Cooldown −2."
+        "S2": "S2\nUnlock Malediction",
+        "S2.1.1": "S2.1.1\nBase AP Recovery +8",
+        "S2.2.1": "S2.2.1\nBase HP +5847",
+        "S2.2.2": "S2.2.2\nMalediction: Stat Effectiveness +13%",
+        "S2.2.3": "S2.2.3\nFae Starfall: SATK Effectiveness +13%",
+        "S2.2.4": "S2.2.4\nFae Starfall: Cooldown −2."
       },
       "nodes": [
         "S2",
@@ -536,12 +540,12 @@
       "multi_hit_rate": 1.1,
       "name": "Florence Nightingale",
       "node_descriptions": {
-        "S2": "Unlocks Back to Duty",
-        "S2.1.1": "Base HP + 4000",
-        "S2.2.1": "Base SDEF + 275",
-        "S2.2.2": "Base HP + 1500",
+        "S2": "S2. Unlocks Back to Duty",
+        "S2.1.1": "S2.1.1\nBase HP + 4000",
+        "S2.2.1": "S2.2.1\nBase SDEF + 275",
+        "S2.2.2": "S2.2.2\nBase HP + 1500",
         "S2.2.3": "S2.2.3\n Required to unlock the next passive",
-        "S2.2.4": " Changes Back to Duty’s area of effect to Cross."
+        "S2.2.4": " S2.2.4 \nChanges Back to Duty’s area of effect to Cross."
       },
       "nodes": [
         "S2",
@@ -652,9 +656,9 @@
     }
   ],
   "scenario_id": "nightingale-morgan-2026-11-04",
-  "source_blob": "4997041eb765df38533f4f7ca5f372c5f9a1bfe0",
+  "source_blob": "1a07c01a84a540676ac2cd8863bb0993bc057fdd",
   "source_commit": "workbook blob pinned below; see PR implementation commit",
-  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
+  "source_sha256": "5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d",
   "user_clarifications": [
     "At most one active Automaton of each type per team",
     "Automata have no targetable HP and no roster slot; expire when their summoner dies",
@@ -664,6 +668,7 @@
     "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
     "Caster build source coordinates recorded in design/characters/caster-bindings.json; Matron prerequisite S2.2.3 grants no stat.",
     "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6.",
-    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited."
+    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited.",
+    "Latest main workbook1a07c01a84a540676ac2cd8863bb0993bc057fdd imported. User-approved F82 Malediction and G81 Firestorm inheritance wording recorded separately; selected Morgan has no S2.1.3 and Starfall remains direct damage. New explicit2/3/4/5 opening override retained. No workbook text/formula/cache rewritten."
   ]
 }

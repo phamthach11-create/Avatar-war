@@ -209,3 +209,11 @@ Same100-match experiment (seeds0–49, each with both starting sides): first tea
 ## 2026-11-04 — Approved Caster text clarification
 
 User confirmed S2.2.2 uses the name Malediction and S2.1.3 Firestorm inherits Starfall upgrades (AP/cooldown; SATK effectiveness applies to DOT SATK). Exact two-cell edits against latest main workbook blob1a07c01a84a540676ac2cd8863bb0993bc057fdd recorded in caster-approved-node-text-2026-11-04.json. This records the approved wording; workbook binary and combat not edited by this text-only follow-up. Latest workbook synchronization remains pending. Selected Morgan build still excludes S2.1.3, so retains direct-damage Starfall.
+
+## 2026-11-04 — Latest Excel imported and demo reopened
+
+Imported exact main workbook blob1a07c01a84a540676ac2cd8863bb0993bc057fdd, SHA2565715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d.38 changes reviewed:36 Caster label/description changes, Piercer L34 valuation change (unselected; actual skill cost unchanged), shortened Stun description (existing clarified passive suspension retained). No workbook binary editing or formula recalculation claimed.256 class/9 skill caches independently checked.
+
+Selected roster unchanged: Nightingale MAIN slot8 (Healing Hands6/Back to Duty6), Morgan Enchantress slot5 (Starfall6/Malediction6), other7 slots unchanged. Latest approved S2.2.2 Malediction name and S2.1.3 inheritance recorded in scenario approved_node_text; source binary retains exact main bytes. Starfall remains direct damage per skill description; Firestorm6-turn DOT replacement is unselected and not implemented as a new kit. Runtime Back to Duty node display normalizes historical Adrenaline alias without renaming source cells. Opening user override2/3/4/5 then5 retained.
+
+5779 candidate checks and6 full matches passed,13 importer tests and actual-timer UI/Restart QA passed. Builds dialog now reads MAIN from scenario (A8/B8), and verifies approved Malediction text. Runtime freshness current. New requested9vs9 scene reopened locally; Auto initially OFF. PR7 pending; not merged. Python backend not updated by this import.

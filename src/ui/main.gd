@@ -447,9 +447,10 @@ func _show_builds() -> void:
 	content.add_theme_font_size_override("normal_font_size",15)
 	content.add_theme_font_size_override("bold_font_size",17)
 	content.selection_enabled = true
-	var text := "[b]Same roster and builds on both teams[/b]\nFront: 1–3 | Middle: 4–6 | Rear: 7–9 | MAIN: A5/B5\nScroll to see all 9 characters.\n\n"
+	var main_slot: int = int(_battle_config().main_index)+1
+	var text := "[b]Same roster and builds on both teams[/b]\nFront: 1–3 | Middle: 4–6 | Rear: 7–9 | MAIN: A%d/B%d\nScroll to see all 9 characters.\n\n" % [main_slot,main_slot]
 	for entry in _battle_config().roster:
-		text += "[b]%d. %s%s[/b]\n" % [entry.index+1,entry.label," · MAIN" if entry.index == 4 else ""]
+		text += "[b]%d. %s%s[/b]\n" % [entry.index+1,entry.label," · MAIN" if entry.index == main_slot-1 else ""]
 		var skills: Array[String] = []
 		for skill_name in entry.levels:
 			skills.append("%s: SL %d" % [skill_name,entry.levels[skill_name]])

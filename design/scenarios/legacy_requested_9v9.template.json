@@ -602,9 +602,9 @@
     }
   ],
   "scenario_id": "requested-2026-10-31",
-  "source_blob": "36876091de28fd6b889e2e32c7f57c4f2f59f37c",
+  "source_blob": "1a07c01a84a540676ac2cd8863bb0993bc057fdd",
   "source_commit": "a2afe350854e6bfb31933d2ae93c02b67cd261ab",
-  "source_sha256": "37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c",
+  "source_sha256": "5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d",
   "user_clarifications": [
     "Mirrored teams; main Leonidas slot5",
     "At most one active Automaton of each type per team",
@@ -614,6 +614,7 @@
     "Leonidas Accuracy100/Evasion0 retained",
     "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
     "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
-    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited."
+    "2026-11-04 user override: Global Turns1/2/3/4 have initial slot maxima2/3/4/5; turn5 onward5. Team labels denote initiative, not fixed A/B. Overrides Combat Mechanics C36/C38 until workbook edited.",
+    "Latest main workbook1a07c01a84a540676ac2cd8863bb0993bc057fdd imported. User-approved F82 Malediction and G81 Firestorm inheritance wording recorded separately; selected Morgan has no S2.1.3 and Starfall remains direct damage. New explicit2/3/4/5 opening override retained. No workbook text/formula/cache rewritten."
   ]
 }

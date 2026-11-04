@@ -1,5 +1,6 @@
 {
-  "design_source_commit": "1c0ff16cde52e5f75306ef82ef5dc54f2c14dc50",
+  "design_source_ref": "main",
+  "design_source_workbook_blob": "1a07c01a84a540676ac2cd8863bb0993bc057fdd",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
     "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
@@ -10,11 +11,11 @@
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
-  "implementation_notes": "User revision: Nightingale main slot8; Morgan Enchantress S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Candidate built by importer from exact workbook; 4915 checks passed incl six complete mirrored matches, DOT/Silence/Intimidated, APR/HP/CD and targeting. Full earlier Caster source review retained in dated handoff. Presentation follow-up: raw combat calculations/order unchanged; annotate each weapon hit with unique presentation id. UI groups all recipients per hit, rebases state deltas to avoid early counter damage/HP rollback, preserves raw logs.349 candidate presentation checks cover all7 classes, two Automata, multi-hit and an intervening forced counter plus two full matches. User override2026-11-04 opening slot caps2/3/4/5 then5, shared by Godot mixed/requested. Workbook Combat Mechanics C36/C38 still old2/4; explicit newer user instruction overrides those two cells; workbook bytes unchanged, override recorded in scenario and handoff.80 candidate checks prove actual allocations, both initiative sides, zero-action progression and fewer eligible actors.",
+  "implementation_notes": "User revision: Nightingale main slot8; Morgan Enchantress S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Candidate built by importer from exact workbook; 4915 checks passed incl six complete mirrored matches, DOT/Silence/Intimidated, APR/HP/CD and targeting. Full earlier Caster source review retained in dated handoff. Presentation follow-up: raw combat calculations/order unchanged; annotate each weapon hit with unique presentation id. UI groups all recipients per hit, rebases state deltas to avoid early counter damage/HP rollback, preserves raw logs.349 candidate presentation checks cover all7 classes, two Automata, multi-hit and an intervening forced counter plus two full matches. User override2026-11-04 opening slot caps2/3/4/5 then5, shared by Godot mixed/requested. Workbook Combat Mechanics C36/C38 still old2/4; explicit newer user instruction overrides those two cells; workbook bytes unchanged, override recorded in scenario and handoff.80 candidate checks prove actual allocations, both initiative sides, zero-action progression and fewer eligible actors. Latest main workbook1a07c01a84a540676ac2cd8863bb0993bc057fdd (SHA5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d) exact bytes imported;38 diffs reviewed:36 Caster text/stat-label changes, Piercer L34 valuation only (Vitruvian cost10004 unchanged, unselected), shortened Stun text retains prior clarified passive handling. User confirms Starfall direct, Firestorm6-turn DOT replacement only at unselectedS2.1.3; approved F82/G81 wording recorded as scenario annotations. Selected kits/numeric values unchanged.256 class and9 skill caches independently validate, no full Excel recalculation claimed.5779 candidate checks/six complete matches passed. Opening2/3/4/5 user override retained; original workbook values preserved.",
   "previous_snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
-  "reviewed_change_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "reviewed_change_sha256": "076e064ac145bfb732779b0613d929d17128bb630b5b60a7a88e76cba00dbf11",
   "schema_version": 1,
-  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
+  "source_sha256": "5715d24e5c2804f55bce901b1dde941ae719fb02169d91b23eecb93c1198a19d",
   "tests": [
     {
       "command": "godot --path . --script res://tests/simulation/test_caster_roster.gd",
@@ -140,6 +141,18 @@
       "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
       "exit_code": 0,
       "log": "design/sync/evidence/slots-test_requested_ui.txt",
+      "sha256": "26fe2adbf0942ec1e83724b82a67cdacb673c81c832eb2a6a6f80c3c605ca65c"
+    },
+    {
+      "command": "godot --headless --script res://artifacts/test_latest_candidate.gd (committed Caster checks using latest importer candidate)",
+      "exit_code": 0,
+      "log": "design/sync/evidence/latest-workbook-candidate.txt",
+      "sha256": "f5783632f7ab74351280cd2234b485c37cef42ff7c811da159bff3addcca4727"
+    },
+    {
+      "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/latest-workbook-ui.txt",
       "sha256": "26fe2adbf0942ec1e83724b82a67cdacb673c81c832eb2a6a6f80c3c605ca65c"
     }
   ]
