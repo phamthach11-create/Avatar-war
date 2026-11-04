@@ -179,3 +179,12 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - Giữ nguyên engine Godot/Python, accepted baseline và runtime bundle. Main trước nhánh này đã có runtime đồng bộ phiên bản cũ; workbook mới sẽ làm freshness check bị chặn cho đến khi triển khai và kiểm tra diff.
 - API GitHub PR trả Forbidden trong phiên Cloud; push nhánh bằng Git là khả dụng. Không tuyên bố đã tạo PR hoặc merge.
 - Bước tiếp: rà soát scope và handler cho Stun/auras/new Caster và formula changes; tính lại Excel, kiểm thử đúng backend, rồi tạo receipt/bundle theo docs/design/excel-runtime-sync.md.
+
+## 2026-11-04 — Cloud: rà soát toàn bộ diff workbook Caster
+- Trạng thái: cập nhật nhánh `design/workbook-20261103`; chưa merge, chưa chứng nhận runtime.
+- Phân loại 735 ô: 482 Caster mới, 135 Item/dịch dòng, 96 SUMIFS, 8 roundoff, 14 thay đổi riêng. Báo cáo: [workbook-caster-review-2026-11-04.md](workbook-caster-review-2026-11-04.md).
+- Theo phản hồi người dùng, đổi tên cũ của Nightingale, ghi Firestorm kế thừa nâng cấp Starfall (SATK → DOT SATK), làm rõ Stun chỉ khóa passive skill và giữ stat spec. Sửa thêm typo Avalon’s Veil, Curse → Malediction, label SATK của Starfall. Sửa 13 ô text; số/công thức không đổi; manifest trong workbook-caster-text-corrections-2026-11-04.json.
+- Workbook sau sửa SHA256 `0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f`. Đủ 14 sheet; 1.011 formula/cache giữ nguyên; ZIP hợp lệ; 12 pipeline tests qua. Không tự xác nhận đã tính lại Excel.
+- Engine gaps: Stun chưa chặn đủ passive; aura Leonidas còn 7%/5% thay vì 12%/4%; Caster mới/Connection chưa có handler trong backend này. Importer phải phân biệt hai nhân vật cùng sheet Caster.
+- Vitruvian equivalent giảm 33080 → 16540 nhưng cost giữ 10004; tính lại theo phương pháp đã chốt cho 6371.33 MP. Ghi đề xuất, chưa đổi số trong file.
+- Plan vẫn BLOCKED 735/724: Markdown review không có nghĩa đã triển khai. Không thay accepted/receipt/bundle hoặc chạy Godot với workbook mới rồi nhận vơ đã đồng bộ.

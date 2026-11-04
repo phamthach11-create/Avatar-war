@@ -1,0 +1,80 @@
+[
+  {
+    "sheet": "Caster class",
+    "cell": "F37",
+    "before": " Continue Battle: Heal +2,100",
+    "after": " Light of Hope: Heal +2,100"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "H37",
+    "before": " Nurse Care: Stat Effectiveness +26%",
+    "after": " Healing Hands: Stat Effectiveness +26%"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "F38",
+    "before": "Nurse Care: Stat Effectiveness +13%",
+    "after": "Healing Hands: Stat Effectiveness +13%"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "G38",
+    "before": " Nurse Care: AP cost −25",
+    "after": " Healing Hands: AP cost −25"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "H38",
+    "before": "Continue Battle also applies Shield with a capacity of 1,684 to affected allies for 4 global turns.",
+    "after": "Light of Hope also applies Shield with a capacity of 1,684 to affected allies for 4 global turns."
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "G39",
+    "before": "Adrenaline starts the battle with no remaining cooldown",
+    "after": "Back to Duty starts the battle with no remaining cooldown"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "H39",
+    "before": "Adrenaline: Stat Effectiveness +26%",
+    "after": "Back to Duty: Stat Effectiveness +26%"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "H40",
+    "before": " Changes Adrenaline’s area of effect to Cross.",
+    "after": " Changes Back to Duty’s area of effect to Cross."
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "I73",
+    "before": "DOT SATK",
+    "after": "SATK"
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "D79",
+    "before": "Unlock Avalon’s Vei",
+    "after": "Unlocks Avalon’s Veil."
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "F82",
+    "before": " Curse: Stat Effectiveness +13%",
+    "after": "Malediction: Stat Effectiveness +13%."
+  },
+  {
+    "sheet": "Caster class",
+    "cell": "G81",
+    "before": "Replaces Fae Starfall with Fae Firestorm, applying Damage over Time instead of dealing direct skill damage",
+    "after": "Replaces Fae Starfall with Fae Firestorm, applying Damage over Time instead of dealing direct skill damage. Fae Firestorm inherits passive upgrades to Fae Starfall, including AP cost and cooldown changes. SATK Effectiveness bonuses apply to its DOT SATK instead."
+  },
+  {
+    "sheet": "status",
+    "cell": "F23",
+    "before": "Prevents receiving action slots and performing voluntary actions, including normal attacks, active skills, defending, and position swaps. Sets Base Character AP Recovery to 0, cant use passive",
+    "after": "Prevents receiving action slots and performing voluntary actions, including normal attacks, active skills, defending, and position swaps. Sets Base Character AP Recovery to 0. Disables passive skills, including their auto-casts and continuous effects, while Stun remains active. Intrinsic stat bonuses from specialization points remain active."
+  }
+]
