@@ -179,3 +179,5 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 ## 2026-11-04 — User revision: Nightingale main / Morgan Enchantress
 
 Supersedes the initial Morgan Witch main proposal. Nightingale MAIN slot8; Morgan slot5 S2 + S2.1.1 + S2.2.1-4, Starfall6/Malediction6 confirmed. Both12SP; all other seven slots unchanged. See nightingale-morgan-9v9-2026-11-04.md for source hash, mechanics and verification. Separate demo branch; not merged.
+
+Published: PR https://github.com/phamthach11-create/Avatar-war/pull/7, implementation commit9b4039a11d695e2542736f0b6aadcfb89aea2e68. Open, not merged. Local demo reopened with Nightingale main and Morgan Enchantress; final4915 Caster checks,1324 requested,8196 mixed,1150 log,453 rules,13 importer tests and UI QA passed.
