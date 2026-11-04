@@ -168,3 +168,14 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - PR [#6](https://github.com/phamthach11-create/Avatar-war/pull/6) đã squash merge theo yêu cầu người dùng; merge commit `9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`.
 - CI của head `d09cab9d66a13c0c83321f5979f368ff96252396`: unit, freshness và simulation đều success; workbook/runtime đúng revision. Giữ K1000 và thứ tự hồi sinh > decay > passive/Auto-Cast > AP đã chốt.
 - Main hiện có công cụ đồng bộ và requested9v9 đã áp dụng các thay đổi được review. Các bản demo local đang mở không tự reload từ GitHub; lần chạy mới dùng checkout main và check trước khi mở.
+
+## 2026-11-04 — Demo Morgan main / Nightingale Matron (local, PR chuẩn bị)
+- User yêu cầu dùng design mới; lấy nhánh design/workbook-20261103 commit1c0ff16, chưa merge thiết kế. SHA256 workbook0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f giữ đúng byte.
+- Hai đội đối xứng, thay main5 bằng MorganWitch và healer8 bằng NightingaleMatron; giữ7slot khác. User xác nhận Caster12SP, cả hai6/6. Node IDs ánh xạ theo cell, không suy ra tác dụng từ tên.
+- Dùng engine/scenario cũ, thêm caster_kit.gd; importer hỗ trợ2nhân vật cùng sheet và nhiều scenario. Haste/Veil/passive-Stun/aura12%4% được xử lý. Legacy roster vẫn test trên cùng engine.
+-6103caster+1324legacy+8196mixed+1150log+453rule checks qua;13sync/33Python tests qua, UI qua. Plan/check chạy theo receipt. Class/Item256 và Caster skill9cache được kiểm tra độc lập; không nói đã recalc toànExcel.
+- Sprite class2D cũ được ghép; Morgan dùng sắc tím, Nightingale dùng trắng/xanh. Casterkits khác/Connection/Vitruvian repricing chưa triển khai hoặc xác nhận. Chi tiết docs/design/nightingale-morgan-9v9-2026-11-04.md.
+
+## 2026-11-04 — User revision: Nightingale main / Morgan Enchantress
+
+Supersedes the initial Morgan Witch main proposal. Nightingale MAIN slot8; Morgan slot5 S2 + S2.1.1 + S2.2.1-4, Starfall6/Malediction6 confirmed. Both12SP; all other seven slots unchanged. See nightingale-morgan-9v9-2026-11-04.md for source hash, mechanics and verification. Separate demo branch; not merged.

@@ -1,0 +1,30 @@
+{
+  "morgan_le_fay": {
+    "equipment_start": 44,
+    "name_cell": "B43",
+    "nodes": {
+      "S2": "D81",
+      "S2.1.1": "E81",
+      "S2.2.1": "E82",
+      "S2.2.2": "F82",
+      "S2.2.3": "G82",
+      "S2.2.4": "H82"
+    },
+    "sheet": "Caster class",
+    "stat_start": 50
+  },
+  "nightingale": {
+    "equipment_start": 3,
+    "name_cell": "B2",
+    "nodes": {
+      "S2": "D39",
+      "S2.1.1": "E39",
+      "S2.2.1": "E40",
+      "S2.2.2": "F40",
+      "S2.2.3": "G40",
+      "S2.2.4": "H40"
+    },
+    "sheet": "Caster class",
+    "stat_start": 9
+  }
+}

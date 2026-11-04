@@ -110,12 +110,16 @@ def build_scenario(snapshot, template):
     """Refresh existing roster; do not invent builds or new effect handlers."""
     result = copy.deepcopy(template)
     for unit in result['roster']:
-        cells = snapshot['sheets'][unit['type']+' class']
-        for row in range(9,28):
+        binding = unit.get('design_binding',{})
+        cells = snapshot['sheets'][binding.get('sheet',unit['type']+' class')]
+        start = binding.get('stat_start',9)
+        if binding.get('name_cell') and cells[binding['name_cell']]['value'] != unit['name']:
+            raise ValueError(f'Character identity mismatch: {unit["name"]}')
+        for row in range(start,start+19):
             label = str(cells.get('A'+str(row),{}).get('value','')).strip()
             if label in FIELDS:
                 unit[FIELDS[label]] = required_value(cells, 'B'+str(row))
-        unit['character_ap_recovery'] = required_value(cells, 'C21')
+        unit['character_ap_recovery'] = required_value(cells, 'C'+str(start+12))
         # Explicit user/build choices are preserved, separate from Excel base stats.
         if unit['type']=='Soldier': unit.update(accuracy=1, evasion=0)
         if unit['type']=='Piercer' and 'S1' in unit['nodes']: unit['skill_points'] += 7
@@ -130,6 +134,7 @@ def build_scenario(snapshot, template):
             for col, key in [('B','ap'),('C','mp'),('D','cd')]:
                 raw = cells.get(col+row,{}).get('value')
                 if number(raw): skill[key] = raw
+                elif skill.get('passive',False): skill[key] = 0
                 elif key != 'ap': raise ValueError(f'{name} {key}: nonnumeric cost/cooldown')
             if any(skill[k] < 0 for k in ('ap','mp','cd')) or skill['cd'] != int(skill['cd']):
                 raise ValueError(f'{name}: costs must be nonnegative and cooldown integral')
@@ -138,6 +143,65 @@ def build_scenario(snapshot, template):
     result['source_blob'] = snapshot.get('workbook_git_blob',result.get('source_blob'))
     result['source_commit'] = 'workbook blob pinned below; see PR implementation commit'
     return result
+
+def validate_class_caches(snapshot):
+    """Verify the supported arithmetic stat/SUMIFS subset independently of Excel.
+
+    No formula eval: class totals must equal cached character base plus exact
+    selected Item rows. Cached division-based ATK is checked against its source.
+    """
+    import re
+    checked = 0
+    items = snapshot['sheets']['Item']
+    item_rows = sorted({int(re.search(r'\d+',c).group()) for c in items})
+    for name,cells in snapshot['sheets'].items():
+        if not name.endswith(' class'): continue
+        starts = [int(c[1:])+1 for c,v in cells.items() if re.fullmatch(r'A\d+',c) and v['value']=='Dummy Character']
+        for start in starts:
+            equipment = [str(cells.get('B'+str(start-6+i),{}).get('value')).casefold() for i in range(4)]
+            for row in range(start,start+19):
+                label = str(cells.get('A'+str(row),{}).get('value','')).strip()
+                if label not in FIELDS: continue
+                base = required_value(cells,'C'+str(row))
+                formula = str(cells['C'+str(row)]['source'])
+                division = re.fullmatch(r'=(\d+(?:\.\d+)?)/G(\d+)',formula)
+                if division and not math.isclose(base,float(division[1])/required_value(cells,'G'+division[2]),rel_tol=1e-9,abs_tol=1e-8):
+                    raise ValueError(f'{name}!C{row}: stale division cache')
+                item_value = sum(float(items.get('F'+str(i),{}).get('value') or 0)
+                                 for i in item_rows if str(items.get('A'+str(i),{}).get('value')).casefold() in equipment
+                                 and str(items.get('E'+str(i),{}).get('value','')).casefold()==str(cells['A'+str(row)]['value']).casefold())
+                for cell,expected in [('E'+str(row),item_value),('B'+str(row),base+item_value)]:
+                    if not math.isclose(required_value(cells,cell),expected,rel_tol=1e-9,abs_tol=1e-8):
+                        raise ValueError(f'{name}!{cell}: stale total/Item cache')
+                    checked += 1
+    return checked
+
+def validate_caster_skill_caches(snapshot):
+    """Check numeric skill formulas only; reject names/calls rather than eval."""
+    import ast
+    import operator
+    import re
+    operations = {ast.Add:operator.add,ast.Sub:operator.sub,ast.Mult:operator.mul,ast.Div:operator.truediv}
+    def arithmetic(node):
+        if isinstance(node,ast.Constant) and number(node.value): return node.value
+        if isinstance(node,ast.BinOp) and type(node.op) in operations:
+            return operations[type(node.op)](arithmetic(node.left),arithmetic(node.right))
+        if isinstance(node,ast.UnaryOp) and isinstance(node.op,(ast.UAdd,ast.USub)):
+            return arithmetic(node.operand)*(1 if isinstance(node.op,ast.UAdd) else -1)
+        raise ValueError('Unsupported skill formula expression; review explicitly')
+    cells = snapshot['sheets']['Caster class'];checked=0
+    for coordinate,cell in cells.items():
+        if not re.fullmatch(r'K\d+',coordinate) or not str(cell['source']).startswith('='):continue
+        expression = cell['source'][1:].replace('%','/100')
+        expected = arithmetic(ast.parse(expression,mode='eval').body)
+        if not math.isclose(required_value(cells,coordinate),expected,rel_tol=1e-9,abs_tol=1e-8):
+            raise ValueError('Caster class!'+coordinate+': stale skill cache')
+        checked += 1
+    return checked
+
+def build_scenarios(root,snapshot):
+    return {p.name.removesuffix('.template.json'):build_scenario(snapshot,read(p))
+            for p in sorted((root/'design/scenarios').glob('*.template.json'))}
 
 def run(root, workbook, publish=False, recalculated=False):
     accepted = read(root/LOCK)
@@ -153,7 +217,13 @@ def run(root, workbook, publish=False, recalculated=False):
         errors.append('Source values changed: save a recalculated workbook, then use --recalculated to attest the saved Excel cache.')
     template = read(root/'design/scenarios/requested_9v9.template.json')
     scenario = None
-    try: scenario = build_scenario(current, template)
+    scenarios = None
+    try:
+        if 'Caster class' in current['sheets']:
+            validate_class_caches(current)
+            validate_caster_skill_caches(current)
+        scenarios = build_scenarios(root,current)
+        scenario = scenarios['requested_9v9']
     except (KeyError, ValueError) as exc: errors.append(str(exc))
     report = {'schema_version':1,'state':'blocked' if blockers or errors else 'ready',
               'source_sha256':current['workbook_sha256'], 'accepted_sha256':accepted['workbook_sha256'],
@@ -166,11 +236,12 @@ def run(root, workbook, publish=False, recalculated=False):
         safe = ''.join(c if c.isalnum() or c in '-_' else '_' for c in name).strip('_')
         group = 'classes' if name.endswith(' class') else 'rules' if name in ('Combat Mechanics','Terminology','status') else 'tables'
         save(root/f'design/sync/pending/{group}/{safe}.json', cells)
-    if scenario: save(root/'design/sync/pending/scenarios/requested_9v9.json', scenario)
+    if scenarios:
+        for name,entry in scenarios.items():save(root/f'design/sync/pending/scenarios/{name}.json',entry)
     if publish and report['state']=='ready':
         # Immutable content-addressed bundle, atomic pointer switched last.
         bundle = {'schema_version':1,'source_sha256':current['workbook_sha256'],
-                  'engine_files':report['engine_files'],'scenarios':{'requested_9v9':scenario}}
+                  'engine_files':report['engine_files'],'scenarios':scenarios}
         revision = digest_bytes(encoded(bundle))
         relative = f'data/runtime/bundles/{revision}.json'
         save(root/relative, bundle)
@@ -197,6 +268,9 @@ def accept_review(root, receipt_path):
     """Engineer checkpoint after implementing semantic changes, never a force flag."""
     receipt = read(receipt_path)
     snapshot = extract(root/WORKBOOK)
+    if 'Caster class' in snapshot['sheets']:
+        validate_class_caches(snapshot)
+        validate_caster_skill_caches(snapshot)
     accepted = read(root/LOCK)
     changes = differences(read(root/accepted['snapshot']), snapshot)
     if receipt.get('source_sha256') != snapshot['workbook_sha256']:
@@ -214,9 +288,9 @@ def accept_review(root, receipt_path):
         if digest_bytes(path.read_bytes()) != test.get('sha256'):
             raise ValueError('Test evidence changed or is missing.')
     # Rebuilding numeric stats cannot implement descriptions: code work must precede this checkpoint.
-    scenario = build_scenario(snapshot, read(root/'design/scenarios/requested_9v9.template.json'))
+    scenarios = build_scenarios(root,snapshot)
     bundle = {'schema_version':1,'source_sha256':snapshot['workbook_sha256'],
-              'engine_files':engine_hashes(root),'scenarios':{'requested_9v9':scenario}}
+              'engine_files':engine_hashes(root),'scenarios':scenarios}
     revision = digest_bytes(encoded(bundle)); relative = f'data/runtime/bundles/{revision}.json'
     save(root/relative,bundle)
     snapshot_path = f'design/sync/snapshots/{snapshot["workbook_sha256"]}.json'

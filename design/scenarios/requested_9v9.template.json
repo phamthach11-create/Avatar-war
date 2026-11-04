@@ -1,5 +1,5 @@
 {
-  "main_index": 4,
+  "main_index": 7,
   "max_global_turns": 300,
   "roster": [
     {
@@ -152,7 +152,7 @@
         "prefer_normal": false
       },
       "ap_recovery": 75,
-      "attack": 4656.04606525911,
+      "attack": 2647.12092130518,
       "attack_stun_count": 0,
       "character_ap_recovery": 85,
       "critical_chance": 0.2,
@@ -168,7 +168,7 @@
       },
       "max_hp": 53284,
       "max_mp": 34550,
-      "multi_hit_rate": 1.4,
+      "multi_hit_rate": 1.2,
       "name": "Leonidas",
       "nodes": [
         "S2",
@@ -278,67 +278,92 @@
     {
       "accuracy": 1,
       "ai": {
-        "heal_hp_ratio": 0.65,
+        "heal_hp_ratio": 0.8,
         "prefer_normal": false
       },
-      "ap_recovery": 75,
-      "attack": 4656.04606525911,
-      "attack_stun_count": 0,
-      "character_ap_recovery": 85,
-      "critical_chance": 0.2,
-      "critical_damage_bonus": 0.5,
-      "defense": 2167.19424460432,
-      "evasion": 0,
-      "healing_amp": 0,
-      "index": 4,
-      "label": "Leonidas · MAIN",
-      "levels": {
-        "God-King Slayer": 5,
-        "War Cry": 5
+      "ap_recovery": 95,
+      "attack": 1409.17466410749,
+      "attack_stun_count": 1,
+      "character_ap_recovery": 95,
+      "character_id": "morgan_le_fay",
+      "critical_chance": 0,
+      "critical_damage_bonus": 0,
+      "defense": 689,
+      "design_binding": {
+        "equipment_start": 44,
+        "name_cell": "B43",
+        "nodes": {
+          "S2": "D81",
+          "S2.1.1": "E81",
+          "S2.2.1": "E82",
+          "S2.2.2": "F82",
+          "S2.2.3": "G82",
+          "S2.2.4": "H82"
+        },
+        "sheet": "Caster class",
+        "stat_start": 50
       },
-      "max_hp": 53284,
-      "max_mp": 34550,
-      "multi_hit_rate": 1.4,
-      "name": "Leonidas",
+      "evasion": 0,
+      "healing_amp": 0.15,
+      "index": 4,
+      "label": "Morgan le Fay · Enchantress",
+      "levels": {
+        "Fae Starfall": 6,
+        "Malediction": 6
+      },
+      "max_hp": 39800,
+      "max_mp": 95600,
+      "multi_hit_rate": 1.1,
+      "name": "Morgan le Fay",
+      "node_descriptions": {
+        "S2": "Unlock Malediction",
+        "S2.1.1": " Base AP Recovery +8",
+        "S2.2.1": "Base HP +5847",
+        "S2.2.2": "Malediction: Stat Effectiveness +13%.",
+        "S2.2.3": " Fae Starfall: SATK Effectiveness +13%",
+        "S2.2.4": "Fae Starfall: Cooldown −2."
+      },
       "nodes": [
-        "S1",
-        "S1.1.1",
-        "S1.2.1",
-        "S1.2.2",
-        "S1.2.3",
-        "S1.2.4"
+        "S2",
+        "S2.1.1",
+        "S2.2.1",
+        "S2.2.2",
+        "S2.2.3",
+        "S2.2.4"
       ],
       "penetration_chance": 0,
-      "skill_defense": 1480.43925875086,
-      "skill_points": 10,
+      "skill_defense": 2019.83870967742,
+      "skill_points": 12,
       "skills": {
-        "God-King Slayer": {
-          "ap": 100,
-          "area": "Single",
-          "base_max_level": 5,
-          "cd": 5,
-          "description": "Hurls a Spartan spear that deals skill damage. Can critically strike using this skill’s Critical Hit Chance and Leonidas’s Final Critical Damage Bonus. Gains +50% SATK Effectiveness against enemy main characters.",
+        "Fae Starfall": {
+          "ap": 300,
+          "area": "All enemies",
+          "base_max_level": 6,
+          "cd": 10,
+          "description": "Calls down stars infused with fae magic, dealing skill damage to all enemies using this skill’s SATK.",
           "duration": 0,
-          "mp": 7219,
-          "satk": 8270,
-          "sheet_row": 35,
-          "target": "Any enemy in rows 1 or 2"
+          "mp": 12382.84,
+          "passive": false,
+          "satk": 16540,
+          "sheet_row": 73,
+          "target": "Any"
         },
-        "War Cry": {
-          "ap": 125,
-          "area": "Cross",
-          "base_max_level": 5,
-          "cd": 4,
-          "description": "Applies Damage over Time and Falter to enemies in the affected area for the skill duration. DOT deals double damage if the affected enemy’s Final Multi-Hit Rate equals 100%.",
-          "duration": 6,
-          "mp": 9385,
-          "satk": -0.2375,
-          "sheet_row": 32,
-          "target": "Any enemy in rows 1 or 2"
+        "Malediction": {
+          "sheet_row": 76,
+          "base_max_level": 6,
+          "ap": 150,
+          "mp": 8766.13,
+          "cd": 8,
+          "description": "Curses enemies in the selected row, applying Damage over Time, Silence, and Intimidated for the skill duration. DOT uses this skill’s DOT SATK. Intimidated reduces Attack Modifier by the listed rate.",
+          "target": "Any enemy in the front or middle row",
+          "area": "Full Row",
+          "duration": 4,
+          "satk": 2067.5,
+          "passive": false
         }
       },
       "stun_threshold": 4,
-      "type": "Soldier"
+      "type": "Caster"
     },
     {
       "accuracy": 1,
@@ -473,67 +498,92 @@
     {
       "accuracy": 1,
       "ai": {
-        "heal_hp_ratio": 0.65,
+        "heal_hp_ratio": 0.8,
         "prefer_normal": false
       },
-      "ap_recovery": 90,
-      "attack": 3214.7792706334,
-      "attack_stun_count": 0,
-      "character_ap_recovery": 90,
-      "critical_chance": 0.4,
-      "critical_damage_bonus": 0.5,
-      "defense": 905,
-      "evasion": 0,
-      "healing_amp": 0,
-      "index": 7,
-      "label": "Leonardo 2 · Healer",
-      "levels": {
-        "Mona Lisa": 10,
-        "Summon Piercing Automaton": 7
+      "ap_recovery": 95,
+      "attack": 1271.93857965451,
+      "attack_stun_count": 1,
+      "character_ap_recovery": 95,
+      "character_id": "nightingale",
+      "critical_chance": 0,
+      "critical_damage_bonus": 0,
+      "defense": 710,
+      "design_binding": {
+        "equipment_start": 3,
+        "name_cell": "B2",
+        "nodes": {
+          "S2": "D39",
+          "S2.1.1": "E39",
+          "S2.2.1": "E40",
+          "S2.2.2": "F40",
+          "S2.2.3": "G40",
+          "S2.2.4": "H40"
+        },
+        "sheet": "Caster class",
+        "stat_start": 9
       },
-      "max_hp": 42034,
-      "max_mp": 41000,
-      "multi_hit_rate": 1.65,
-      "name": "Leonardo Da Vinci",
+      "evasion": 0,
+      "healing_amp": 0.25,
+      "index": 7,
+      "label": "Nightingale · Matron",
+      "levels": {
+        "Back to Duty": 6,
+        "Healing Hands": 6
+      },
+      "max_hp": 38684,
+      "max_mp": 89600,
+      "multi_hit_rate": 1.1,
+      "name": "Florence Nightingale",
+      "node_descriptions": {
+        "S2": "Unlocks Back to Duty",
+        "S2.1.1": "Base HP + 4000",
+        "S2.2.1": "Base SDEF + 275",
+        "S2.2.2": "Base HP + 1500",
+        "S2.2.3": "S2.2.3\n Required to unlock the next passive",
+        "S2.2.4": " Changes Back to Duty’s area of effect to Cross."
+      },
       "nodes": [
-        "S1",
-        "S1.1.1",
-        "S1.2.1",
-        "S1.2.2",
-        "S1.2.3",
-        "S1.3.1"
+        "S2",
+        "S2.1.1",
+        "S2.2.1",
+        "S2.2.2",
+        "S2.2.3",
+        "S2.2.4"
       ],
-      "penetration_chance": 0.35,
-      "skill_defense": 890,
-      "skill_points": 17,
+      "penetration_chance": 0,
+      "skill_defense": 2066.83870967742,
+      "skill_points": 12,
       "skills": {
-        "Mona Lisa": {
+        "Back to Duty": {
           "ap": 150,
-          "area": "All Allies",
+          "area": "Full Row",
           "base_max_level": 10,
-          "cd": 6,
-          "description": "Inspire teamates with a masterpiece. Heals all allies using the Heal stat and removes the listed number of oldest negative statuses from each.",
-          "duration": 0,
-          "mp": 20415,
-          "satk": 4135,
-          "sheet_row": 36,
+          "cd": 4,
+          "description": "Heals allies in the selected row using this skill’s Heal stat and applies Haste for the skill duration. Haste increases AP Recovery Modifier by the listed rate.",
+          "duration": 8,
+          "mp": 6158.37,
+          "passive": false,
+          "satk": 1033.75,
+          "sheet_row": 34,
           "target": "Any"
         },
-        "Summon Piercing Automaton": {
-          "ap": 200,
-          "area": "Single",
+        "Healing Hands": {
+          "ap": 125,
+          "area": "Full Row",
           "base_max_level": 10,
-          "cd": 0,
-          "description": "Summons one Piercing Automaton for the rest of the battle. At the start of each allied team turn, it performs a normal attack against a random valid enemy using Piercer weapon targeting and area rules. Its Base Attack is derived from Leonardo's Base Attack at the listed inheritance rate. Maximum: one Piercing Automaton.",
+          "cd": 5,
+          "description": "Heals allies in the selected row using this skill’s Heal stat.",
           "duration": 0,
-          "mp": 5894,
-          "satk": 1,
+          "mp": 10657.47,
+          "passive": false,
+          "satk": 12405,
           "sheet_row": 32,
-          "target": "Self"
+          "target": "Any"
         }
       },
       "stun_threshold": 4,
-      "type": "Piercer"
+      "type": "Caster"
     },
     {
       "accuracy": 1,
@@ -601,18 +651,18 @@
       "type": "Ranger"
     }
   ],
-  "scenario_id": "requested-2026-10-31",
-  "source_blob": "36876091de28fd6b889e2e32c7f57c4f2f59f37c",
-  "source_commit": "a2afe350854e6bfb31933d2ae93c02b67cd261ab",
-  "source_sha256": "37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c",
+  "scenario_id": "nightingale-morgan-2026-11-04",
+  "source_blob": "4997041eb765df38533f4f7ca5f372c5f9a1bfe0",
+  "source_commit": "workbook blob pinned below; see PR implementation commit",
+  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
   "user_clarifications": [
-    "Mirrored teams; main Leonidas slot5",
     "At most one active Automaton of each type per team",
     "Automata have no targetable HP and no roster slot; expire when their summoner dies",
     "Automaton inherits only Base Attack through skill rate; base MHR/Accuracy=1, CHC/PEN/CDB=0; passive upgrades apply",
     "Grand Battery auto-casts at allied turn start",
     "Leonidas Accuracy100/Evasion0 retained",
-    "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
-    "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
+    "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed",
+    "Caster build source coordinates recorded in design/characters/caster-bindings.json; Matron prerequisite S2.2.3 grants no stat.",
+    "User revision: Nightingale main slot8; Morgan Enchantress slot5, S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Nightingale Healing Hands6/Back to Duty6."
   ]
 }

@@ -4,12 +4,18 @@ var _status_source := ""
 ## Requested 2026-10-31 scenario. Reuses the existing battle state/timeline/UI contract.
 
 static func load_mixed_config() -> Dictionary:
-	return preload("res://src/design/runtime_catalog.gd").scenario("requested_9v9")
+	return load_scenario("requested_9v9")
+
+static func load_scenario(scenario_id: String) -> Dictionary:
+	return preload("res://src/design/runtime_catalog.gd").scenario(scenario_id)
 
 func _apply_build(u: Dictionary) -> void:
 	var n: Array = u.nodes
 	u.merge({"mhr_mod":0.0,"skill_effectiveness":1.0,"sub_penalty":0.5,"automata":[],"summon_attack_effectiveness":1.0,"summon_chc":0.0,"summon_mhr_mod":0.0},true)
 	match u.type:
+		"Caster":
+			preload("res://src/combat/caster_kit.gd").apply_build(u)
+			if not skill_mode: u.max_mp = u.mp_without_veil
 		"Destroyer":
 			if n.has("S1.1.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
 			if n.has("S1.2.1"): u.ap_recovery += 8; u.character_ap_recovery += 8
@@ -57,9 +63,9 @@ func _sum(u: Dictionary, key: String) -> float:
 	var value := super(u,key)
 	if not u.get("is_automaton",false) and key in ["def_mod","attack_mod"]:
 		for source in teams[u.side]:
-			if source.hp <= 0 or source.type != "Soldier" or not source.nodes.has("S2.1.4"): continue
+			if source.hp <= 0 or is_stunned(source.side,source.index) or source.type != "Soldier" or not source.nodes.has("S2.1.4"): continue
 			if u.index in _area(source.index,"Adjacent"):
-				value += 0.07 if key == "def_mod" else 0.05
+				value += 0.12 if key == "def_mod" else 0.04
 				break # Same passive-node source contributes at most once.
 	return value
 
@@ -103,10 +109,37 @@ func _hp_decay(side: String) -> void:
 		_record(victim,"HP decay",victim.index,side,[_impact(side,victim.index,amount)],"hp_loss")
 
 func _ready_skill(u: Dictionary, name: String) -> bool:
+	if is_stunned(u.side,u.index): return false
+	if _has(u,"silence") and name not in ["Maiden’s Care","Grand Battery","Avalon’s Veil","Phalanx","Thief’s Mark"]: return false
 	if not super(u,name): return false
 	if name == "Deadly Strike" and u.hp >= u.max_hp*0.5 and not u.nodes.has("S1.1.2"): return false
 	if name.begins_with("Summon "): return not _has_automaton(u.side,name)
 	return true
+
+func _passive_skill_active(u: Dictionary, name: String) -> bool:
+	return skill_mode and not is_stunned(u.side,u.index) and super(u,name)
+
+func _refresh_continuous_stats() -> void:
+	for side in ["A","B"]:
+		for u in teams[side]:
+			if u.get("character_id","") != "morgan_le_fay": continue
+			var effectiveness: float = .02 * int(u.levels.get("Avalon’s Veil",0)) if _passive_skill_active(u,"Avalon’s Veil") else 0.0
+			u.max_mp = u.mp_without_veil*(1+effectiveness)
+			u.mp = minf(u.mp,u.max_mp)
+
+func add_stun_count(side: String, index: int, amount: int) -> void:
+	super(side,index,amount)
+	_refresh_continuous_stats()
+
+func _normal_targets(u: Dictionary) -> Array[int]:
+	var front: bool = u.type not in ["Ranger","Devastator"]
+	var result: Array[int] = []
+	for i in _targets(_enemy(u.side),front):
+		var target := _unit(_enemy(u.side),i)
+		var veiled: bool = target.get("character_id","") == "morgan_le_fay" and _passive_skill_active(target,"Avalon’s Veil")
+		if veiled and u.type in ["Warrior","Destroyer","Soldier","Devastator"]: continue
+		result.append(i)
+	return result
 
 func _has_automaton(side: String, name: String) -> bool:
 	for u in teams[side]:
@@ -140,6 +173,7 @@ func _summon(u: Dictionary, name: String) -> void:
 
 func _normal(u: Dictionary, primary: int, counter: bool = false, coordinated: bool = false) -> void:
 	if primary < 0 or _blocked(u): return
+	if not counter and primary not in _normal_targets(u): return
 	var machine: bool = u.get("is_automaton",false)
 	if not counter and not machine: u.ap -= 100
 	if not counter and not coordinated: u.has_slot = false
@@ -177,6 +211,12 @@ func _cast(u: Dictionary, name: String, primary: int, automatic: bool = false) -
 func _cast_impl(u: Dictionary, name: String, primary: int, automatic: bool = false) -> void:
 	var skill: Dictionary = u.skills[name]
 	var level: int = u.levels[name]
+	if preload("res://src/combat/caster_kit.gd").handles(name):
+		if not _ready_skill(u,name): return
+		if name == "Malediction" and primary not in _targets(_enemy(u.side),false,true): return
+		_pay(u,name,automatic)
+		preload("res://src/combat/caster_kit.gd").cast(self,u,name,primary)
+		return
 	if name.begins_with("Summon "):
 		if not _ready_skill(u,name): return
 		_pay(u,name,automatic)
@@ -255,6 +295,18 @@ func _act(u: Dictionary) -> void:
 	var enemies := _targets(_enemy(u.side))
 	if enemies.is_empty(): u.has_slot=false; return
 	var low := _heal_target(u.side)
+	if u.get("character_id","") == "nightingale":
+		if low >= 0 and _unit(u.side,low).hp < _unit(u.side,low).max_hp:
+			for healing in ["Healing Hands","Back to Duty"]:
+				if _ready_skill(u,healing): _cast(u,healing,low); return
+		if _ready_skill(u,"Back to Duty"):
+			for i in _alive(u.side):
+				if not _has(_unit(u.side,i),"haste"): _cast(u,"Back to Duty",i); return
+	elif u.get("character_id","") == "morgan_le_fay" and _ready_skill(u,"Fae Starfall"):
+		_cast(u,"Fae Starfall",enemies[0]); return
+	if u.get("character_id","") == "morgan_le_fay" and _ready_skill(u,"Malediction"):
+		var rows := _targets(_enemy(u.side),false,true)
+		if not rows.is_empty(): _cast(u,"Malediction",_choose(rows,_enemy(u.side))); return
 	for name in ["Mona Lisa","Holy Guard"]:
 		if _ready_skill(u,name) and low>=0 and _unit(u.side,low).hp<=_unit(u.side,low).max_hp*u.ai.heal_hp_ratio:
 			_cast(u,name,low); return
@@ -277,7 +329,8 @@ func _act(u: Dictionary) -> void:
 		elif name in ["War Cry","God-King Slayer"]: targets = _targets(_enemy(u.side),false,true)
 		if targets.is_empty(): continue
 		_cast(u,name,_choose(targets,_enemy(u.side),true)); return
-	var targets := enemies if u.type in ["Ranger","Devastator"] else _targets(_enemy(u.side),true)
+	var targets := _normal_targets(u)
+	if targets.is_empty(): u.has_slot=false; return
 	_normal(u,_choose(targets,_enemy(u.side),true))
 
 
@@ -305,6 +358,7 @@ func _end_turn() -> void:
 func step() -> Dictionary:
 	if finished: return {}
 	global_turn += 1
+	_refresh_continuous_stats()
 	var side: String = _next
 	timeline.clear()
 	var start: Dictionary = teams.duplicate(true)
@@ -315,7 +369,9 @@ func step() -> Dictionary:
 	var cap := 2 if global_turn<=2 else (4 if global_turn<=4 else 5)
 	if not finished:
 		for unit in teams[side]:
-			if unit.hp>0: unit.ap += unit.ap_recovery-unit.character_ap_recovery if is_stunned(side,unit.index) else unit.ap_recovery
+			if unit.hp>0:
+				var base: float = unit.ap_recovery-unit.character_ap_recovery if is_stunned(side,unit.index) else unit.ap_recovery
+				unit.ap += base*(1+_sum(unit,"apr_mod"))
 		var eligible: Array[Dictionary] = []
 		for unit in teams[side]:
 			if not _blocked(unit) and unit.ap>=100: eligible.append({"index":unit.index,"ap":unit.ap,"tie":_rng.randf()})

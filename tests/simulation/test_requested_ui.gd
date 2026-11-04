@@ -8,7 +8,11 @@ func run() -> void:
 	await process_frame
 	assert(ui.requested_scenario)
 	assert(ui._duel.teams.A[0].type=="Destroyer")
-	assert(ui._duel.teams.A[7].levels['Mona Lisa']==10)
+	assert(ui._duel.teams.A[7].levels['Healing Hands']==6)
+	assert(ui._duel.teams.A[4].character_id=='morgan_le_fay')
+	assert(ui._duel.teams.A[7].main and not ui._duel.teams.A[4].main)
+	assert(ui._duel.teams.A[7].character_id=='nightingale')
+	assert(ui._duel.teams.A[4].skill_points==12 and ui._duel.teams.A[7].skill_points==12)
 	ui.animation_speed=0
 	for i in range(9):
 		ui._advance()

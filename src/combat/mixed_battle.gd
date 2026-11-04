@@ -195,6 +195,9 @@ func _take_hp(v: Dictionary, amount: float, source: Dictionary) -> float:
 	_check_end()
 	return real
 
+func _passive_skill_active(u: Dictionary, name: String) -> bool:
+	return int(u.levels.get(name,0)) > 0
+
 func _damage(u: Dictionary, v: Dictionary, power: float, normal: bool, penalty: float = 0.0, force_crit: float = -1.0, counter: bool = false) -> Dictionary:
 	if v.hp <= 0:
 		return _impact(v.side,v.index,0,false)
@@ -210,8 +213,8 @@ func _damage(u: Dictionary, v: Dictionary, power: float, normal: bool, penalty: 
 		if mark.tag == "mark" and mark.creator_side == u.side and mark.creator == u.index:
 			amount *= 1 + float(mark.vulnerable)
 	amount *= 1 - penalty
-	var ranged: bool = u.type in ["Ranger","Piercer","Devastator"]
-	var phalanx: bool = skill_mode and int(v.levels.get("Phalanx",0)) > 0
+	var ranged: bool = u.type in ["Ranger","Piercer","Devastator","Caster"]
+	var phalanx: bool = skill_mode and _passive_skill_active(v,"Phalanx")
 	if normal and phalanx and ranged and _roll(0.04*int(v.levels["Phalanx"])):
 		amount = 0.0
 	if not landed or _has(v,"invincible") or (not normal and _has(v,"immunity")):

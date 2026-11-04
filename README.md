@@ -23,7 +23,7 @@ cũ được giữ riêng với snapshot lịch sử; engine Godot chưa đồng
 ## Demo Godot 9vs9
 
 Mở `project.godot` bằng Godot **4.7.2 Standard**, import asset rồi nhấn **F5**.
-Scene mặc định: `src/ui/requested_9v9.tscn`; hai đội cùng build, Leonidas main slot5.
+Scene mặc định: `src/ui/requested_9v9.tscn`; hai đội cùng build, Morgan main slot5 / Nightingale Matron slot8.
 Có Auto, Next turn, Restart, Build và Export log; cấu hình ở
 `data/gameplay/requested_9v9.json`. Không cần Python, Blender hoặc plugin để chơi demo.
 
@@ -115,3 +115,5 @@ Theo [lộ trình nâng cấp đồ họa 2D](docs/design/graphics-roadmap.md), 
 ## Tiếp tục dự án với ngữ cảnh gọn
 
 Bắt đầu từ [chỉ mục dự án](docs/design/project-index.md) và [skill Avatar War](.agents/skills/avatar-war-workflow/SKILL.md). Chọn đúng backend và phạm vi trước khi đọc tài liệu chi tiết. Skill trong repo là bản dùng chung; đường dẫn máy và cách cài cá nhân giữ ở local. Xem chỉ mục để phân biệt code đã commit với các bản demo còn chỉ trên máy.
+
+Bản test Nightingale/Morgan: [build và kiểm tra](docs/design/nightingale-morgan-9v9-2026-11-04.md).

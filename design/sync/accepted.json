@@ -14,18 +14,20 @@
     "Leonardo2 SP17: Mona Lisa10, Piercing7; low-HP heal threshold65% (AI policy, not skill condition)",
     "Robin prioritizes normal attacks; Hood utility and Golden triggered proc remain allowed"
   ],
-  "coverage": "Only requested_9v9 builds and handlers; not all workbook mechanics",
+  "coverage": "Requested Nightingale Matron/Morgan Witch builds plus legacy roster; unselected Caster kits unsupported",
+  "design_source_commit": "1c0ff16cde52e5f75306ef82ef5dc54f2c14dc50",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
     "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
-    "src/combat/mixed_battle.gd": "2d2c1c0aaf1409951455ca6416d0dc9c5709e5d5c37c6d30781799cd77415a23",
-    "src/combat/requested_battle.gd": "cb0c3e18086e7045430867450cdc332328e43aecdd863b53b82bc756f4a8eb3e",
+    "src/combat/mixed_battle.gd": "e3049b99487d71de54220d326404d05f5f863bdce4d8cf5f3a9be5560bd7f2d7",
+    "src/combat/requested_battle.gd": "5735637451ba5002f51301a176c6e2e226c36bce3db0ee632ac94393136dd733",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
-  "implementation_source": "fda66d16924345fe42761a51d522fd93a6ccaaca",
+  "implementation_source": "demo/nightingale-morgan-9v9 (PR pending)",
   "schema_version": 1,
-  "snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
-  "workbook_sha256": "90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38"
+  "snapshot": "design/sync/snapshots/0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f.json",
+  "workbook_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f"
 }

@@ -1,48 +1,56 @@
 {
+  "design_source_commit": "1c0ff16cde52e5f75306ef82ef5dc54f2c14dc50",
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
+    "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
     "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
-    "src/combat/mixed_battle.gd": "2d2c1c0aaf1409951455ca6416d0dc9c5709e5d5c37c6d30781799cd77415a23",
-    "src/combat/requested_battle.gd": "cb0c3e18086e7045430867450cdc332328e43aecdd863b53b82bc756f4a8eb3e",
+    "src/combat/mixed_battle.gd": "e3049b99487d71de54220d326404d05f5f863bdce4d8cf5f3a9be5560bd7f2d7",
+    "src/combat/requested_battle.gd": "5735637451ba5002f51301a176c6e2e226c36bce3db0ee632ac94393136dd733",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },
-  "implementation_notes": "design/sync/review-2026-11-03.md; user confirmed K1000 and revival > HP decay > passive/auto-cast > AP. All282 cell deltas reviewed for requested build scope.",
-  "previous_snapshot": "design/sync/snapshots/37522473cffa970ee28d6240bdc92234eeb53964e774bdcec9d3f25398c86e7c.json",
-  "reviewed_change_sha256": "9f64d9dff2b56661b66c0463f34c2ef2951c2b9142bf467d3110d4c20e6a052c",
+  "implementation_notes": "User revision: Nightingale main slot8; Morgan Enchantress S2 + S2.1.1 + S2.2.1-4; Starfall6/Malediction6. Candidate built by importer from exact workbook; 4915 checks passed incl six complete mirrored matches, DOT/Silence/Intimidated, APR/HP/CD and targeting. Full earlier Caster source review retained in dated handoff.",
+  "previous_snapshot": "design/sync/snapshots/90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38.json",
+  "reviewed_change_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
   "schema_version": 1,
-  "source_sha256": "90220ad5edab1591b46374e4626a855be73f24516902e7a9727ada54deb89f38",
+  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f",
   "tests": [
     {
-      "command": "godot --headless --path . --script res://tests/simulation/test_current_rules.gd",
+      "command": "godot --path . --script res://tests/simulation/test_caster_roster.gd",
       "exit_code": 0,
-      "log": "design/sync/evidence/current-rules.txt",
-      "sha256": "9a66e05fd42fb0e21ca2dd17f1409b4adda182b9bcabe3aa77cb0e24f255e112"
+      "log": "design/sync/evidence/caster-test_caster_roster.txt",
+      "sha256": "b8255dec3a8a9e0ea528d4cc9c7c20b5f7f20b91e40c5a7f851e48b37f9209c6"
     },
     {
-      "command": "godot --headless --path . --script res://tests/simulation/test_requested_battle.gd",
+      "command": "godot --path . --script res://tests/simulation/test_requested_battle.gd",
       "exit_code": 0,
-      "log": "design/sync/evidence/current-test_requested_battle.txt",
-      "sha256": "17fad577cc9c18961e352ef081500fc47adc2d9c4be9901936f45e4e5e9768ea"
+      "log": "design/sync/evidence/caster-test_requested_battle.txt",
+      "sha256": "4ccb6318624383d9f3379adf8cf0921e03a54775aa37d1c560a4c7b032ee51ae"
     },
     {
-      "command": "godot --headless --path . --script res://tests/simulation/test_mixed_battle.gd",
+      "command": "godot --path . --script res://tests/simulation/test_mixed_battle.gd",
       "exit_code": 0,
-      "log": "design/sync/evidence/current-test_mixed_battle.txt",
-      "sha256": "c5c808be7af27e45196d77ad1b0f281ca39154ffdff216a4965e5d8a3130e2de"
+      "log": "design/sync/evidence/caster-test_mixed_battle.txt",
+      "sha256": "0647d75ff15c3d031ebb2358ce3d71377c523334a3268046e78fbe04aa902e76"
     },
     {
-      "command": "godot --headless --path . --script res://tests/simulation/test_battle_log.gd",
+      "command": "godot --path . --script res://tests/simulation/test_battle_log.gd",
       "exit_code": 0,
-      "log": "design/sync/evidence/current-test_battle_log.txt",
-      "sha256": "a1ff9c895456572090ffdc2bb5514ae897bf8cf87c8485c551fbafd1dd2932b5"
+      "log": "design/sync/evidence/caster-test_battle_log.txt",
+      "sha256": "b81cb8e49b72662ea9a4d52e3121cfd738bba4a64a967a736b4385a84187df84"
+    },
+    {
+      "command": "godot --path . --script res://tests/simulation/test_current_rules.gd",
+      "exit_code": 0,
+      "log": "design/sync/evidence/caster-test_current_rules.txt",
+      "sha256": "2bbf7077578e52a3edf0c726eac28d48d4496c83303b06282b331605705b7176"
     },
     {
       "command": "godot --path . --script res://tests/simulation/test_requested_ui.gd",
       "exit_code": 0,
-      "log": "design/sync/evidence/current-ui.txt",
-      "sha256": "58868d507a19da62c9404f5b998ed70b875ec3863294f7004bc29c32e5053139"
+      "log": "design/sync/evidence/caster-test_requested_ui.txt",
+      "sha256": "26fe2adbf0942ec1e83724b82a67cdacb673c81c832eb2a6a6f80c3c605ca65c"
     }
   ]
 }

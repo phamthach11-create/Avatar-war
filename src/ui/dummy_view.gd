@@ -4,6 +4,20 @@ const SHEET = preload("res://assets/characters/warrior_actions.png")
 # Atlas bounds follow each actual generated pose, including sword tips.
 const REGIONS = [Rect2(146,26,264,498), Rect2(503,84,451,432), Rect2(1075,11,396,514), Rect2(26,578,584,385), Rect2(646,545,311,422), Rect2(1015,814,505,164)]
 const ANCHORS = [Vector2(280,521), Vector2(785,513), Vector2(1260,522), Vector2(300,960), Vector2(800,964), Vector2(1250,975)]
+const CLASS_SHEETS = {
+	"Destroyer": preload("res://assets/classes-v1/destroyer/actions.png"),
+	"Soldier": preload("res://assets/classes-v1/soldier/actions.png"),
+	"Ranger": preload("res://assets/classes-v1/ranger/actions.png"),
+	"Piercer": preload("res://assets/classes-v1/piercer/actions.png"),
+	"Devastator": preload("res://assets/classes-v1/devastator/actions.png"),
+	"Caster": preload("res://assets/classes-v1/caster/actions.png"),
+}
+var visual_class := ""
+var appearance_tint := Color.WHITE
+
+func skin_type() -> String:
+	return unit_type if visual_class.is_empty() else visual_class
+
 var _pose := 0
 var _travel := Vector2.ZERO
 var _returning := false
@@ -47,28 +61,37 @@ func _draw() -> void:
 		draw_arc(ground, 48 * factor, 0, TAU, 48, ring_color, 3.0 if acting or targeted else 1.0, true)
 	var height := size.y - 18.0
 	var scale_factor := height / 494.0
-	var region: Rect2 = REGIONS[_pose]
-	var anchor: Vector2 = ANCHORS[_pose]
+	var region: Rect2 = REGIONS[mini(_pose, 5)]
+	var anchor: Vector2 = ANCHORS[mini(_pose, 5)]
+	var sheet: Texture2D = CLASS_SHEETS.get(skin_type(), SHEET)
+	if CLASS_SHEETS.has(skin_type()):
+		var frame: int = _pose
+		if skin_type() in ["Ranger", "Piercer", "Devastator", "Caster"]:
+			frame = [0, 0, 1, 2, 4, 5, 3][_pose]
+		region = Rect2((frame % 3)*512, (frame / 3 as int)*512, 512, 512)
+		anchor = region.position + Vector2(256, 494)
 	var draw_position := (region.position - anchor) * scale_factor
-	var bob := sin(_clock * (20.0 if _pose == 1 else 2.6)) * (2.2 if _pose == 1 else 0.8) if not defeated else 0.0
+	var bob := sin(_clock * (20.0 if _pose == 1 and skin_type() in ["Warrior","Soldier","Destroyer"] else 2.6)) * (2.2 if _pose == 1 else 0.8) if not defeated else 0.0
 	var direction := 1.0 if faces_right else -1.0
 	if _returning:
 		direction = -direction
 	var type_color: Color = {"Warrior":Color("e4f0ff"),"Soldier":Color("fff0b0"),"Destroyer":Color("bbdbff"),"Ranger":Color("b3ffb3"),"Piercer":Color("e0b9ff"),"Devastator":Color("ffb8a8")}.get(unit_type,Color.WHITE)
+	if CLASS_SHEETS.has(skin_type()):
+		type_color = appearance_tint
 	var tint := type_color.lerp(Color(1.0, 0.3, 0.2), _flash)
 	tint = tint.lerp(Color(0.65, 0.65, 0.65, 0.6), _fall)
 	draw_set_transform(ground + Vector2(_offset, bob), 0.0, Vector2(direction, 1.0))
-	draw_texture_rect_region(SHEET, Rect2(draw_position, region.size * scale_factor), region, tint)
+	draw_texture_rect_region(sheet, Rect2(draw_position, region.size * scale_factor), region, tint)
 	draw_set_transform(Vector2.ZERO)
 
 	if _heal_flash > 0.0:
 		draw_arc(ground+Vector2(0,-height*0.4),height*0.35,0,TAU,32,Color(0.3,1.0,0.5,_heal_flash),3,true)
-	if not defeated and unit_type == "Devastator":
+	if not defeated and unit_type == "Devastator" and not CLASS_SHEETS.has(skin_type()):
 		var cannon := ground + Vector2(0,-height*0.25)
 		draw_circle(cannon+Vector2(-height*0.16,8),height*0.12,Color("292b32"))
 		draw_circle(cannon+Vector2(height*0.16,8),height*0.12,Color("292b32"))
 		draw_line(cannon,cannon+Vector2((1 if faces_right else -1)*height*0.45,-height*0.10),Color("66564a"),height*0.18,true)
-	if not defeated and unit_type == "Ranger":
+	if not defeated and unit_type == "Ranger" and not CLASS_SHEETS.has(skin_type()):
 		draw_arc(ground+Vector2((1 if faces_right else -1)*height*0.22,-height*0.45),height*0.28,-PI/2,PI/2,16,Color("8d6e48"),2.5,true)
 	if stunned and not defeated:
 		for star in range(3):
@@ -177,6 +200,11 @@ func animate_attack(speed: float = 1.0) -> void:
 	_motion = create_tween()
 	_motion.tween_interval(0.2 * speed)
 	_motion.tween_callback(func() -> void: _pose = 3)
+	if skin_type() in ["Ranger", "Piercer", "Devastator", "Caster"]:
+		_motion.tween_interval(0.22 * speed)
+		_motion.tween_callback(func() -> void: _pose = 6)
+		_motion.tween_interval(0.18 * speed)
+		_motion.tween_callback(func() -> void: _pose = 5 if defeated else 0)
 
 func return_home(speed: float) -> float:
 	var duration := clampf(_travel.length() / 1300.0, 0.2, 0.45) * speed

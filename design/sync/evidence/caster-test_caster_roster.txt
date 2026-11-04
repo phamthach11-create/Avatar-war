@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASTER_MATCHES [["A", 42, 35, "A", { "Healing Hands": 10, "Back to Duty": 9, "Fae Starfall": 6, "Malediction": 3 }], ["A", 43, 57, "B", { "Healing Hands": 10, "Back to Duty": 10, "Fae Starfall": 7, "Malediction": 7 }], ["A", 44, 43, "A", { "Healing Hands": 10, "Back to Duty": 10, "Fae Starfall": 5, "Malediction": 3 }], ["B", 42, 35, "B", { "Healing Hands": 10, "Back to Duty": 9, "Fae Starfall": 6, "Malediction": 3 }], ["B", 43, 57, "A", { "Healing Hands": 10, "Back to Duty": 10, "Fae Starfall": 7, "Malediction": 7 }], ["B", 44, 43, "B", { "Healing Hands": 10, "Back to Duty": 10, "Fae Starfall": 5, "Malediction": 3 }]]
+CASTER_TEST_RESULT checks=4915 failures=0
