@@ -19,10 +19,10 @@
   "engine_files": {
     "src/combat/battle_log.gd": "1554d36b6105fdad259aabef10f0b77614b16b50bac76d77123c28d744fedf4f",
     "src/combat/caster_kit.gd": "30c4ef3fed9e172bc542ee68bb7e87392de61dc00fc1d661fc4d1c704ad22b7b",
-    "src/combat/current_rules.gd": "4a46f64cc193433fd34e304abc5f47039311b46a0e2f4873660799819197f97b",
+    "src/combat/current_rules.gd": "078f64b7d75a6e583a6feade23317e5d6236513cda940bf8b71c456da164217b",
     "src/combat/dummy_duel.gd": "7d34ee5e60e17aa0478f546eb367ed07905f59c4eec2b52996aa68f541bc9770",
-    "src/combat/mixed_battle.gd": "e3049b99487d71de54220d326404d05f5f863bdce4d8cf5f3a9be5560bd7f2d7",
-    "src/combat/requested_battle.gd": "3db4f657a2466434758583d7ad1f8e652802612d1f884527e394b841a8ab3ce7",
+    "src/combat/mixed_battle.gd": "6d0f13a1f5f52dac388c0be142288f4167eb7235df986ed02e5eb7db13188877",
+    "src/combat/requested_battle.gd": "947ff86a1fef0b19af422d58ca565501b148cb06828319c46dc8b13bf63d88d0",
     "src/combat/squad_battle.gd": "fdd96eadf0d810418f1f263d69c47bf6c9146b0fdcdff11bd9edf5c8a08f92db",
     "src/combat/sword_battle.gd": "15e97968e3813341d1fcf7ecb4c7eec2ebf58d4038df89455f5a16903d51f2e1"
   },

@@ -189,3 +189,19 @@ All weapon classes audited: Destroyer Row Adjacent, Soldier Line Adjacent, Pierc
 Normal weapon records carry unique hit presentation ids. UI folds all recipients of each hit into one swing/projectile and simultaneous hit effects/HP refresh. Multi-hit remains distinct; reactions follow the initiating impact in original relative reaction order. Snapshot deltas rebase intermediate presentation state so counter damage is neither premature nor rolled back. Raw combat order, RNG, damage, AP, targeting and exported raw logs remain unchanged. Source event counts retained for export/readiness. Restarts cancel pending impact timers.
 
 349 playback checks passed across all7 classes, both Automata, multi-hit, forced counter between AoE recipients and two complete matches.4915 Caster,1324 requested,453 rules and real-timer UI/cancellation tests pass. Existing six Caster match results unchanged. Runtime receipt/bundle refreshed for metadata-only combat hash. Pending PR7; not merged.
+
+## 2026-11-04 — Opening slot sequence user override
+
+Godot mixed/requested now share current_rules.initial_slot_limit: Global Turns1/2/3/4 =>2/3/4/5 initial slots; turn5 onward5. Uses initiative order, including when Team B starts. Still a maximum: AP/eligibility and slot-transfer rules unchanged. No-action turns advance the global opening sequence.
+
+Explicit user instruction supersedes Combat Mechanics C36 (2=>3) and C38 (4=>5); Excel binary intentionally unchanged in this code-only update. Override is recorded in both scenario templates and receipt so a later workbook import must preserve or reconcile it. Python simulation backend not changed by this Godot task.
+
+80 focused allocation checks pass: both initiative sides, actual eligible actor counts, empty turns, fewer eligible actors and turns1–20. Prior100-match64%/36% report used OLD2/2/4/4 opening; do not quote it as balance evidence for the new rule. PR7 remains unmerged.
+
+Final validation for opening slots:80 focused,5779 Caster,1312 requested,9420 mixed,1355 log,453 rules,453 playback checks and real-timer UI pass;13 importer tests pass. Log-export test now explicitly forces one ranger accuracy0 so MISS coverage is independent of balance/RNG changes (test fixture only).
+
+## 2026-11-04 — User approved applying the tested opening rule
+
+User explicitly approved2/3/4/5 initial slots for Global Turns1–4, then5 from Turn5 onward. Reapplied the exact tested implementation in shared Godot current_rules for requested/mixed, with scenario override, runtime bundle and receipt. This supersedes the temporary revert and simulation-only decision. No merge authorized.
+
+Same100-match experiment (seeds0–49, each with both starting sides): first team56 wins, second44, no draws; average46.70 Global Turns (range31–71). Old opening had64/36. Verified experiment requested_battle hash equals the reapplied implementation; no second run is claimed.80 focused allocation checks pass again; previously completed regression evidence retained. Excel Combat Mechanics C36/C38 still require source-document reconciliation; explicit user approval is recorded in scenario overrides and this handoff. Python backend remains separate.
