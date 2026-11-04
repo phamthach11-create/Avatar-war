@@ -168,3 +168,40 @@ Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn 
 - PR [#6](https://github.com/phamthach11-create/Avatar-war/pull/6) đã squash merge theo yêu cầu người dùng; merge commit `9d0ebdca1ef65215ecba83554c03a0ed3f56bc24`.
 - CI của head `d09cab9d66a13c0c83321f5979f368ff96252396`: unit, freshness và simulation đều success; workbook/runtime đúng revision. Giữ K1000 và thứ tự hồi sinh > decay > passive/Auto-Cast > AP đã chốt.
 - Main hiện có công cụ đồng bộ và requested9v9 đã áp dụng các thay đổi được review. Các bản demo local đang mở không tự reload từ GitHub; lần chạy mới dùng checkout main và check trước khi mở.
+
+## 2026-11-04 — Demo Morgan main / Nightingale Matron (local, PR chuẩn bị)
+- User yêu cầu dùng design mới; lấy nhánh design/workbook-20261103 commit1c0ff16, chưa merge thiết kế. SHA256 workbook0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f giữ đúng byte.
+- Hai đội đối xứng, thay main5 bằng MorganWitch và healer8 bằng NightingaleMatron; giữ7slot khác. User xác nhận Caster12SP, cả hai6/6. Node IDs ánh xạ theo cell, không suy ra tác dụng từ tên.
+- Dùng engine/scenario cũ, thêm caster_kit.gd; importer hỗ trợ2nhân vật cùng sheet và nhiều scenario. Haste/Veil/passive-Stun/aura12%4% được xử lý. Legacy roster vẫn test trên cùng engine.
+-6103caster+1324legacy+8196mixed+1150log+453rule checks qua;13sync/33Python tests qua, UI qua. Plan/check chạy theo receipt. Class/Item256 và Caster skill9cache được kiểm tra độc lập; không nói đã recalc toànExcel.
+- Sprite class2D cũ được ghép; Morgan dùng sắc tím, Nightingale dùng trắng/xanh. Casterkits khác/Connection/Vitruvian repricing chưa triển khai hoặc xác nhận. Chi tiết docs/design/nightingale-morgan-9v9-2026-11-04.md.
+
+## 2026-11-04 — User revision: Nightingale main / Morgan Enchantress
+
+Supersedes the initial Morgan Witch main proposal. Nightingale MAIN slot8; Morgan slot5 S2 + S2.1.1 + S2.2.1-4, Starfall6/Malediction6 confirmed. Both12SP; all other seven slots unchanged. See nightingale-morgan-9v9-2026-11-04.md for source hash, mechanics and verification. Separate demo branch; not merged.
+
+Published: PR https://github.com/phamthach11-create/Avatar-war/pull/7, implementation commit9b4039a11d695e2542736f0b6aadcfb89aea2e68. Open, not merged. Local demo reopened with Nightingale main and Morgan Enchantress; final4915 Caster checks,1324 requested,8196 mixed,1150 log,453 rules,13 importer tests and UI QA passed.
+
+## 2026-11-04 — Weapon AoE presentation fix (PR7 follow-up)
+
+All weapon classes audited: Destroyer Row Adjacent, Soldier Line Adjacent, Piercer Full Line, Devastator Cross; Warrior/Ranger/Caster remain Single. Both Automaton weapon types included. This does not expand Destroyer to Full Row: retains the exact current weapon area.
+
+Normal weapon records carry unique hit presentation ids. UI folds all recipients of each hit into one swing/projectile and simultaneous hit effects/HP refresh. Multi-hit remains distinct; reactions follow the initiating impact in original relative reaction order. Snapshot deltas rebase intermediate presentation state so counter damage is neither premature nor rolled back. Raw combat order, RNG, damage, AP, targeting and exported raw logs remain unchanged. Source event counts retained for export/readiness. Restarts cancel pending impact timers.
+
+349 playback checks passed across all7 classes, both Automata, multi-hit, forced counter between AoE recipients and two complete matches.4915 Caster,1324 requested,453 rules and real-timer UI/cancellation tests pass. Existing six Caster match results unchanged. Runtime receipt/bundle refreshed for metadata-only combat hash. Pending PR7; not merged.
+
+## 2026-11-04 — Opening slot sequence user override
+
+Godot mixed/requested now share current_rules.initial_slot_limit: Global Turns1/2/3/4 =>2/3/4/5 initial slots; turn5 onward5. Uses initiative order, including when Team B starts. Still a maximum: AP/eligibility and slot-transfer rules unchanged. No-action turns advance the global opening sequence.
+
+Explicit user instruction supersedes Combat Mechanics C36 (2=>3) and C38 (4=>5); Excel binary intentionally unchanged in this code-only update. Override is recorded in both scenario templates and receipt so a later workbook import must preserve or reconcile it. Python simulation backend not changed by this Godot task.
+
+80 focused allocation checks pass: both initiative sides, actual eligible actor counts, empty turns, fewer eligible actors and turns1–20. Prior100-match64%/36% report used OLD2/2/4/4 opening; do not quote it as balance evidence for the new rule. PR7 remains unmerged.
+
+Final validation for opening slots:80 focused,5779 Caster,1312 requested,9420 mixed,1355 log,453 rules,453 playback checks and real-timer UI pass;13 importer tests pass. Log-export test now explicitly forces one ranger accuracy0 so MISS coverage is independent of balance/RNG changes (test fixture only).
+
+## 2026-11-04 — User approved applying the tested opening rule
+
+User explicitly approved2/3/4/5 initial slots for Global Turns1–4, then5 from Turn5 onward. Reapplied the exact tested implementation in shared Godot current_rules for requested/mixed, with scenario override, runtime bundle and receipt. This supersedes the temporary revert and simulation-only decision. No merge authorized.
+
+Same100-match experiment (seeds0–49, each with both starting sides): first team56 wins, second44, no draws; average46.70 Global Turns (range31–71). Old opening had64/36. Verified experiment requested_battle hash equals the reapplied implementation; no second run is claimed.80 focused allocation checks pass again; previously completed regression evidence retained. Excel Combat Mechanics C36/C38 still require source-document reconciliation; explicit user approval is recorded in scenario overrides and this handoff. Python backend remains separate.

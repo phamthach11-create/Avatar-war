@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+BATTLES [["A", 0, "A", 79], ["A", 1, "B", 72], ["A", 2, "A", 75], ["B", 0, "B", 79], ["B", 1, "A", 72], ["B", 2, "B", 75]]
+MIXED TEST 8196 checks; failures 0

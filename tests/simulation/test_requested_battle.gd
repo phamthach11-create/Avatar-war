@@ -7,7 +7,7 @@ func check(ok: bool, message: String) -> void:
 	checks += 1
 	if not ok: failures += 1; push_error(message)
 func fresh() -> RefCounted:
-	return Battle.new(Battle.load_mixed_config(),"A",42,true)
+	return Battle.new(Battle.load_scenario("legacy_requested_9v9"),"A",42,true)
 func ready(b: RefCounted, i: int, name: String) -> Dictionary:
 	var u: Dictionary = b.teams.A[i]
 	u.skills[name].remaining=0
@@ -30,8 +30,8 @@ func run() -> void:
 			check(u.levels==b.scenario.roster[i].levels,"exact levels")
 	check(b.teams.A[7].levels['Mona Lisa']==10 and b.teams.A[7].levels['Summon Piercing Automaton']==7,"healer priority allocation")
 	check(is_equal_approx(b.teams.A[7].skills['Mona Lisa'].mp,20415*.51),"49% skill mana reduction")
-	check(is_equal_approx(b._sum(b.teams.A[1],'def_mod'),.07),"tank aura adjacent")
-	check(is_equal_approx(b._sum(b.teams.A[4],'def_mod'),.07),"Adjacent aura includes diagonal")
+	check(is_equal_approx(b._sum(b.teams.A[1],'def_mod'),.12),"tank aura adjacent")
+	check(is_equal_approx(b._sum(b.teams.A[4],'def_mod'),.12),"Adjacent aura includes diagonal")
 	check(not b._ready_skill(b.teams.A[0],'Deadly Strike'),"Deadly locked by cooldown/health")
 	var u=ready(b,0,'Deadly Strike')
 	check(not b._ready_skill(u,'Deadly Strike'),"HP restriction retained")

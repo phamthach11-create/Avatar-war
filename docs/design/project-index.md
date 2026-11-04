@@ -36,3 +36,6 @@ Các đường dẫn máy và phần mềm cài đặt giữ ở cấu hình/ch�
 
 ## Cập nhật sau mỗi thay đổi
 Ghi ngắn: nguồn thiết kế → file/scene → thay đổi → kiểm tra → hạn chế → bước tiếp. Giữ trạng thái local / push / merge chính xác. Thay chỉ mục khi điểm vào/capability đổi; lịch sử chi tiết để trong nhật ký, không chép toàn bộ vào đây.
+
+## Scenario đang đề xuất2026-11-04
+NightingaleMatron slot8 / MorganWitch main5, cả hai12SP6/6,7slot giữ nguyên. Engine dùng lại, caster_kit.gd là module skill. Xem docs/design/nightingale-morgan-9v9-2026-11-04.md. Nhánh demo/nightingale-morgan-9v9, chưa merge; main trước đó vẫn roster cũ.

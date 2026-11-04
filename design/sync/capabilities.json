@@ -1,13 +1,24 @@
 {
-  "schema_version": 1,
   "backend": "godot-gdscript",
-  "scenario": "requested_9v9",
-  "engine": ["src/combat/requested_battle.gd", "src/combat/mixed_battle.gd", "src/combat/sword_battle.gd", "src/combat/squad_battle.gd"],
-  "verified_scope": "Only requested_9v9 template builds; not all skills/nodes in the workbook",
-  "numeric_bindings": ["class total base stats B9:B27", "character APR C21", "known skill AP/MP/cooldown rows"],
-  "semantic_changes": "Implement handler + verify behavior + exact implementation receipt + PR review",
-  "renderer_contract": "Scenario in; turn_start_state/actions/impacts/state_after events out. 2D and future 3D consume the same combat state.",
+  "character_binding": "design/characters/caster-bindings.json",
+  "engine": [
+    "src/combat/requested_battle.gd",
+    "src/combat/mixed_battle.gd",
+    "src/combat/sword_battle.gd",
+    "src/combat/squad_battle.gd"
+  ],
+  "numeric_bindings": [
+    "class total base stats B9:B27",
+    "character APR C21",
+    "known skill AP/MP/cooldown rows"
+  ],
   "presentation_2d": "src/ui/main.gd",
   "presentation_3d": "not implemented by this synchronization PR",
-  "unsupported_policy": "block and report, never substitute another skill or infer a handler from JSON existence"
+  "renderer_contract": "Scenario in; turn_start_state/actions/impacts/state_after events out. 2D and future 3D consume the same combat state.",
+  "scenario": "requested_9v9",
+  "schema_version": 1,
+  "selected_caster_handler": "src/combat/caster_kit.gd",
+  "semantic_changes": "Implement handler + verify behavior + exact implementation receipt + PR review",
+  "unsupported_policy": "block and report, never substitute another skill or infer a handler from JSON existence",
+  "verified_scope": "Requested Nightingale Matron/Morgan Witch builds plus legacy roster; unselected Caster kits unsupported"
 }

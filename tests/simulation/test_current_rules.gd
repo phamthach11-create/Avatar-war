@@ -53,10 +53,10 @@ func run() -> void:
 	b._take_hp(b.teams.A[2],1e9,b.teams.B[0])
 	check(ally.ap_recovery==apr+10,"Different allied deaths stack")
 	b=fresh();b.global_turn=30
-	b.teams.A[4].hp=1
+	b.teams.A[b.scenario.main_index].hp=1
 	b._hp_decay("A")
 	check(b.finished and b.winner=="B","Decay can kill main and end battle")
-	check(not b.teams.A[5].has("death_processed"),"No later events after battle end")
+	check(not b.teams.A[8].has("death_processed"),"No later events after battle end")
 	b=fresh();b.global_turn=4
 	u=b.teams.A[3];ally=b.teams.A[6]
 	b._status_source="Grand Battery"

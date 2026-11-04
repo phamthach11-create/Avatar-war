@@ -1,0 +1,8 @@
+{
+  "checks": {
+    "caster_skill_caches": 9,
+    "class_item_caches": 256
+  },
+  "method": "Independent totals and restricted numeric arithmetic; no Excel recalculation claim",
+  "source_sha256": "0930269b70fbf8bc1935c4276f64e9ed63c51519c4b819021409f7d2a3862e2f"
+}

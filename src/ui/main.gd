@@ -65,7 +65,7 @@ func _build_interface() -> void:
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 7)
 	margin.add_child(layout)
-	layout.add_child(_label("AVATAR WAR  /  9 vs 9", 25, Color.WHITE))
+	layout.add_child(_label("AVATAR WAR / MORGAN + NIGHTINGALE / 9 vs 9", 25, Color.WHITE))
 	_status = _label("", 18, Color.WHITE)
 	layout.add_child(_status)
 	_turn_label = _label("", 13, MUTED)
@@ -127,7 +127,7 @@ func _build_interface() -> void:
 	_initiative.add_item("Team B")
 	_initiative.item_selected.connect(func(_index: int) -> void: _restart())
 	controls.add_child(_initiative)
-	layout.add_child(_label("Requested roster: slots 1–9 fixed | MAIN Leonidas slot5 | Same builds both teams | Automata: one of each type/team", 13, MUTED))
+	layout.add_child(_label("Requested roster: slots 1–9 fixed | Morgan slot5 | MAIN Nightingale slot8 | Same builds both teams | Automata: one of each type/team", 13, MUTED))
 	_log = RichTextLabel.new()
 	_log.bbcode_enabled = true
 	_log.scroll_following = true
@@ -180,6 +180,8 @@ func _add_team(parent: HBoxContainer, team: String, accent: Color, right: bool) 
 		view.faces_right = right
 		view.is_main = index == 4
 		view.unit_type = _battle_config().roster[index].type
+		if requested_scenario and index == 4:
+			view.appearance_tint = Color("cba9ff")
 		tile.add_child(view)
 		view.custom_minimum_size = Vector2(90, 70)
 		view.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -253,7 +255,7 @@ func _restart() -> void:
 	var scenario: Dictionary = _battle_config()
 	scenario["demo_defend"] = false
 	_duel = RequestedBattle.new(scenario, "A" if _initiative.selected == 0 else "B", 42, _skill_mode.button_pressed) if requested_scenario else Battle.new(scenario, "A" if _initiative.selected == 0 else "B", 42, _skill_mode.button_pressed)
-	_match_metadata = {"match_id":Time.get_datetime_string_from_system(true).replace(":","-")+"-"+str(Time.get_ticks_usec()), "started_at_utc":Time.get_datetime_string_from_system(true), "seed":42, "first_team":"A" if _initiative.selected == 0 else "B", "godot_version":Engine.get_version_info().string, "engine_sha256":FileAccess.get_sha256("res://src/combat/requested_battle.gd" if requested_scenario else "res://src/combat/mixed_battle.gd"), "config_sha256":FileAccess.get_sha256("res://data/gameplay/requested_9v9.json" if requested_scenario else "res://data/gameplay/mixed_9v9.json")}
+	_match_metadata = {"match_id":Time.get_datetime_string_from_system(true).replace(":","-")+"-"+str(Time.get_ticks_usec()), "started_at_utc":Time.get_datetime_string_from_system(true), "seed":42, "first_team":"A" if _initiative.selected == 0 else "B", "godot_version":Engine.get_version_info().string, "engine_sha256":FileAccess.get_sha256("res://src/combat/requested_battle.gd" if requested_scenario else "res://src/combat/mixed_battle.gd"), "config_sha256":JSON.stringify(scenario).sha256_text()}
 	_presented_actions = 0
 	_log.clear()
 	_log.append_text("Mixed 9 vs 9 ready. 2 Napoleons per team. Gold: actor; red: target; crown: MAIN.\n")
@@ -279,7 +281,7 @@ func _advance() -> void:
 	_display_teams = event["turn_start_state"].duplicate(true)
 	_busy = true
 	var ticket := _playback_id
-	for action in event["actions"]:
+	for action in preload("res://src/ui/weapon_playback.gd").group(event["actions"],event["turn_start_state"]):
 		var team: String = action.team
 		_acting_team = team
 		_acting_index = action.actor
@@ -318,13 +320,13 @@ func _advance() -> void:
 				view.animate_heal(-impact.damage)
 			elif impact.damage > 0:
 				view.animate_hit(impact.damage, action.kind != "attack")
-				if _sound_enabled and impact.damage > 0:
-					_hit_audio.play()
+
 			if not impact.landed:
 				misses += 1
 			total += impact.damage
+		if _sound_enabled and total > 0: _hit_audio.play()
 		_display_teams = action.state_after.duplicate(true)
-		_presented_actions += 1
+		_presented_actions += int(action.get("source_action_count",1))
 		_log.append_text("T%d | %s%d %s | %s | %d target(s) | HP change %.0f\n" % [event.turn,team,action.actor+1,_display_teams[team][action.actor].name,action.name + (" · MISS %d" % misses if misses > 0 else ""),action.impacts.size(),-total])
 		_refresh()
 		if animation_speed > 0:
@@ -395,7 +397,7 @@ func _refresh() -> void:
 		_status.text = "%s: %s%d" % [_action_name, _acting_team, _acting_index + 1] if _target_index < 0 else "%s: %s%d > %s%d" % [_action_name, _acting_team, _acting_index + 1, _target_team, _target_index + 1]
 	_turn_label.text = "Global Turn %d | MAIN A5/B5: Leonidas | End turn: DOT > expiration > cooldown | Build and skill details: hover names" % _duel.global_turn
 	if requested_scenario:
-		_turn_label.text = "Turn %d | Main A5/B5 | Automata P=Piercing B=Bombard: %s | Mona Lisa: HP <=65%%" % [_duel.global_turn,_automation_summary(_display_teams if _busy else _duel.teams)]
+		_turn_label.text = "Turn %d | Morgan A5/B5 | Main: Nightingale A8/B8 | Automata: %s" % [_duel.global_turn,_automation_summary(_display_teams if _busy else _duel.teams)]
 	_export_button.disabled = _busy
 	_next_button.disabled = _busy or _duel.finished or _auto_running
 	_auto_button.disabled = _duel.finished and not _busy
@@ -453,6 +455,9 @@ func _show_builds() -> void:
 			skills.append("%s: SL %d" % [skill_name,entry.levels[skill_name]])
 		text += "Skills: %s\n" % ", ".join(skills)
 		text += "Nodes: %s\n" % ", ".join(entry.nodes)
+		for node in entry.get("node_descriptions", {}):
+			text += "  %s: %s\n" % [node, entry.node_descriptions[node].replace("\n", " ")]
+		text += "Skill Point budget: %d\n" % entry.skill_points
 		text += "Source stats: HP %.0f | MP %.0f | ATK %.0f | Accuracy %.0f%%\n\n" % [entry.max_hp,entry.max_mp,entry.attack,entry.accuracy*100]
 	content.text = text
 	dialog.add_child(content)

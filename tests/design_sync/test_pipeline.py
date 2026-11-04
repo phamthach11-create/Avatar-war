@@ -100,4 +100,18 @@ class SyncTests(unittest.TestCase):
         accept_review(self.root,self.root/'receipt.json')
         verify_active(self.root)
 
+    def test_two_characters_share_sheet_without_sharing_stat_block(self):
+        template=copy.deepcopy(self.template)
+        second=copy.deepcopy(template['roster'][0])
+        second['design_binding']={'sheet':'Warrior class','stat_start':50,'name_cell':'B43'}
+        second['name']='Second caster';template['roster'].append(second)
+        wb=load_workbook(self.book);sh=wb['Warrior class'];sh['B43']='Second caster'
+        for row,label in enumerate(FIELDS,50):sh.cell(row,1,label);sh.cell(row,2,200);sh.cell(row,3,80)
+        wb.save(self.book);wb.close()
+        from tools.design_sync.pipeline import build_scenario
+        result=build_scenario(extract(self.book),template)
+        self.assertEqual(result['roster'][0]['max_hp'],100)
+        self.assertEqual(result['roster'][1]['max_hp'],200)
+        self.assertEqual(result['roster'][1]['character_ap_recovery'],80)
+
 if __name__=='__main__':unittest.main()
