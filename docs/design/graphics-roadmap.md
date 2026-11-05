@@ -1,5 +1,9 @@
 # Kế hoạch đồ họa — đã chuyển hướng sang 3D
 
+## 2026-11-05 — Dọn assets, chỉ giữ demo combat 2D 9vs9
+Người dùng yêu cầu xóa assets 2D/3D ngoài bản demo và xác nhận giữ demo combat 2D 9vs9. Chỉ giữ sprite warrior_actions, nền stone_arena và ba âm thanh sword_hit/sword_swing/victory cùng metadata import. Các concept, thử nghiệm Bluetooth 3D/rìu/animation và preview Napoleon đã được dọn; nội dung đồ họa cũ bên dưới chỉ là lịch sử, không chứng minh assets còn tồn tại. Đây là quyết định dọn tài nguyên, không tự đổi luật hoặc chốt lại hướng mỹ thuật tương lai.
+
+
 ## Cập nhật pipeline asset — 2026-11-01
 Người dùng đã loại công cụ tạo model được ghi trong [nhật ký quyết định](cloud-local-status.md#2026-11-01--loại-hunyuan-khỏi-pipeline-asset) vì chất lượng model chưa đạt. Không tái sử dụng model, texture hoặc rig dẫn xuất từ pipeline bị loại. Giữ concept Bluetooth đã duyệt; chỉ rig/animation sau khi model thay thế được duyệt.
 

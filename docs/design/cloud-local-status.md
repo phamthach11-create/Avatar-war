@@ -144,6 +144,15 @@
 - Giới hạn: cập nhật workbook không tự cập nhật `data/gameplay/requested_9v9.json` hoặc engine Godot/Python. Demo Godot đã có trên main qua PR #4; không còn là chỉ local.
 - Bước tiếp theo: đối chiếu các khác biệt thiết kế nêu trên khi cập nhật engine/scenario theo yêu cầu riêng.
 
+## 2026-11-05 — Chỉ giữ assets cho demo combat 2D 9vs9
+- Yêu cầu người dùng: dọn assets 2D/3D; bản cần giữ được xác nhận là demo combat 2D 9vs9.
+- Nguồn repo: `0cd5bc3a7007594426fcda44531976d1e05104b7`. Không sửa workbook, cơ chế combat hoặc trạng thái đồng bộ Excel/runtime.
+- Local: chuyển 31 đường dẫn gồm476file,605957048bytes ra ngoài project để khôi phục; gồm art/concept, source3D, project lab/duel3D, project thử cũ và ảnh/âm thanh thử nghiệm. Bản sao3D do chat tạo cũng được dọn khỏi outputs đang dùng. Bộ cài Godot/Blender và thư viện công cụ giữ nguyên.
+- Repo: xóa assets/art_direction, warrior.png không dùng và các script/scene preview phụ thuộc; giữ5assets thực dùng cùng .import. Nhật ký và tài liệu cũ được đánh dấu lịch sử.
+- Kiểm tra local: checksum5assets giữ lại không đổi; Godot import và chạy main scene thành công;1742checks requested,8196checks mixed,1150checks log đều0fail.
+- Giới hạn: kiểm thử chạy trên project local; không suy thành xác nhận đồng bộ workbook mới nhất trên main. Chưa dựng lại assets3D hoặc thay artwork của demo.
+- Triển khai qua PR riêng, agent tự hợp nhất sau khi kiểm tra theo ủy quyền hiện hành; xem trạng thái GitHub để xác nhận.
+
 ## Các lần tiếp theo
 Thêm mục mới theo mẫu trong quy trình, cập nhật khoảng cách còn lại và liên kết pull request. Không biến kế hoạch thành kết quả đã hoàn thành.
 
