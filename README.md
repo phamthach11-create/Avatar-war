@@ -29,7 +29,7 @@ Có Auto, Next turn, Restart, Build và Export log; cấu hình ở
 
 Xem [hướng dẫn checkout và kiểm tra](docs/design/godot-9v9-checkout.md) và
 [build, nguồn thiết kế, giới hạn](docs/design/requested-9v9-2026-10-31.md).
-Các scene Dummy/mixed và preview đồ họa cũ vẫn giữ để hồi quy; đây là bản combat2D,
+Các scene Dummy/mixed vẫn giữ để hồi quy; preview đồ họa và assets thử nghiệm đã dọn ngày 2026-11-05. Đây là bản combat2D,
 chưa tích hợp model Tripo hay trận3D.
 
 ## AI và tài nguyên đồ họa

@@ -1,4 +1,8 @@
 # Avatar War — chỉ mục công việc
+
+## 2026-11-05 — Dọn assets, chỉ giữ demo combat 2D 9vs9
+Người dùng yêu cầu xóa assets 2D/3D ngoài bản demo và xác nhận giữ demo combat 2D 9vs9. Chỉ giữ sprite warrior_actions, nền stone_arena và ba âm thanh sword_hit/sword_swing/victory cùng metadata import. Các concept, thử nghiệm Bluetooth 3D/rìu/animation và preview Napoleon đã được dọn; nội dung đồ họa cũ bên dưới chỉ là lịch sử, không chứng minh assets còn tồn tại. Đây là quyết định dọn tài nguyên, không tự đổi luật hoặc chốt lại hướng mỹ thuật tương lai.
+
 Cập nhật 2026-11-01. Đọc phần liên quan và kiểm tra revision/file trước khi dùng; đây là chỉ mục, không thay luật hoặc kiểm thử.
 
 ## Nguồn và trạng thái
